@@ -9,7 +9,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(50))
     firstname = db.Column(db.String(75))
     lastname = db.Column(db.String(75))
-    password = db.Column(db.String(190))
+    password = db.Column(db.varchar(190))
     email = db.Column(db.String)
     address = db.Column(db.String)
     state = db.Column(db.String)
