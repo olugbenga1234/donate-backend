@@ -32,7 +32,7 @@ def registerfarmer():
                     lga=lga,
                     phone=phone,
                     bvn=bvn,
-                    unhashed_password=unhashed_password.decode("utf-8", "ignore"),
+                    unhashed_password=unhashed_password,
                     farmer=True,
                     seeder=False,
                     admin=False)
@@ -69,7 +69,7 @@ def registerseed():
                     lga=lga,
                     phone=phone,
                     bvn=bvn,
-                    unhashed_password=unhashed_password.decode("utf-8", "ignore"),
+                    unhashed_password=unhashed_password,
                     farmer=False,
                     seeder=True,
                     admin=False)
