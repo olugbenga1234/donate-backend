@@ -21,7 +21,7 @@ def registerfarmer():
         phone = request.form['phone']
         bvn = request.form['bvn']
 
-        #unhashed_password = request.form['password']
+        unhashed_password = request.form['password']
 
         user = User(lastname=lastname,
                     firstname=firstname,
@@ -32,7 +32,7 @@ def registerfarmer():
                     lga=lga,
                     phone=phone,
                     bvn=bvn,
-                   # unhashed_password=unhashed_password,
+                    unhashed_password=unhashed_password.decode("utf-8", "ignore"),
                     farmer=True,
                     seeder=False,
                     admin=False)
@@ -58,7 +58,7 @@ def registerseed():
         phone = request.form['phone']
         bvn = request.form['bvn']
 
-        #unhashed_password = request.form['password']
+        unhashed_password = request.form['password']
 
         user = User(lastname=lastname,
                     firstname=firstname,
@@ -69,7 +69,7 @@ def registerseed():
                     lga=lga,
                     phone=phone,
                     bvn=bvn,
-                    #unhashed_password=unhashed_password,
+                    unhashed_password=unhashed_password.decode("utf-8", "ignore"),
                     farmer=False,
                     seeder=True,
                     admin=False)
@@ -86,11 +86,11 @@ def registerseed():
 def login():
     if request.method == 'POST':
         username = request.form['username']
-        #password = request.form['password']
+        password = request.form['password']
 
         user = User.query.filter_by(username=username).first()
 
-        if not user or not check_password_hash(user.username, username):
+        if not user or not check_password_hash(user.password, password):
             error_message = str("pls check details")
             print(error_message)
 

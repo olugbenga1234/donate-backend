@@ -6,10 +6,10 @@ from .extensions import db
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String)
-    firstname = db.Column(db.String)
-    lastname = db.Column(db.String)
-   # password = db.Column(db.String)
+    username = db.Column(db.String(50))
+    firstname = db.Column(db.String(75))
+    lastname = db.Column(db.String(75))
+    password = db.Column(db.String(190))
     email = db.Column(db.String)
     address = db.Column(db.String)
     state = db.Column(db.String)
@@ -23,13 +23,13 @@ class User(UserMixin, db.Model):
     donated_amount = db.relationship('Donated', foreign_keys='Donated.donated_by_id',
                                      backref='donator', lazy=True)
 
-    #@property
-   # def unhashed_password(self):
-    #    raise AttributeError('Cannot view password')
+    @property
+    def unhashed_password(self):
+        raise AttributeError('Cannot view password')
 
-    #@unhashed_password.setter
-    #def unhashed_password(self, unhashed_password):
-   #     self.password = generate_password_hash(unhashed_password)
+    @unhashed_password.setter
+    def unhashed_password(self, unhashed_password):
+        self.password = generate_password_hash(unhashed_password)
 
 
 class Donated(db.Model):
