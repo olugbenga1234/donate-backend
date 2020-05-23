@@ -6,12 +6,12 @@ from .extensions import db
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50))
+    username = db.Column(db.String(30))
     firstname = db.Column(db.String(30))
     lastname = db.Column(db.String(30))
-    password = db.Column(db.String(50))
+    password = db.Column(db.String(30))
     email = db.Column(db.String(30))
-    address = db.Column(db.String(90))
+    address = db.Column(db.String(30))
     state = db.Column(db.String)
     lga = db.Column(db.String(30))
     phone = db.Column(db.Integer)
