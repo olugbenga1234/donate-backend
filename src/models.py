@@ -16,7 +16,7 @@ class User(UserMixin, db.Model):
     state = db.Column(db.String(75))
     lga = db.Column(db.String(75))
     phone = db.Column(db.Integer)
-    bvn = db.Column(db.Integer)
+    bvn = db.Column(db.Numeric)
     farmer = db.Column(db.Boolean)
     seeder = db.Column(db.Boolean)
     admin = db.Column(db.Boolean)

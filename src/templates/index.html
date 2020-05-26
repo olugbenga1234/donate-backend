@@ -1,4 +1,4 @@
-{% from "base.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_css %}
+{% from "base.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_css, render_donatemodal %}
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -12,7 +12,12 @@
 </head>
 
 <body data-rsssl=1 class="home page-template-default page page-id-5680 _masterslider _msp_version_3.2.7 woocommerce-no-js" style="background-image: url(../static/images/body.svg)">
+    
+    {{ render_donatemodal(render) }}
+
+    
     <div class="body-wrapper float-menu">
+
 
         <header class="greennature-header-wrapper header-style-5-wrapper greennature-header-with-top-bar">
             <!-- top navigation -->
@@ -118,8 +123,8 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <a class="greennature-donate-button greennature-lb-payment"><span class="greennature-button-overlay"></span><span class="greennature-button-donate-text">Donate</span></a>
-
+                           <li class="greennature-donate-button"><button type="button" id="modalBtn" class="btn-donate">Donate</button>
+                    </a> 
                         </nav>
                         <div class="greennature-navigation-gimmick" id="greennature-navigation-gimmick"></div>
                         <div class="clear"></div>
@@ -131,7 +136,7 @@
         <!-- is search -->
 
 
-        <!--section1-->
+        <!--slider section1-->
         <section id="content-section-1">
             <div class="greennature-full-size-wrapper gdlr-show-all no-skin" style="padding-bottom: 0px;  background-color: #ffffff; ">
                 <div class="greennature-master-slider-item greennature-slider-item greennature-item" style="margin-bottom: 0px;">
@@ -189,7 +194,7 @@ color: #ecb338;" class="ms-layer ms-btn ms-btn-round ms-btn-n msp-preset-btn-159
             </div>
             <div class="clear"></div>
         </section>
-        <!--section1end-->
+        <!--slider section1end-->
 
         <!--sec2-->
         <section id="content-section-2">
@@ -210,8 +215,8 @@ color: #ecb338;" class="ms-layer ms-btn ms-btn-round ms-btn-n msp-preset-btn-159
                     </div>
                     <div class="four columns">
                         <div class="greennature-ux column-service-ux">
-                            <div class="greennature-item greennature-column-service-item greennature-type-2-bg" style="margin-bottom: 0px;background-color: #3f3221;">
-                                <div class="column-service-image"><img src="{{ url_for('static', filename='images/donation.png')}}" alt="" width="80" height="80" /></div>
+                            <div class="greennature-item greennature-column-service-item greennature-type-2-bg" style="margin-bottom: 0px; background-color: #3f3221; height: ;">
+                                <div class="column-service-image"><img src="{{ url_for('static', filename='images/donation.png')}}" alt="" width="80" height="80"/></div>
                                 <div class="column-service-content-wrapper">
                                     <h3 class="column-service-title">We Need Your Help</h3>
                                     <div class="column-service-content greennature-skin-content">

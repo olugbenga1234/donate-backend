@@ -1,4 +1,4 @@
-{% from "base.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_form, render_navbar, render_css %}
+{% from "base.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_formseed, render_navbar, render_css, render_donatemodal %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +22,9 @@
     <div class="body-wrapper  float-menu">
 
         {{ render_navbar(render) }}
+
+        {{ render_donatemodal(render) }}
+
 
 
         <div class="content-wrapper">
@@ -51,7 +54,7 @@
                         </div>
                         <div class="clear"></div>
                     </section>
-                    {{ render_form(render) }}
+                    {{ render_formseed(render) }}
 
                 </div>
                 <!-- Below Sidebar Section-->
@@ -65,7 +68,7 @@
 
     {{ render_contactus(render) }}
 
-    {{ render_takeaction(render) }}
+    {{ render_faq(render) }}
 
     {{ render_subscribenews(render) }}
 

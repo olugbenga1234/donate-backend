@@ -7,8 +7,6 @@ from src.models import User
 import smtplib
 from email.message import EmailMessage
 
-app = Flask(__name__)
-
 auth = Blueprint('auth', __name__)
 
 
@@ -39,15 +37,12 @@ def registerfarmer():
                     lga=lga,
                     phone=phone,
                     bvn=bvn,
-                    #unhashed_password=unhashed_password,
                     farmer=True,
                     seeder=False,
                     admin=False)
 
         db.session.add(user)
         db.session.commit()
-
-#################send email function################################
 
         msg = EmailMessage()
         msg['Subject'] = 'Donate A Seed - Confirmation Email'
@@ -57,7 +52,7 @@ def registerfarmer():
         msg.add_alternative("""\
         <h1 style="color: #000; font-weight: 600; text-align: center;">Confirmation Email for your Application On Donate A Seed</h1>
         <br>
-        <p style="color: #222; font-weight: 300;">Your email {} was used for applying on <b>Donate A Seed<b> as a <b>FARMER<b>.<br>
+        <p style="color: #222; font-weight: 300;">Hi {}, Your email {} was used for applying on <b>Donate A Seed<b> as a <b>FARMER<b>.<br>
         We will review your application and send your results to {} <br>
         Please ignore this email if you did not apply on our platform. </p>
 
@@ -65,14 +60,13 @@ def registerfarmer():
         <br><br><br>
         Regards,<br>
         Donate A Seed
-        """.format(email,email), subtype='html')
+        """.format(firstname,email,email), subtype='html')
 
         #email sending function
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login("donateaseedoffcial@gmail.com", "donateaseed1234")
             smtp.send_message(msg)
 
-######################end of email function#############################
         return redirect(url_for('auth.registerfarmer'))
 
     return render_template('registerfarmer.html')
@@ -108,7 +102,6 @@ def registerseed():
                     farmer=False,
                     seeder=True,
                     admin=False)
-#################send email function################################
 
         msg = EmailMessage()
         msg['Subject'] = 'Donate A Seed - Confirmation Email'
@@ -118,7 +111,7 @@ def registerseed():
         msg.add_alternative("""\
         <h1 style="color: #000; font-weight: 600; text-align: center;">Confirmation Email for your Application On Donate A Seed</h1>
         <br>
-        <p style="color: #222; font-weight: 300;">Your email {} was used for applying on <b>Donate A Seed<b> as a <b>SEED DELIVERER<b>.<br>
+        <p style="color: #222; font-weight: 300;">Hi {}, Your email {} was used for applying on <b>Donate A Seed<b> as a <b>SEED DELIVERER<b>.<br>
         We will review your application and send your results to {} <br>
         Please ignore this email if you did not apply on our platform. </p>
 
@@ -126,20 +119,20 @@ def registerseed():
         <br><br><br>
         Regards,<br>
         Donate A Seed
-        """.format(email,email), subtype='html')
+        """.format(firstname,email,email), subtype='html')
 
         #email sending function
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login("donateaseedoffcial@gmail.com", "donateaseed1234")
             smtp.send_message(msg)
 
-######################end of email function#############################
         db.session.add(user)
         db.session.commit()
 
         return redirect(url_for('auth.registerseed'))
 
     return render_template('registerseed.html')
+
 
 
 #function for login

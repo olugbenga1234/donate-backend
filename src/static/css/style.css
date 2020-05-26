@@ -915,6 +915,8 @@ html .woocommerce .greennature-widget-title {
 }
 
 .greennature-navigation-wrapper {
+    font-family: "PT Sans", sans-serif;
+
     margin: 0px 15px;
     float: right;
 }
@@ -925,6 +927,8 @@ html .woocommerce .greennature-widget-title {
 }
 
 .greennature-navigation-wrapper .greennature-main-menu > li {
+    font-family: "PT Sans", sans-serif;
+
     padding: 0px;
 }
 
@@ -1035,6 +1039,7 @@ html .woocommerce .greennature-widget-title {
 }
 
 .greennature-header-wrapper.header-style-5-wrapper {
+    font-family: "PT Sans", sans-serif;
     position: absolute;
     left: 0px;
     right: 0px;
@@ -1878,6 +1883,7 @@ input[type="submit"] {
     margin-left: 0px;
     margin-right: 0px;
     padding: 47px 30px 45px;
+    height: 385px !important;
 }
 
 .greennature-column-service-item.greennature-type-2-bg .column-service-icon {
