@@ -133,6 +133,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
 {% endmacro %}
 
 
@@ -525,10 +528,10 @@
                     <h1>Special Thanks</h1>
                     <p class="mb-4">This Project was made possible by</p>
                     <div class="row social-media">
-                        <a href=""><i class="fa fa-github"></i></a>
-                        <a href=""><i class=""></i>Andela</a>
+                        <a href="https://www.github.com/"><i class="fa fa-github"></i></a>
+                        <a href="https://andela.com/"><i class="andela"></i>Andela</a>
                         <a href=""><i class="fa fa-slack"></i></a>
-                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
@@ -593,10 +596,10 @@
                 <div class="greennature-item greennature-stunning-item greennature-stunning-center">
                     <h2 class="stunning-item-title">The only way to make this happened is to take action!</h2>
                     <div class="stunning-item-caption greennature-skin-content">
-                        <p>Lets Fight Hunger Together.</p>
+                        <p>Let's End Hunger Together.</p>
                     </div> 
-                        <a href="donate.html" type="button" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" background-color: #ecb338; color: #ffffff;>Donate Now!</a>
-                        <a href="registerfarmer.html" type="button" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" style="background-color: #ecb338 !important; color: #ffffff;">Register!</a>
+                        <a onclick="location.href='donate.html'" type="button" target="blank" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" background-color: #ecb338; color: #ffffff;>Donate Now!</a>
+                        <a onclick="location.href='registerfarmer.html'" type="button" target="blank" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" style="background-color: #ecb338 !important; color: #ffffff;">Register!</a>
                     </div>
             </div>
             <div class="clear"></div>
@@ -618,8 +621,8 @@
             <div class="footer-column three columns" id="footer-widget-1">
                 <div id="text-5" class="widget widget_text greennature-item greennature-widget">
                     <div class="textwidget">
-                        <p><img src="upload/logo-light.png" style="width: 170px;" alt=""></p>
-                        <p>We are here for you.......</p>
+                        <p><img src="upload/logo-light.png" style="width: 170px;" alt="LOGO"></p>
+                        <p>We are here for you...</p>
                     </div>
                 </div>
             </div>
@@ -628,7 +631,11 @@
                 <div id="text-9" class="widget widget_text greennature-item greennature-widget">
                     <h3 class="greennature-widget-title">Contact Info</h3>
                     <div class="clear"></div>
-                    <div class="textwidget"><span class="clear"></span><span class="greennature-space" style="margin-top: -6px; display: block;"></span> Address: 123 street area location
+                    <div class="textwidget">
+                        <span class="clear"></span><span class="greennature-space" style="margin-top: 10px; display: block;"></span>
+
+                        <i class="greennature-icon fa fa-map-marker" style="vertical-align: middle; color: #fff; font-size: 16px; "></i> 12 street country location
+
 
                         <span class="clear"></span><span class="greennature-space" style="margin-top: 10px; display: block;"></span>
 
@@ -643,61 +650,48 @@
 
             <div class="footer-column three columns" id="footer-widget-3">
                 <div id="gdlr-recent-post-widget-5" class="widget widget_gdlr-recent-post-widget greennature-item greennature-widget">
-                    <h3 class="greennature-widget-title">Recent Posts</h3>
-                    <div class="clear"></div>
+                    <h3 class="greennature-widget-title">Mapsite</h3>
                     <div class="greennature-recent-post-widget">
                         <div class="recent-post-widget">
-                            <div class="recent-post-widget-thumbnail">
-                                <a href="#"><img src="upload/shutterstock_294481373-150x150.jpg" alt="" width="150" height="150"></a>
-                            </div>
                             <div class="recent-post-widget-content">
-                                <div class="recent-post-widget-title"><a href="#">Sem Porta Mollis Parturi</a></div>
-                                <div class="recent-post-widget-info">
-                                    <div class="blog-info blog-date greennature-skin-info"><i class="fa fa-clock-o"></i><a href="#">21 Mar 2014</a></div>
-                                    <div class="clear"></div>
-                                </div>
+                                <div class="recent-post-widget-title"><a href="index.html">Home</a></div>
                             </div>
-                            <div class="clear"></div>
                         </div>
+
                         <div class="recent-post-widget">
-                            <div class="recent-post-widget-thumbnail">
-                                <a href="#"><img src="upload/shutterstock_181393724-150x150.jpg" alt="" width="150" height="150"></a>
-                            </div>
                             <div class="recent-post-widget-content">
-                                <div class="recent-post-widget-title"><a href="#">Nullam Lorem Mattis Purus</a></div>
-                                <div class="recent-post-widget-info">
-                                    <div class="blog-info blog-date greennature-skin-info"><i class="fa fa-clock-o"></i><a href="#">21 Mar 2014</a></div>
-                                    <div class="clear"></div>
-                                </div>
+                                <div class="recent-post-widget-title"><a href="#about-us">About us</a></div>
                             </div>
-                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
+
+                        <div class="recent-post-widget">
+                            <div class="recent-post-widget-content">
+                                <div class="recent-post-widget-title"><a href="#our-causes">Our Causes</a></div>
+                            </div>
+                        </div>
+
+                        <div class="recent-post-widget">
+                            <div class="recent-post-widget-content">
+                                <div class="recent-post-widget-title"><a href="donate.html">donate</a></div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="footer-column three columns" id="footer-widget-4">
                 <div id="gdlr-recent-portfolio2-widget-6" class="widget widget_gdlr-recent-portfolio2-widget greennature-item greennature-widget">
-                    <h3 class="greennature-widget-title">Recent Works</h3>
+                    <h3 class="greennature-widget-title">Resources</h3>
                     <div class="clear"></div>
                     <div class="greennature-recent-port2-widget">
                         <div class="recent-port-widget-thumbnail">
-                            <a href="#"><img src="upload/shutterstock_161515241-150x150.jpg" alt="" width="150" height="150"></a>
+                            <a target=_blank href="https://www.pexels.com/">Photos by Pexels.com</a>
                         </div>
                         <div class="recent-port-widget-thumbnail">
-                            <a href="#"><img src="upload/shutterstock_133689230-150x150.jpg" alt="" width="150" height="150"></a>
+                            <a target=_blank href="https://fontawesome.com/">Icons by Font awesome</a>
                         </div>
                         <div class="recent-port-widget-thumbnail">
-                            <a href="#"><img src="upload/shutterstock_53600221-150x150.jpg" alt="" width="150" height="150"></a>
-                        </div>
-                        <div class="recent-port-widget-thumbnail">
-                            <a href="#"><img src="upload/shutterstock_124871620-150x150.jpg" alt="" width="150" height="150"></a>
-                        </div>
-                        <div class="recent-port-widget-thumbnail">
-                            <a href="#"><img src="upload/shutterstock_281995004-150x150.jpg" alt="" width="150" height="150"></a>
-                        </div>
-                        <div class="recent-port-widget-thumbnail">
-                            <a href="#"><img src="upload/shutterstock_256181956-150x150.jpg" alt="" width="150" height="150"></a>
+                            <a target=_blank href="https://www.templateshub.net">Template</a>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -712,7 +706,7 @@
                     <a href="#"><i class="greennature-icon fa fa-facebook" style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a> <a href="#"><i class="greennature-icon fa fa-twitter" style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a> <a href="#"><i class="greennature-icon fa fa-dribbble" style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a> <a href="#"><i class="greennature-icon fa fa-pinterest" style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a> <a href="#"><i class="greennature-icon fa fa-google-plus" style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a> <a href="#"><i class="greennature-icon fa fa-instagram" style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a>
                 </div>
                 <div class="copyright-right">
-                    <a target="_blank" href="https://www.templateshub.net">copyright Donate a Seed</a> </div>
+                    <a>&copy Copyright 2020 Donate a Seed - All rights reserved</a></div>
                 <div class="clear"></div>
             </div>
         </div>
@@ -734,7 +728,18 @@
 <!--java scripts-->
 
 <!-- JS, Popper.js, and jQuery -->
-
+<!--counter script-->
+<script>
+    jQuery(document).ready(function( $ )
+    {
+        $('.counter').counterUp({
+        delay: 10,
+        time: 1000
+        });
+    });
+</script>
+<script type='text/javascript' src='../static/js/jquery.counterup.min.js'></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script type='text/javascript' src='../static/js/jquery/jquery.js'></script>
@@ -828,6 +833,7 @@
     })(jQuery);
 
 </script>
+
 {% endmacro %}
 
 {% macro render_formfarmer(render) %}

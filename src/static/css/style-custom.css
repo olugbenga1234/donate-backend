@@ -926,7 +926,7 @@ textarea:-ms-input-placeholder {
 }
 
 .footer-wrapper * {
-    border-color: #382f24;
+    border: none !important;
 }
 
 .footer-wrapper input[type="text"],

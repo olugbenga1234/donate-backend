@@ -5164,10 +5164,9 @@ body.single .greennature-blog-full {
 
 /*--- recent post widget ---*/
 .recent-post-widget {
-    margin-bottom: 15px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    padding-bottom: 15px;
+    margin-bottom: 2px;
+    border-bottom-width: 0px;
+    padding-bottom: 2px;
 }
 
 .recent-post-widget .recent-post-widget-thumbnail {
