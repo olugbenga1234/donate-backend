@@ -311,9 +311,9 @@ a img.aligncenter {
     padding: 0 4px 5px;
 }
 
-.sticky {}
+/***.sticky {}
 
-.bypostauthor {}
+.bypostauthor {}**/
 
 dl {
     width: 100%;
@@ -5304,7 +5304,7 @@ ul.greennature-twitter-widget li {
     border-bottom-style: solid;
 }
 
-ul.greennature-twitter-widget li:before {
+/**ul.greennature-twitter-widget li:before {
     font-size: 19px;
     line-height: 24px;
     float: left;
@@ -5313,7 +5313,7 @@ ul.greennature-twitter-widget li:before {
     font-family: FontAwesome;
     content: '\f099';
     *zoom: expression(this.runtimeStyle['zoom']='1', this.innerHTML='&#xf099;');
-}
+}**/
 
 ul.greennature-twitter-widget li .greennature-twitter {
     margin-bottom: 20px;

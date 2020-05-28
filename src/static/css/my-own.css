@@ -28,7 +28,7 @@ body {
     color: #fff !important;
     font-weight: bold !important;
     text-align: left !important;
-    text-decoration:  !important;
+    text-decoration: none !important;
 }
 
 .card-body {
@@ -116,8 +116,64 @@ body {
 }
 
 #sponsors h1 {
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-align: center;
     color: #4b9e55;
+}
+
+.social-media{
+    display: flex;
+    justify-content: center;
+}
+
+#sponsors a{
+    display: flex;
+    height: 75px;
+    width: 75px;
+    margin: 0 15px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+                -6px -6px 10px -1px rgba(255,255,255,0.7);
+    transition: transform 0.5s;
+}
+
+#sponsors a:hover{
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+                -0.5px -0.5px 0px rgba(255,255,255,1),
+                -0.5px -0.5px 0px rgba(0,0,0,0.15),
+                0px 12px 10px -10px rgba(0,0,0,0.05);
+
+    border: 1px solid rgba(0,0,0,0.01);
+    transform: translateY(2px);
+
+}
+
+#sponsors a:hover i{
+    transform: scale(0.90);
+}
+
+#sponsors a i{
+    font-size: 35px;
+    color: #777;
+    transition: transform 0.5s;
+}
+
+#sponsors a:hover .fa-facebook{
+    color: #3b5998;
+}
+
+#sponsors a:hover .fa-github{
+    color: #a000fd;
+}
+
+#sponsors a:hover .fa-slack{
+    color: #ff9100;
 }
 
 #take-action {
@@ -193,7 +249,7 @@ body {
 .modal1{
     display: none;
     position: fixed;
-    z-index: 10000000000000;
+    z-index: 100;
     left: 0;
     top: 0;
     height: 100%;
@@ -253,18 +309,142 @@ body {
 }
 
 .btn-primary{
-    font-weight: 600;
-    background: #4b9e55;
-    color: #fff;
-    border-radius: 5px;
     border: none !important;
-    transition: .3s;
+    background: #4b9355;
+    color: #fff;
+    margin: 20px 9px 0px;
+    font-size: 13px;
+    padding: 17px 36px;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
+.h3r{
+    display: contents;
+}
+
+.not-a{
+padding-top: 20px;
+font-weight: 555;
+text-decoration: none;
 }
 
 .btn-primary:hover{
-    font-weight: 400;
     background: #316b37;
     color: #fff;
-    border-radius: 5px;
     border: none !important;
 }
+
+.greennature-skin-dark-skin .greennature-button2{
+    background: #ecb338;
+    color: #fff;
+    margin: 20px 9px 0px;
+    font-size: 13px;
+    padding: 17px 36px;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
+.greennature-skin-dark-skin .greennature-button2:hover{
+    background: #ecb338;
+    color: #fff;
+
+}
+
+#btnScrollToTop{
+    align-content: center;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #4b9e55;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#btnScrollToTop:active{
+    background: #245329;
+}
+
+@media only screen and (max-width: 700px) {
+    .greennature-skin-brown-column-service{
+        background-color: #2d2418;
+        border-top: 5px solid #3f3221;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        margin-top: -1px !important;
+        margin-left: 1px !important;
+        margin-right: 1px !important;
+    }
+
+    .greennature-column-service-item.greennature-type-2 {
+        text-align: center !important;
+        padding: 30px 1px 30px 1px !important;}
+
+    body .container {
+        max-width: 330px !important;
+        }
+
+    .six.columns {
+        padding-top: 10px !important;
+    }
+
+    .p-5 {
+        padding: 1rem !important;
+    }
+
+    #our-team{
+        padding: 5px !important;
+    }
+
+    .greennature-personnel-item.plain-style .personnel-author-image {
+        margin-top: 10px !important;
+    }
+
+    .container.p-4{
+        padding: 0px !important;
+    }
+
+    .h3r h3{
+        font-size: 25px !important;
+        text-align: center !important;
+        font-weight: 600 !important;
+        text-transform: capitalize !important;
+    }
+
+    #register .container {
+        border-radius: 2px;
+    }
+
+    #register .p-4{
+        padding: 2px !important;
+    }
+
+    #greennature-parallax-wrapper-1{
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+}
+
+
+
+.greennature-skin-brown-column-service{
+    background-color: #2d2418;
+    border-top: 5px solid #3f3221;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: -60px;
+}
+
+
+

@@ -1,4 +1,4 @@
-{% from "base.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_formfarmer, render_formseed, render_navbar, render_css, render_donatemodal %}
+{% from "base.html" import render_scrolltotop, render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_formfarmer, render_formseed, render_navbar, render_css, render_donatemodal %}
 <!DOCTYPE html>
 <html>
 
@@ -66,6 +66,8 @@
 
 
     {{ render_contactus(render) }}
+
+    {{ render_scrolltotop(render) }}
 
     {{ render_faq(render) }}
 
