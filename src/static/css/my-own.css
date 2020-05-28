@@ -176,10 +176,10 @@ body {
     color: #ff9100;
 }
 
-.andela {
-    font-weight: 600;
-    color: #555;
-    font-size: 20px;
+#sponsors .andela {
+    font-weight: 600 !important;
+    color: #555 !important;
+    font-size: 20px !important;
 }
 
 #sponsors a:hover .andela{
@@ -254,6 +254,11 @@ body {
     background-color: #ce9825;
     border-color: #ecb338;
     transition: .5s;
+}
+
+#donate-popup .btn-primary{
+    margin-bottom: 10px;
+    margin-left: 17px;
 }
 
 .modal1{
@@ -394,6 +399,19 @@ text-decoration: none;
         left: 10px !important;
     }
 
+    .modal1-content {
+        background-color: #f4f4f4;
+        margin: 20px;
+        width: 90%;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+        animation-name: modalopen;
+        animation-duration: .7s;
+    }
+
+    .modal-body {
+        padding: 0px;
+    }
+
 
     .msp-cn-1-7{
         left: 115px !important;
@@ -461,6 +479,10 @@ text-decoration: none;
         padding-top: 50px !important;
         padding-bottom: 50px !important;
     }
+}
+
+.donatelink{
+    background-color: #ff9100 !important;
 }
 
 .greennature-skin-brown-column-service{

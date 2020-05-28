@@ -51,7 +51,7 @@
             <div class="greennature-logo">
                 <div class="greennature-logo-inner">
                     <a href="index.html">
-                        <img src="{{ url_for('static', filename='images/logo.png')}}" alt="logo" /> </a>
+                        <img src="{{ url_for('static', filename='icons/logo.png')}}" alt="logo" /> </a>
                 </div>
                 <div class="greennature-responsive-navigation dl-menuwrapper" id="greennature-responsive-navigation">
                     <button class="dl-trigger">Open Menu</button>
@@ -64,6 +64,9 @@
                         <li class="menu-item menu-item-home current-menu-item page_item page-item-5680 current_page_item"><a href="#contact-us" aria-current="page">Contact Us</a></li>
 
                         <li class="menu-item menu-item-home current-menu-item page_item page-item-5680 current_page_item"><a href="#" aria-current="page">Shop</a></li>
+
+                        <li id="modalBtn" class="menu-item menu-item-home current-menu-item page_item page-item-5680 current_page_item donatelink"><a aria-current="page">Donate Now</a></li>
+
                 
                     </ul>
                 </div>
@@ -95,6 +98,8 @@
 {% endmacro %}
 
 {% macro render_css(render) %}
+<link rel="shortcut icon" href="{{ url_for ('static', filename='icons/favicon-1.png')}}">
+
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C700%2C700italic%2C900%2C900italic&amp;subset=latin&amp;' type='text/css' media='all' />
 
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Noto+Sans%3Aregular%2Citalic%2C700%2C700italic&amp;subset=greek%2Ccyrillic-ext%2Ccyrillic%2Clatin%2Clatin-ext%2Cvietnamese%2Cgreek-ext&amp;' type='text/css' media='all' />
@@ -529,7 +534,7 @@
                     <p class="mb-4">This Project was made possible by</p>
                     <div class="row social-media">
                         <a href="https://www.github.com/"><i class="fa fa-github"></i></a>
-                        <a href="https://andela.com/"><i class="andela"></i>Andela</a>
+                        <a class="andela" href="https://andela.com/"><i class="andela"></i>Andela</a>
                         <a href=""><i class="fa fa-slack"></i></a>
                         <a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a>
                     </div>
@@ -621,7 +626,7 @@
             <div class="footer-column three columns" id="footer-widget-1">
                 <div id="text-5" class="widget widget_text greennature-item greennature-widget">
                     <div class="textwidget">
-                        <p><img src="upload/logo-light.png" style="width: 170px;" alt="LOGO"></p>
+                        <p><img src="{{ url_for('static', filename='icons/logo.png')}}" alt="logo" /></p>
                         <p>We are here for you...</p>
                     </div>
                 </div>
@@ -1145,6 +1150,19 @@
                         <form method="POST" action="">
                             <div class="form-group">
                                 <label for="donate-amount"><b>How much would you like to donate?</b></label>
+                                <div class="container">
+                                    <div class="form-row">
+                                        <div class="btn-group btn-group-toggle col-md-6 mb-3" data-toggle="buttons">
+                                            <label class="btn btn-primary col-md-6 mb-3">
+                                              <input type="radio" name="options" id="option1"> #1000
+                                            </label>
+                                            <label class="btn btn-primary col-md-6 mb-3">
+                                              <input type="radio" name="options" id="option2"> #50,000
+                                            </label>
+                                            
+                                          </div>
+                                    </div>
+                                </div>
                                 <input type="number" class="form-control" id="donate-amount" placeholder="amount in (Naira)" required>
                               </div>
 
