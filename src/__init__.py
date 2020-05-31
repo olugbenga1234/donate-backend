@@ -10,8 +10,6 @@ from .routes.auth import auth
 def create_app(config_file='settings.py'):
     app = Flask(__name__)
 
-    app.config['SECRET KEY'] = 'shsshsjfhf38384844dff8f8fd8dv8vf888f8f8ff8'
-
     app.config.from_pyfile(config_file)
 
     db.init_app(app)
