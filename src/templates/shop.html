@@ -12,24 +12,23 @@
 </head>
 
 <body>
-<section id="shop">
-    <header>
-        <div class="hero">
-            <p>DONATE A SEED SHOP</p>
-            <h1>COMING SOON</h1>
+    <section id="shop">
+        <header>
+            <div class="hero">
+                <p>DONATE A SEED SHOP</p>
+                <h1>COMING SOON</h1>
 
-            <hr>
-            <p id="launch"></p>
-            <a onclick="location.href='index.html'" type="button" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" background-color: #ecb338; color: #ffffff;>&triangleleft; Back</a>
-        </div>
+                <hr>
+                <p id="launch"></p>
+                <a onclick="location.href='index.html'" type="button" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" background-color: #ecb338; color: #ffffff;>&triangleleft; Back</a>
+            </div>
 
-    </header>
-</section>
+        </header>
+    </section>
 
 
 
     <script>
-
         var countDownDate = new Date("june 30, 2020 00:00:00").getTime();
 
         var x = setInterval(function() {
@@ -43,17 +42,19 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             document.getElementById("launch").innerHTML = days + "d " + hours + "h " +
-            minutes + "m " + seconds + "s ";
+                minutes + "m " + seconds + "s ";
 
-            if (distance < 0){
+            if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("launch").innerHTML = "EXPIRED"
             }
 
         }, 1000);
+
     </script>
 
 
     {{ render_js(render) }}
 </body>
+
 </html>
