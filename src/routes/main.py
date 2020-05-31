@@ -3,6 +3,8 @@ from flask import Blueprint, render_template
 from src.extensions import db
 from src.models import Donated
 
+app.config['SECRET KEY'] = 'shsshsjfhf38384844dff8f8fd8dv8vf888f8f8ff8'
+
 main = Blueprint('main', __name__)
 
 donate = Blueprint('donate', __name__)
