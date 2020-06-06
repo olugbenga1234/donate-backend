@@ -6,6 +6,7 @@ body {
 }
 
 
+
 input {
     /**background: #fff !important;**/
     font-family: "PT Sans", sans-serif;
@@ -109,7 +110,368 @@ input {
     background-image: url(../images/body.svg) !important;
 }
 
+#register {
+    font-family: 'PT Sans', sans-serif !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    background-size: cover;
+    background-position: fixed;
+    background: #f1f1f1;
+}
 
+#register .wave {
+    position: fixed !important;
+    height: 100% !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    z-index: -1 !important;
+}
+
+#register .img {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+}
+
+#register .img img{
+    width: 500px;
+}
+
+.avatar {
+    width: 100px;
+}
+
+#register a{
+    display: block !important;
+    text-decoration: none !important;
+    color: green !important;
+    font-size: 1rem !important;
+    transition: .3s !important;
+}
+
+#register .login-container{
+    background-color: #fff;
+    border-radius: 30px;
+    display: -moz-grid-group;
+    align-items: center;
+}
+
+#register h1{
+    color: #000;
+}
+
+#register input,select{
+    background-color: #fff !important;
+    display: grid !important;
+    grid-template-columns: 7% 93% !important;
+    margin: 25px 0 !important;
+    font-size: 1.2rem;
+    color: #555;
+    border-radius: 0px !important;
+    padding: 5px 0 !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 2px solid #d9d9d9 !important;
+}
+
+#register select{
+    margin-top: 30px !important;
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+top: -2px !important;
+font-size: 12px !important;
+color: #4b9355 !important;
+}
+
+.floating-label {
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.2s ease all;
+    font-family: "PT Sans", sans-serif !important;
+    color: #555 !important;
+    font-size: 14px !important;
+    transition: .3s !important;
+    text-transform: capitalize;
+  }
+  
+#register .form-control::placeholder {
+	font-family: "PT Sans", sans-serif !important;
+    color: #999 important;
+    font-size: 15px important;
+    transition: .3s important;
+}
+
+#register input:focus{
+    transition: .5s !important;
+    border-bottom: 2px solid #4b9e55 !important;   
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+}
+
+#register select:focus{
+    transition: .5s !important;
+    border-bottom: 2px solid #4b9e55 !important;   
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+}
+
+#register a:hover{
+    color: #4b9e55 !important;
+}
+
+
+/**login**/
+#login{
+    background-color: #fff !important;
+}
+
+#login .wave{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	z-index: -1;
+}
+
+#login .container{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap :7rem;
+    padding: 0 2rem;
+}
+
+#login .img{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#login .login-content{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+}
+
+#login .img img{
+	width: 500px;
+}
+
+#login form{
+	width: 360px;
+}
+
+#login .login-content img{
+    height: 100px;
+}
+
+#login .login-content h2{
+	margin: 15px 0;
+	color: #333;
+	text-transform: uppercase;
+	font-size: 2.9rem;
+}
+
+#login .login-content .input-div{
+	position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+#login .login-content .input-div.one{
+	margin-top: 0;
+}
+
+#login .i{
+	color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#login .i i{
+	transition: .3s;
+}
+
+#login .input-div > div{
+    position: relative;
+	height: 45px;
+}
+
+#login .input-div > div > h5{
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+}
+
+#login .input-div:before, .input-div:after{
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #38d39f;
+	transition: .4s;
+}
+
+#login .input-div:before{
+	right: 50%;
+}
+
+#login .input-div:after{
+	left: 50%;
+}
+
+#login .input-div.focus:before, .input-div.focus:after{
+	width: 50%;
+}
+
+#login .input-div.focus > div > h5{
+	top: -5px;
+	font-size: 15px;
+}
+
+#login .input-div.focus > .i > i{
+	color: #38d39f;
+}
+
+#login .input-div > div > input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.5rem 0.7rem;
+	font-size: 1.2rem;
+	color: #555;
+	font-family: 'poppins', sans-serif;
+}
+
+#login .input-div.pass{
+	margin-bottom: 4px;
+}
+
+#login a{
+	display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #999;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+
+#login a:hover{
+	color: #38d39f;
+}
+
+#login .btn{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+#login .btn:hover{
+	background-position: right;
+}
+
+.custom-file {
+	/* position: relative; */
+	/* display: inline-block; */
+	/* width: 100%; */
+	/* height: calc(1.5em + .75rem + 2px); */
+	margin-top: 11px !important;
+	/* border-radius: 0px; */
+}
+
+.custom-file-label.rounded-pill {
+    border-radius: 50rem;
+  }
+  
+  .custom-file-label.rounded-pill::after {
+    border-radius: 0 50rem 50rem 0;
+  }
+
+.form-check-label {
+	margin-bottom: 0;
+	color: #000;
+	font-size: 15px;
+	margin-left: 10px;
+	font-weight: 200;
+	font-family: 'Poppins', sans-serif;
+}
+
+
+@media screen and (max-width: 1050px){
+	#login .container{
+		grid-gap: 5rem;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	#login form{
+		width: 290px;
+	}
+
+	#login .login-content h2{
+        font-size: 2.4rem;
+        margin: 8px 0;
+	}
+
+	#login .img img{
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 900px){
+	#login .container{
+		grid-template-columns: 1fr;
+	}
+
+	#login .img{
+		display: none;
+	}
+
+	#login .wave{
+		display: none;
+	}
+
+	#login .login-content{
+		justify-content: center;
+	}
+}
+/**endlogin**/
 
 #sponsors {
     font-family: "PT Sans", sans-serif;
@@ -119,10 +481,27 @@ input {
 
 #sponsors h1 {
     font-weight: 500;
-    font-size: 30px;
-    letter-spacing: 2px;
+   
     text-align: center;
     color: #4b9e55;
+}
+
+
+.bb{
+    margin-top: 110px !important;
+}
+
+#flash_message a {
+	 display: contents;
+	 text-align: none;
+	 text-decoration: none;
+	 color: #32be8f;
+	 font-size: none;
+	 transition: none;
+}
+
+.humm{
+    margin-left: 100px;
 }
 
 .social-media{
@@ -196,43 +575,6 @@ input {
 
 #take-below {
     background-color: rgba(0, 0, 0, 0.51);
-}
-
-
-#register {
-    padding: 10px;
-    background-color: #4b9e55;
-}
-
-#register .container {
-    border-radius: 10px;
-    font-family: "PT Sans", sans-serif;
-    background-image: url(../images/body.svg) !important;
-    background-size: cover;
-}
-
-#register input, #donate-popup input {
-    border: 1px solid #999;
-    border-radius: 2px;
-    background: #fff;
-}
-
-#register .btn-primary .btn-primary, #donate-popup .btn-primary {
-    background-color: #4b9e55 !important;
-    border-radius: 3px;
-    color: #fff;
-    border-color: #4b9e55 !important;
-}
-
-#register .btn:focus,
-.btn:active, #donate-popup .btn:focus,
-.btn:active {
-    outline: none !important;
-    box-shadow: none;
-}
-
-#register h3 {
-    margin-bottom: 55px;
 }
 
 .btn-donate {
@@ -400,6 +742,14 @@ text-decoration: none;
 @media only screen and (max-width: 700px) {
     .ms-btn-container, .msp-cn-1-3, .msp-cn-1-2, .msp-cn-1-1, .msp-cn-1-5, .msp-cn-1-9{
         left: 10px !important;
+    }
+
+    .humm {
+        margin-left: 0 !important;
+    }
+
+    .man {
+        display: none;
     }
 
     .donatelink{

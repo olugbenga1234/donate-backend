@@ -89,12 +89,19 @@
 
                                 <li class="menu-item menu-item-home current-menu-item page_item page-item-5680 current_page_item"><a href="shop.html" aria-current="page">Shop</a></li>
 
-                                <li ss="menu-item menu-item-has-children menu-item-"><a href="#">Register</a>
+                                {% if current_user.is_authenticated %}
+                                <li class="menu-item menu-item-home current-menu-item page_item page-item-5680 current_page_item"><a href="{{ url_for('auth.logout') }}" aria-current="page">Logout</a></li>
+                                {% endif %}
+                            
+
+                                {% if not current_user.is_authenticated %}
+                                <li ss="menu-item menu-item-has-children menu-item-"><a>Account</a>
                                     <ul class="dl-submenu">
-                                        <li class="menu-item"><a href="registerfarmer.html">As a Farmer</a></li>
-                                        <li class="menu-item"><a href="registerseed.html">As a Seed Deliverer</a></li>
+                                        <li class="menu-item"><a href="login.html">Login</a></li>
+                                        <li class="menu-item"><a href="register.html">Register</a></li>
                                     </ul>
                                 </li>
+                                {% endif %}
 
                                 <li class="menu-item menu-item-home current-menu-item page_item page-item-5680 current_page_item donatelink"><a href="https://paystack.com/pay/donateaseed" aria-current="page">Donate Now</a></li>
                             </ul>
@@ -111,18 +118,22 @@
 
                                 <li class="menu-item menu-item-home  greennature-normal-menu"><a href="#our-causes">Causes</a></li>
 
-                                <li class="menu-item menu-item-home  greennature-normal-menu"><a href="#faq">FAQ</a></li>
-
                                 <li class="menu-item menu-item-home  greennature-normal-menu"><a href="#contact-us">Contact Us</a></li>
 
-                                <li class="menu-item menu-item-home  greennature-normal-menu"><a href="shop.html">Shop*</a></li>
+                                <li class="menu-item menu-item-home  greennature-normal-menu"><a href="shop.html">Shop</a></li>
 
-                                <li class="menu-item menu-item-has-children greennature-normal-menu"><a href="#" class="sf-with-ul-pre">Register</a>
+                                {% if current_user.is_authenticated %}
+                                <li class="menu-item menu-item-home  greennature-normal-menu"><a href="logout.html">Logout</a></li>
+                                {% endif %}
+
+                                {% if not current_user.is_authenticated %}
+                                <li class="menu-item menu-item-has-children greennature-normal-menu"><a class="sf-with-ul-pre">Account</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="registerfarmer.html">As a Farmer</a></li>
-                                        <li class="menu-item"><a href="registerseed.html">As a Seed Deliverer</a></li>
+                                        <li class="menu-item"><a href="login.html">Login</a></li>
+                                        <li class="menu-item"><a href="register.html">Register</a></li>
                                     </ul>
                                 </li>
+                                {% endif %}
                             </ul>
                             <li href="https://paystack.com/pay/donateaseed" class="greennature-donate-button"><button onclick="location.href='https://paystack.com/pay/donateaseed'" type="button" id="modalBtn" class="btn-donate">Donate</button>
                         </nav>
@@ -247,6 +258,8 @@ color: #ecb338;" class="ms-layer ms-btn ms-btn-round ms-btn-n msp-preset-btn-159
         </section>
         <!--end-->
 
+        {{ render_aboutus(render) }}
+
         <!--sec3-->
         <section id="content-section-3">
             <div class="greennature-parallax-wrapper greennature-background-image gdlr-show-all no-skin" id="greennature-parallax-wrapper-1" data-bgspeed="0.11" style="background-image: url('../static/images/service-bg.jpg'); padding-top: 90px; padding-bottom: 65px; background-position: center; background-size: cover;">
@@ -283,8 +296,7 @@ background-position: center; ">
         </section>
         <!--end-->
 
-        {{ render_aboutus(render) }}
-
+      
         {{ render_ourcauses(render) }}
 
         {{ render_faq(render) }}
