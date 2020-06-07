@@ -88,10 +88,9 @@ def login():
 
         
         if not user or not check_password_hash(user.password, password):
-            flash(' Could not Login, Please check details and try again.', 'error')
+            flash(' Could not Login, Please check your details and try again.', 'error')
 
         else:
-            flash(' Logged in successfully.', 'success')
             login_user(user)
             return redirect(url_for('main.index'))
 
@@ -102,4 +101,5 @@ def login():
 @auth.route('/logout.html')
 def logout():
     logout_user()
+    flash('Logged Out successfully', 'success')
     return redirect(url_for('auth.login'))
