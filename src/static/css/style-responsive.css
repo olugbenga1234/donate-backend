@@ -30,10 +30,7 @@ html body {
         margin-left: 25px;
     }
 
-    #modalBtn {
-        height: 70px;
-        margin-bottom: 0px;
-        margin-top: 68px;    }
+   
 
     .greennature-navigation-wrapper .greennature-main-menu > li > a.sf-with-ul-pre,
     .greennature-navigation-wrapper .greennature-main-menu > li > a.sf-with-ul .greennature-navigation-wrapper .greennature-main-menu > li > a {
@@ -82,11 +79,7 @@ html body {
         height: 70px;
     }
 
-    #modalBtn {
-        height: 70px;
-        margin-bottom: 0px;
-        margin-top: 68px;
-    }
+ 
 
     body .greennature-fixed-header .greennature-logo {
         display: none;
@@ -98,10 +91,10 @@ html body {
         max-width: 768px;
     }
 
-    #modalBtn {
+    /**#modalBtn {
         height: 70px;
         margin-bottom: 0px;
-        margin-top: 68px;    }
+        margin-top: 68px;    }**/
 
 
     body .body-wrapper.greennature-boxed-style {
