@@ -248,7 +248,7 @@ color: #4b9355 !important;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
-    padding: 0 2rem;
+   
 }
 
 #login .img{
