@@ -91,6 +91,13 @@ html body {
         max-width: 768px;
     }
 
+    #register .login-container {
+        background-color: #f4f4f4;
+        border-radius: 0px;
+        display: -moz-grid-group;
+        align-items: center;
+    }
+
     /**#modalBtn {
         height: 70px;
         margin-bottom: 0px;
@@ -443,6 +450,13 @@ html body {
 @media only screen and (max-width: 419px) {
     body .container {
         max-width: 300px;
+    }
+
+    #register .login-container {
+        background-color: #f4f4f4;
+        border-radius: 0px;
+        display: -moz-grid-group;
+        align-items: center;
     }
 
     body .body-wrapper.greennature-boxed-style {

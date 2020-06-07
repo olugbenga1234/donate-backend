@@ -744,6 +744,13 @@ text-decoration: none;
         left: 10px !important;
     }
 
+    #register .login-container {
+        background-color: #f4f4f4;
+        border-radius: 0px;
+        display: -moz-grid-group;
+        align-items: center;
+    }
+
     .humm {
         margin-left: 0 !important;
     }
