@@ -16,7 +16,7 @@ class User(UserMixin, db.Model):
     address = db.Column(db.String(75), unique=False, nullable=False)
     state = db.Column(db.String(75), unique=False, nullable=False)
     lga = db.Column(db.String(75), unique=False, nullable=False)
-    phone = db.Column(db.Integer, unique=True)
+    phone = db.Column(db.Numeric, unique=True)
     bvn = db.Column(db.Numeric, nullable=False)
     usertype = db.Column(db.String, nullable=False, unique=False)
     donated_amount = db.relationship('Donated', foreign_keys='Donated.donated_by_id',
