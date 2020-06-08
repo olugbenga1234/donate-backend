@@ -171,6 +171,11 @@ input[type="color"]:focus,
 	border: .1px solid #fff;
 }
 
+#login .breadcrumb {
+	background-color: #fff0;
+	border: .1px solid #fff;
+}
+
 #register .btn{
     padding: 10px;
 	display: block;

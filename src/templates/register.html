@@ -141,7 +141,7 @@
                                <div class="input-group-prepend">
                                    <div class="input-group-text">+234</div>
                                </div>
-                               <input type="number" class="form-control" id="phone">
+                               <input type="number" name="phone" class="form-control" id="phone">
                                </div>
                            </div>
                        </div>
@@ -165,6 +165,7 @@
                            <div class="form-group col-md-6" id="form-group-fix">
                                <label class="my-1 mr-2" for="usertype"><p>Register as:</p></label>
                                    <select class="custom-select form-control" name="usertype" id="usertype" required>
+                                    <option selected disabled>Choose...</option>
                                        <option value="Farmer" data-toggle="tooltip" title="Register as a Farmer, you receive new and improved seeds and aids to help improve your productions." required>A Farmer</option>
                                        <option value="Seeder" data-toggle="tooltip" title="Register as a Seed deliverer, you deliver seeds to farmers and get commissions for it." required>A Seed Deliverer</option>
                                    </select>
