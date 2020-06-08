@@ -219,9 +219,7 @@ input[type="color"]:focus,
 /**register end**/
 
 /**login**/
-#login{
-    background-color: #fff !important;
-}
+
 
 #login .wave{
 	position: fixed;
@@ -230,6 +228,8 @@ input[type="color"]:focus,
 	height: 100%;
 	z-index: -1;
 }
+
+
 
 #login .card {
     background: #fff;
@@ -469,7 +469,17 @@ input[type="color"]:focus,
 
 	#login .login-content{
 		justify-content: center;
-	}
+    }
+    
+    #login{
+        background-color: #fff !important;
+    }
+    
+    #login .card {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
 }
 /**endlogin**/
 
