@@ -45,7 +45,7 @@
                </div>
    
               <div class="card p-5">
-                   <form id="register-form" method="POST" action="{{ url_for('auth.register') }}">
+                   <form id="register-form" method="POST" action="{{ url_for('auth.register') }}" enctype="multipart/form-data">
                        <div class="col-md pb-4 text-left">
                         <h5 style="color: #32be8f;">CREATE ACCOUNT</h5>
                         <h6>Please fill in your correct details!</h6>
@@ -144,7 +144,7 @@
                                <div class="input-group-prepend">
                                    <div class="input-group-text">+234</div>
                                </div>
-                               <input type="number" name="phone" class="form-control" id="phone">
+                               <input type="number" name="phone" class="form-control" id="phone" required>
                                </div>
                            </div>
                        </div>
@@ -153,12 +153,12 @@
 
                         <div class="form-group col-md-6">
                             <label for="bvn"><p>Bvn</p></label>
-                            <input name="bvn" type="number" class="form-control" id="bvn">
+                            <input name="bvn" type="number" class="form-control" id="bvn" required>
                         </div>
 
                             <div class="custom-file form-group mt-3 col-md-6">
-                                <input type="file" class="custom-file-input" id="validatedCustomFile">
-                                <label class="custom-file-label" for="validatedCustomFile">Upload Picture...</label>
+                                <input type="file" class="custom-file-input" id="profilepic">
+                                <label class="custom-file-label" for="profilepic">Upload Picture...</label>
                                 <div class="invalid-feedback">File Required</div>
                             </div>  
                       

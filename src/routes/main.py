@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_required, current_user
 
 from src.extensions import db
 from src.models import Donated
@@ -27,16 +28,13 @@ def shop():
 
 @main.route('/users')
 @main.route('/users.html')
-#@login_required
+@login_required
 def users():
-    #if not current_user.admin
-        #return redirect(url_for('main.index'))
-
-   # users = User.query.filter_by(admin=False).all()
+    username = current_user.username
     users = User.query.all()
 
     context = {
         'users' : users
     }
     
-    return render_template('users.html', **context)
+    return render_template('users.html', **context,  username=current_user.username)

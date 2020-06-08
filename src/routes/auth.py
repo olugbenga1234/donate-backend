@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, Flask, flash
+from flask import Blueprint, render_template, request, redirect, url_for, Flask, flash, Markup
 from flask_login import login_user, logout_user
 #from flask_admin import Admin
 from werkzeug.security import check_password_hash
@@ -28,7 +28,23 @@ def register():
         unhashed_password = request.form['password']
         usertype = request.form['usertype']
 
-        user = User(lastname=lastname,
+        
+#check if username exists
+        checkusername = User.query.filter_by(username=username).first()
+
+        if checkusername:
+            flash(' Username already exists', 'error')
+            return redirect(url_for('auth.login'))
+
+#check if email already exists
+        checkuseremail = User.query.filter_by(email=email).first()
+
+        if checkuseremail:
+            flash(' Email Address already exists', 'error')
+            return redirect(url_for('auth.login'))
+
+
+        new_user = User(lastname=lastname,
                     firstname=firstname,
                     username=username,
                     unhashed_password=unhashed_password,
@@ -41,7 +57,7 @@ def register():
                     usertype=usertype
                     )
                     
-        db.session.add(user)
+        db.session.add(new_user)
         db.session.commit()
 
         #email message
@@ -83,16 +99,17 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        remember = True if request.form.get('remember') else False
 
+#validate details
         user = User.query.filter_by(username=username).first()
 
-        
         if not user or not check_password_hash(user.password, password):
-            flash(' Could not Login, Please check your details and try again.', 'error')
+            flash(' Could not Login, Please check your login details and try again', 'error')
 
         else:
             login_user(user)
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.users'))
 
     return render_template('login.html')
 

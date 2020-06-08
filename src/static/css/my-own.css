@@ -5,6 +5,18 @@ body {
     background-position: center;
 }
 
+.alert-danger {
+	color: #fff !important;
+	background-color: #ff0017 !important;
+	border-color: #f40a23 !important;
+}
+
+.alert-success {
+	color: #fcfffd !important;
+	background-color: #08bb33 !important;
+	border-color: #03b62c !important;
+}
+
 .btn:focus, .btn:active {
     outline: none !important;
     box-shadow: none !important;

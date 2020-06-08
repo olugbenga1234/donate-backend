@@ -16,8 +16,8 @@ class User(UserMixin, db.Model):
     address = db.Column(db.String(75), unique=False, nullable=False)
     state = db.Column(db.String(75), unique=False, nullable=False)
     lga = db.Column(db.String(75), unique=False, nullable=False)
-    phone = db.Column(db.Numeric, unique=True)
-    bvn = db.Column(db.Numeric, nullable=False)
+    phone = db.Column(db.Numeric, unique=True, nullable=True)
+    bvn = db.Column(db.Numeric, nullable=True)
     usertype = db.Column(db.String, nullable=False, unique=False)
     donated_amount = db.relationship('Donated', foreign_keys='Donated.donated_by_id',
                                      backref='donator', lazy=True)
@@ -28,7 +28,7 @@ class User(UserMixin, db.Model):
 
     @unhashed_password.setter
     def unhashed_password(self, unhashed_password):
-        self.password = generate_password_hash(unhashed_password)
+        self.password = generate_password_hash(unhashed_password, method='sha256')
 
 
 #donate model
