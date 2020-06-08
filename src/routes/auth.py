@@ -108,7 +108,7 @@ def login():
             flash(' Could not Login, Please check your login details and try again', 'error')
 
         else:
-            login_user(user)
+            login_user(user, remember=remember)
             return redirect(url_for('main.users'))
 
     return render_template('login.html')
