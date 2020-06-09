@@ -15,6 +15,8 @@
 
     {{ render_css(render) }}
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
    
 </head>
 
@@ -24,7 +26,29 @@
     <!--Donation Form-->
     <section id="donate">
         <div class="col">
-            <div id="successAlert" class="alert alert-success" role="alert" style="display:none";></div>
+            <div class="col-md p-1" id="flash_message">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    {% if category == 'success' %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}!
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+                {% if messages %}
+                    {% for category, message in messages %}
+                    {% if category == 'error' %}
+                    <div class="alert alert-danger" role="alert">
+                        Error:  {{ message }}!
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
         </div>
         <div class="container">
             <div class="container h-100 p-5">
@@ -66,7 +90,7 @@
 
                    <div class="col-md">
                     <div class="card p-5 mb-5">
-                        <form id="paymentForm" method="POST" action="{{ url_for('main.donate') }}">
+                        <form id="paymentForm" method="POST" action="{{ url_for('main.donate') }}" role="form">
                             <script type="" src="https://js.paystack.co/v1/inline.js"></script>
                             <div class="col-md pb-4 text-center">
                              <h5 style="color: #32be8f;">DONATION</h5>
@@ -82,8 +106,8 @@
      
                             <div class="form-row">
                              <div class="form-group col-md">
-                                 <label for="donator-username"><p>Username</p></label>
-                                 <input name="donator-username" type="text" class="form-control" id="donator-username">
+                                 <label for="donator-name"><p>Name</p></label>
+                                 <input name="donator-name" type="text" class="form-control" id="donator-name" required>
                              </div>
                          </div>
      
@@ -113,7 +137,7 @@
 
                         <div class="col-md mt-3">
                             <div class="col">
-                                <button class="btn" type="button" onclick="payWithPaystack()"> Donate Now </button>                             </div>  
+                                <button class="btn" type="submit" onclick="payWithPaystack()"> Donate Now </button>                             </div>  
                         </div>
 
                         <div id="secured" class="col text-center mt-5">
@@ -130,9 +154,21 @@
     </section>
     <!--end donate form-->
       
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js">
+    </script>
+
+    <script>
+        const element = document.querySelector('form');
+        element.addEventListener('submit', event => {
+        event.preventDefault();
+        // actual logic, e.g. validate the form
+        console.log('Form submission cancelled.');
+        });
+    </script>
+
     <script>
         var paymentForm = document.getElementById('paymentForm');
-        paymentForm.addEventListener("button", payWithPaystack, false);
+        paymentForm.addEventListener("submit", payWithPaystack, false);
         
                 function payWithPaystack(){
                   var handler = PaystackPop.setup({
@@ -152,20 +188,21 @@
                     },
               
               
+                   //Paystack inline callback function
+                    // Using Ajax to verify the transaction
                     callback: function(response){
                     $.ajax({
-                        alert: 'Payment Successful, your refernce code is ' + response.reference,
-                        data: {
-                            donate_amount : $('#donate-amount').val(),
-                            donated_by_email : $('#donator-email').val()
-                        },
-                        type : 'POST',
-                        url : '/donate',
+                        url: '/donated',  
+                        dataType: 'json',                  
+                        data: $('form').serialize(),
+                        type: 'POST',
                         success: function (data) {
-                            $('#successAlert').text(data.donated_by_email).show();
+                           // window.location.href('donated.html');
+                            window.location.href = 'donated.html';
                         }
                     });
                     },
+
 
                     onClose: function(){
                         alert('Payment Cancelled');

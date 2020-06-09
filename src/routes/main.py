@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, json, redirect, flash, url_for
 from flask_login import login_required, current_user
 
 from src.extensions import db
@@ -21,24 +21,31 @@ def index():
 @main.route('/donate.html', methods=['POST','GET'])
 def donate():
 
+    return render_template('donate.html')
+
+#donated
+@main.route('/donated', methods=['POST'])
+def donated():
     if request.method == 'POST':
         donate_amount = request.form['donate-amount']
         donated_by_email = request.form['donator-email']
-        donator_username = request.form['donator-username']
+        donator_name = request.form['donator-name']
 
-        if donate_amount and donated_by_email:
-            return jsonify({'Thank you for donation' : donated_by_email})
+        #new_donator = Donated (
+        #    donate_amount=donate_amount,
+        #    donated_by_email=donated_by_email,
+        #    donator_name=donator_name
+        #)
+                                
+        #db.session.add(new_donator)
+        #db.session.commit()
 
-        new_donator = donate(
-                    donate_amount=donate_amount,
-                    donated_by_email=donated_by_email
-                    )
+        flash('Thank you {} for your Donations. It means a lot to us'.format(donator_name), 'success')
 
-        db.session.add(new_donator)
-        db.session.commit()
+        return redirect(url_for('main.donate'))
 
-    
-    return render_template('donate.html')
+    return render_template('donated.html')
+
 
 #shop
 @main.route('/shop')
