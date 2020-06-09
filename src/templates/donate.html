@@ -150,10 +150,16 @@
               
               
                     callback: function(response){
-                        alert('success. transaction ref is ' + response.reference);
+                    $.ajax({
+                        url: 'http://www.yoururl.com/file.php?reference=' + response.reference,
+                        method: 'post',
+                        success: function (data) {
+                        //Do whatever you like
+                        }
+                    });
                     },
                     onClose: function(){
-                        alert('window closed');
+                        alert('Payment Cancelled');
                     }
                   });
                   handler.openIframe();
