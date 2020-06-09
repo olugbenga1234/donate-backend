@@ -982,36 +982,7 @@
         ms_grab_curosr = '../static/plugins/masterslider/public/assets/css/common/grab.html';
 
 </script>
-<!--paystack function-->
-<script>
-    function payWithPaystack(){
-      var handler = PaystackPop.setup({
-        key: 'pk_test_e13e729eec9612428bbdaeb9c80f2e1fb03d0dcf',
-        email: document.getElementById('donator-email').value,
-        amount: document.getElementById('donate-amount').value,
-        currency: "NGN",
-        ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-        metadata: {
-           custom_fields: [
-              {
-                  display_name: "Mobile Number",
-                  variable_name: "mobile_number",
-                  value: document.getElementById('donate-phonenumber').value,
-              }
-           ]
-        },
-  
-  
-        callback: function(response){
-            alert('success. transaction ref is ' + response.reference);
-        },
-        onClose: function(){
-            alert('window closed');
-        }
-      });
-      handler.openIframe();
-    }
-  </script>
+
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
 <script type='text/javascript' src='../static/js/popper.js'></script>

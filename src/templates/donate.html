@@ -77,8 +77,8 @@
      
                             <div class="form-row">
                              <div class="form-group col-md">
-                                 <label for="donator-username"><p>Username*</p></label>
-                                 <input name="donator-username" type="text" class="form-control" id="donator-username" required>
+                                 <label for="donator-username"><p>Username</p></label>
+                                 <input name="donator-username" type="text" class="form-control" id="donator-username">
                              </div>
                          </div>
      
@@ -150,9 +150,14 @@
         },
   
         callback: function(response){
-            alert('Payment Successful. your transaction reference is ' + response.reference);
+            var myObj = { Donator : document.getElementById('donator-email').value, 
+            lastname : "Doe" };
+            console.log(myObj); 
+            alert('Donation Successful. your transaction reference is ' + response.reference);
         },
-        onClose: function(){
+
+
+        onClose: function(){ 
             alert('Payment Cancelled!');
         }
       });

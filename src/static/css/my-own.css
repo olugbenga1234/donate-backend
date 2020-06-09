@@ -208,7 +208,7 @@ input[type="color"]:focus,
     box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
 }
 
-#donate h1, p{
+#donate h1, #donate p{
     color: #222;
 }
 
