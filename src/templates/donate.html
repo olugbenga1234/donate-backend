@@ -12,6 +12,8 @@
     {% else %}
     <title>Donate</title>
     {% endif %}
+    
+    <script src="https://js.paystack.co/v1/inline.js"></script>
 
     {{ render_css(render) }}
 </head>
@@ -150,17 +152,19 @@
         },
   
         callback: function(response){
-            var myObj = { Donator : document.getElementById('donator-email').value, 
-            lastname : "Doe" };
-            console.log(myObj); 
+            var donatorinfo = { 
+                Donator : document.getElementById('donator-email').value, 
+                Amount : document.getElementById('donate-amount').value 
+            };
+            console.log(donatorinfo); 
             alert('Donation Successful. your transaction reference is ' + response.reference);
         },
-
 
         onClose: function(){ 
             alert('Payment Cancelled!');
         }
       });
+
       handler.openIframe();
     }
   </script>
