@@ -831,7 +831,7 @@
                     <div class="stunning-item-caption greennature-skin-content">
                         <p>Let's End Hunger Together.</p>
                     </div>
-                    <a onclick="location.href='https://paystack.com/pay/donateaseed'" type="button" target="_blank" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" background-color: #ecb338; color: #ffffff;>Donate Now!</a>
+                    <a onclick="location.href='donate.html'" type="button" target="_blank" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" background-color: #ecb338; color: #ffffff;>Donate Now!</a>
                     <a onclick="location.href='register.html'" type="button" target="_blank" class="stunning-item-button greennature-button large greennature-lb-payment" id="modalBtn" style="background-color: #ecb338 !important; color: #ffffff;">Register!</a>
                 </div>
             </div>
@@ -905,7 +905,7 @@
 
                         <div class="recent-post-widget">
                             <div class="recent-post-widget-content">
-                                <div class="recent-post-widget-title"><a href="https://paystack.com/pay/donateaseed">donate</a></div>
+                                <div class="recent-post-widget-title"><a href="donate.html">donate</a></div>
                             </div>
                         </div>
 
@@ -982,6 +982,36 @@
         ms_grab_curosr = '../static/plugins/masterslider/public/assets/css/common/grab.html';
 
 </script>
+<!--paystack function-->
+<script>
+    function payWithPaystack(){
+      var handler = PaystackPop.setup({
+        key: 'pk_test_e13e729eec9612428bbdaeb9c80f2e1fb03d0dcf',
+        email: document.getElementById('donator-email').value,
+        amount: document.getElementById('donate-amount').value,
+        currency: "NGN",
+        ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        metadata: {
+           custom_fields: [
+              {
+                  display_name: "Mobile Number",
+                  variable_name: "mobile_number",
+                  value: document.getElementById('donate-phonenumber').value,
+              }
+           ]
+        },
+  
+  
+        callback: function(response){
+            alert('success. transaction ref is ' + response.reference);
+        },
+        onClose: function(){
+            alert('window closed');
+        }
+      });
+      handler.openIframe();
+    }
+  </script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
 <script type='text/javascript' src='../static/js/popper.js'></script>
@@ -1083,255 +1113,6 @@ $('[data-toggle="tooltip"]').tooltip()
 
 {% endmacro %}
 
-{% macro render_register(render) %}
-<!--form farmer-->
-<section id="register">
-<div class="container">
-<div class="col p-5 pt-5">
-
-    <div class="col-md p-5 login-container">
-        <div class="col-md text-center">
-            <img class="avatar" src="../static/images/avatar.svg">
-        </div>
-        
-        <form method="POST" action="{{ url_for('auth.register') }}">
-            <div class="text-center">
-                <h1>Fill The Form Below</h1>
-                <h5 style="margin-bottom: 70px;">Please enter your correct details!</h5>
-            </div>
-          
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <input name="firstname" type="text" class="form-control" id="firstname" required>
-                    <span class="floating-label">Firstname</span>
-                </div>
-                <div class="form-group col-md-6">
-                    <input name="lastname" type="text" class="form-control" id="lastname" required>
-                    <span class="floating-label">Lastname</span>
-                </div>
-              </div>
-            
-              <div class="form-row">
-                <div class="form-group col-md">
-                    <input name="email" type="email" class="form-control" id="email" required>
-                    <span class="floating-label">Email Address</span>
-                </div>
-              </div>
 
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <input name="username" type="text" class="form-control" id="username" required>
-                    <span class="floating-label">Username</span>
-                </div>
 
-                <div class="form-group col-md-6">
-                    <input name="password" type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock"  required>
-                    <span class="floating-label">Password</span>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <input name="address" type="" class="form-control" id="address" required>
-                    <span class="floating-label">Address</span>
-                </div>
-
-                <div class="form-group col-md-6">
-                    <select name="state" id="state" class="form-control" required placeholder="State">
-                        <option>Abia</option>
-                        <option>Adamawa</option>
-                        <option>Akwa Ibom</option>
-                        <option>Anambra</option>
-                        <option>Bauchi</option>
-                        <option>Bayelsa</option>
-                        <option>Benue</option>
-                        <option>Borno</option>
-                        <option>Cross River</option>
-                        <option>Delta</option>
-                        <option>Ebonyi</option>
-                        <option>Edo</option>
-                        <option>Ekiti</option>
-                        <option>Enugu</option>
-                        <option>FCT Abuja</option>
-                        <option>Gombe</option>
-                        <option>Imo</option>
-                        <option>Jigawa</option>
-                        <option>Kaduna</option>
-                        <option>Kano</option>
-                        <option>Katsina</option>
-                        <option>Kebbi</option>
-                        <option>Kogi</option>
-                        <option>Kwara</option>
-                        <option>Lagos</option>
-                        <option>Nasarawa</option>
-                        <option>Niger</option>
-                        <option>Ogun</option>
-                        <option>Ondo</option>
-                        <option>Osun</option>
-                        <option>Oyo</option>
-                        <option>Plateau</option>
-                        <option>Rivers</option>
-                        <option>Sokoto</option>
-                        <option>Taraba</option>
-                        <option>Yobe</option>
-                        <option>Zamfara</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <input name="phone" type="number" class="form-control" id="phone" placeholder="+234...">
-                    <span class="floating-label">Phone Number</span>
-                </div>
-
-                <div class="form-group col-md-6">
-                    <input name="lga" type="text" class="form-control" id="lga" required >
-                    <span class="floating-label">LGA</span>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <input name="bvn" type="number" class="form-control" id="bvn" placeholder="...">
-                    <span class="floating-label">BVN</span>
-                </div>
-
-                <div class="form-group col-md-6 text-left">
-                    <br>
-                    <div class="custom-file overflow-hidden mb-5">
-                        <input id="customFile" type="file" class="custom-file-input ">
-                        <label for="customFile" class="custom-file-label">Upload Picture</label>
-                       </div>
-                </div>
-            </div>
-
-           <div class="form-row">
-               <div class="form-group text-left col-md-6">
-                <h4 style="margin-bottom: -10px;">Register as..?</h4>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="usertype" id="inlineRadio1" value="Farmer" required>
-                    <label class="form-check-label" for="inlineRadio1"> A Farmer</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="usertype" id="inlineRadio2" value="Seeder" required>
-                    <label class="form-check-label" for="inlineRadio2"> A Seed Deliverer</label>
-                  </div>
-                 
-               </div>
-
-               <div class="form-group text-left col-md-6">
-                <h4 style="">Already registered?</h4>
-                <a href="login.html">Login Here</a>
-               </div>
-           </div>
-
-         
-
-           <div class="form-group col-md-6">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                agree
-              </label>
-            </div>
-          </div>
-
-           <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                <div class="col-md-6">
-                    <br>
-                </div>
-               
-            </div>
-        </div>
-
-</form>
-    </div>
-    
-</div>
-</div>
-</section>
-<!--end form-->
-{% endmacro %}
-
-
-{% macro render_donatemodal(render) %}
-<!--donate popup-->
-<section id="donate-popup">
-    <div id="simpleModal" class="modal1">
-        <div class="modal1-content">
-            <div class="modal-header">
-                <h3>Your Help Means A Lot To Us.</h3>
-                <span class="closeBtn">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="cotainer p-4">
-                    <div class="container p-1">
-                        <form method="POST" action="">
-                            <div class="form-group">
-                                <label for="donate-amount"><b>How much would you like to donate?</b></label>
-                                <div class="container">
-                                    <div class="form-row">
-                                        <div class="btn-group btn-group-toggle col-md-6 mb-3" data-toggle="buttons">
-                                            <label class="btn btn-primary col-md-6 mb-3">
-                                                <input type="radio" name="options" id="option1"> #1000
-                                            </label>
-                                            <label class="btn btn-primary col-md-6 mb-3">
-                                                <input type="radio" name="options" id="option2"> #50,000
-                                            </label>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="number" class="form-control" id="donate-amount" placeholder="amount in (Naira)" required>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="firstnamefarmer">First Name*</label>
-                                    <input name="firstname" type="text" class="form-control" id="firstname" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="lastname">Last Name*</label>
-                                    <input name="lastname" type="text" class="form-control" id="lastname" required>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="email">Email Address*</label>
-                                    <input name="email" type="email" class="form-control" id="email" required>
-                                    <small id="emailhelp" class="form-text text-muted">
-                                        We will never share your Email...
-                                    </small>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="address">Phone Number</label>
-                                    <input name="phone" type="number" class="form-control" id="phone">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Additional Notes</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="note: this will appear on our home page"></textarea>
-                            </div>
-
-
-                            <button type="submit" class="btn btn-primary">Donate Now</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</section>
-<!--end popup-->
-{% endmacro%}

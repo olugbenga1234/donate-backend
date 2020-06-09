@@ -10,22 +10,26 @@ main = Blueprint('main', __name__)
 
 donate = Blueprint('donate', __name__)
 
+#home
 @main.route('/')
 @main.route('/index.html')
 def index():
     return render_template('index.html')
 
-
+#donate
 @main.route('/donate')
 @main.route('/donate.html')
 def donate():
+    
     return render_template('donate.html')
 
+#shop
 @main.route('/shop')
 @main.route('/shop.html')
 def shop():
     return render_template('shop.html')
 
+#users
 @main.route('/users')
 @main.route('/users.html')
 @login_required

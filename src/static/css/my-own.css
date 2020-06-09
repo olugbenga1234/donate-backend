@@ -56,21 +56,21 @@ input[type="color"]:focus,
 }
 
 #login textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {   
+#login input[type="text"]:focus,
+#login input[type="password"]:focus,
+#login input[type="datetime"]:focus,
+#login input[type="datetime-local"]:focus,
+#login input[type="date"]:focus,
+#login input[type="month"]:focus,
+#login input[type="time"]:focus,
+#login input[type="week"]:focus,
+#login input[type="number"]:focus,
+#login input[type="email"]:focus,
+#login input[type="url"]:focus,
+#login input[type="search"]:focus,
+#login input[type="tel"]:focus,
+#login input[type="color"]:focus,
+#login .uneditable-input:focus {   
   border-color: rgba(0, 0, 0, 0);
   box-shadow: 0 1px 1px #4b935500 inset, 0 0 8px #4b935500;
   outline: 0 none;
@@ -188,6 +188,30 @@ input[type="color"]:focus,
     background-image: url(../images/body.svg) !important;
 }
 
+/**i dont even know**/
+
+.donate-image{
+    background-image: url(../images/donate.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#donate .card {
+    background: #fff;
+    border: none;
+	/* color: #111; */
+	/* font-size: 15px; */
+	border-radius: 10px;
+    /* box-shadow: aqua; */
+    -webkit-box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+}
+
+#donate h1, p{
+    color: #222;
+}
+
 #register-form 
     p {
         margin-bottom: 3px;
@@ -297,6 +321,40 @@ input[type="color"]:focus,
 	align-items: center;
 }
 
+/**DONATE START**/
+
+#secured {
+    font-family: "Montserrat";
+}
+
+#donate .img{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#donate .btn{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+#donate .btn:hover{
+	background-position: right;
+}
+
+/**donateend**/
+
 #login .login-content{
 	display: flex;
 	justify-content: flex-start;
@@ -305,6 +363,10 @@ input[type="color"]:focus,
 }
 
 #login .img img{
+	width: 500px;
+}
+
+#donate .img img{
 	width: 500px;
 }
 
@@ -496,9 +558,18 @@ input[type="color"]:focus,
 @media screen and (max-width: 900px){
 	#login .container{
 		grid-template-columns: 1fr;
-	}
+    }
+    
+    /**like i said ealier i dont even know**/
+    .register-body, .login-body, .donate-body{
+        background-color: #fff;
+    }
 
 	#login .img{
+		display: none;
+    }
+    
+    #donate .img{
 		display: none;
 	}
 
@@ -515,6 +586,12 @@ input[type="color"]:focus,
     }
     
     #login .card {
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    #donate .card {
         -webkit-box-shadow: none !important;
         -moz-box-shadow: none !important;
         box-shadow: none !important;
@@ -1012,20 +1089,6 @@ text-decoration: none;
     color: #fff;
 }
 
-.donate-form {
-    font-family: "PT Sans", sans-serif;
-    background: #fff;
-}
-
-#donate {
-    background: #fff;
-    font-family: "PT Sans", sans-serif !important;
-}
-
-#donate input {
-    background: #f4f4f4 !important;
-    border: 1px solid #ced4da !important;
-}
 
 .personnel-author-image img {
 	width: 220px !important;

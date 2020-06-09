@@ -114,7 +114,6 @@ def login():
     return render_template('login.html')
 
 
-
 @auth.route('/logout.html')
 def logout():
     logout_user()
