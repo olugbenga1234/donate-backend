@@ -24,7 +24,7 @@ def donate():
     return render_template('donate.html')
 
 #donated
-@main.route('/donated', methods=['POST'])
+@main.route('/donated', methods=['POST' , 'GET'])
 def donated():
     if request.method == 'POST':
         donate_amount = request.form['donate-amount']
