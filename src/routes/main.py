@@ -42,7 +42,7 @@ def donated():
 
         flash('Thank you {} for your Donations. It means a lot to us'.format(donator_name), 'success')
 
-        return redirect(url_for('main.donate'))
+        return redirect(url_for('main.index'))
 
     return render_template('donated.html')
 
