@@ -13,10 +13,9 @@
     <title>Donate</title>
     {% endif %}
 
-        <!--paystack function-->
-
-
     {{ render_css(render) }}
+
+   
 </head>
 
 
@@ -64,8 +63,8 @@
 
                    <div class="col-md">
                     <div class="card p-5 mb-5">
-                        <form id="register-form" method="POST" action="{{ url_for('main.donate') }}">
-                            <script src="https://js.paystack.co/v1/inline.js"></script>
+                        <form id="paymentForm" method="POST" action="{{ url_for('main.donate') }}">
+                            <script type="" src="https://js.paystack.co/v1/inline.js"></script>
                             <div class="col-md pb-4 text-center">
                              <h5 style="color: #32be8f;">DONATION</h5>
                              <h6>Your donations means a lot to us!</h6>
@@ -111,9 +110,7 @@
 
                         <div class="col-md mt-3">
                             <div class="col">
-                               <!--<button class="btn" type="button" onclick="payWithPaystack()"> Donate Now </button> --> 
-                               <button class="btn" type="button" onclick=""> Donate Now </button> 
-                            </div>  
+                                <button class="btn" type="button" onclick="payWithPaystack()"> Donate Now </button>                             </div>  
                         </div>
 
                         <div id="secured" class="col text-center mt-5">
@@ -124,56 +121,44 @@
      
                         </div>
                    </div>
-               </div>
-   
-          
+               </div>        
         </div>
 
     </section>
     <!--end donate form-->
-
-
-    <script>
-        function payWithPaystack(){
-          var handler = PaystackPop.setup({
-            key: 'pk_test_e13e729eec9612428bbdaeb9c80f2e1fb03d0dcf',
-            email: document.getElementById('donator-email').value,
-            amount: document.getElementById('donate-amount').value,
-            currency: "NGN",
-            ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-            metadata: {
-               custom_fields: [
-                  {
-                      display_name: "Mobile Number",
-                      variable_name: "mobile_number",
-                      value: document.getElementById('donate-phonenumber').value,
-                  }
-               ]
-            },
       
-            callback: function(response){
-                var donatorinfo = { 
-                    Donator : document.getElementById('donator-email').value, 
-                    Amount : document.getElementById('donate-amount').value 
-                };
-                console.log(donatorinfo); 
-                alert('Donation Successful. your transaction reference is ' + response.reference);
-            },
-    
-            onClose: function(){ 
-                alert('Payment Cancelled!');
-            }
-          });
-    
-          handler.openIframe();
-        }
-      </script>
-
-
-    {{ render_js(render) }}
-
-
-</body>
+    <script>
+        var paymentForm = document.getElementById('paymentForm');
+        paymentForm.addEventListener("button", payWithPaystack, false);
+        
+                function payWithPaystack(){
+                  var handler = PaystackPop.setup({
+                    key: 'pk_test_e13e729eec9612428bbdaeb9c80f2e1fb03d0dcf',
+                    email: document.getElementById('donator-email').value,
+                    amount: document.getElementById('donate-amount').value * 100,
+                    currency: "NGN",
+                    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                    metadata: {
+                       custom_fields: [
+                          {
+                              display_name: "Mobile Number",
+                              variable_name: "mobile_number",
+                              value: document.getElementById('donate-phonenumber').value,
+                          }
+                       ]
+                    },
+              
+              
+                    callback: function(response){
+                        alert('success. transaction ref is ' + response.reference);
+                    },
+                    onClose: function(){
+                        alert('window closed');
+                    }
+                  });
+                  handler.openIframe();
+                }
+    </script>
 </body>
 
 </html>
