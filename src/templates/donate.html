@@ -23,6 +23,9 @@
 <body class="donate-body">
     <!--Donation Form-->
     <section id="donate">
+        <div class="col">
+            <div id="successAlert" class="alert alert-success" role="alert" style="display:none";></div>
+        </div>
         <div class="container">
             <div class="container h-100 p-5">
                 <div class="row align-items-center text-center h-100">
@@ -151,13 +154,19 @@
               
                     callback: function(response){
                     $.ajax({
-                        url: 'http://www.yoururl.com/file.php?reference=' + response.reference,
-                        method: 'post',
+                        alert: 'Payment Successful, your refernce code is ' + response.reference,
+                        data: {
+                            donate_amount : $('#donate-amount').val(),
+                            donated_by_email : $('#donator-email').val()
+                        },
+                        type : 'POST',
+                        url : '/donate',
                         success: function (data) {
-                        //Do whatever you like
+                            $('#successAlert').text(data.donated_by_email).show();
                         }
                     });
                     },
+
                     onClose: function(){
                         alert('Payment Cancelled');
                     }

@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash
 from .extensions import db
 
 
+
 # this is the model for the database
 
 # register model
@@ -35,4 +36,6 @@ class User(UserMixin, db.Model):
 class Donated(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     donate_amount = db.Column(db.Numeric)
+    donator_username = db.Column(db.String(50), unique=False, nullable=True)
+    donated_by_email = db.Column(db.String(75), nullable=False, unique=False)
     donated_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))

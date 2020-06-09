@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, jsonify
 from flask_login import login_required, current_user
 
 from src.extensions import db
@@ -18,8 +18,25 @@ def index():
 
 #donate
 @main.route('/donate')
-@main.route('/donate.html')
+@main.route('/donate.html', methods=['POST','GET'])
 def donate():
+
+    if request.method == 'POST':
+        donate_amount = request.form['donate-amount']
+        donated_by_email = request.form['donator-email']
+        donator_username = request.form['donator-username']
+
+        if donate_amount and donated_by_email:
+            return jsonify({'Thank you for donation' : donated_by_email})
+
+        new_donator = donate(
+                    donate_amount=donate_amount,
+                    donated_by_email=donated_by_email
+                    )
+
+        db.session.add(new_donator)
+        db.session.commit()
+
     
     return render_template('donate.html')
 
