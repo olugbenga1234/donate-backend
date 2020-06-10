@@ -40,7 +40,7 @@ def donated():
         #db.session.add(new_donator)
         #db.session.commit()
 
-        return jsonify({'Thanks' : "Thank you" + donator_name + "for your Donation of" + donate_amount})
+        return jsonify({'Thanks' : "Thank you" + donator_name + "for your Donation of " + donate_amount})
 
         #flash('Thank you {} for your Donations. It means a lot to us'.format(donator_name), 'success')
 
