@@ -13,12 +13,12 @@ class User(UserMixin, db.Model):
     firstname = db.Column(db.String(100))
     lastname = db.Column(db.String(100))
     password = db.Column(db.String(200))
-    email = db.Column(db.String(100), unique=True)
-    address = db.Column(db.String(75))
-    state = db.Column(db.String(75))
-    lga = db.Column(db.String(75))
-    phone = db.Column(db.Integer)
-    bvn = db.Column(db.Integer)
+    email = db.Column(db.String(200), unique=True)
+    address = db.Column(db.String(75), nullable=True)
+    state = db.Column(db.String(75), nullable=True)
+    lga = db.Column(db.String(75), nullable=True)
+    phone = db.Column(db.Numeric, nullable=True)
+    bvn = db.Column(db.Numeric, nullable=True)
     usertype = db.Column(db.String)
 
     amount_donated = db.relationship(
@@ -39,7 +39,7 @@ class User(UserMixin, db.Model):
 #donate model
 class Donated(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    d_amount = db.Column(db.Integer)
+    d_amount = db.Column(db.Numeric)
     #donator_name = db.Column(db.String(100), unique=False, nullable=False)
     donated_by_email = db.Column(db.String(75))
     donated_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))

@@ -103,9 +103,6 @@ def profile():
         firstname=current_user.firstname,\
         lastname=current_user.lastname, \
         usertype=current_user.usertype,\
+        email=current_user.email
         #donations = Donated.query.filter(Donated.d_amount != None).all()
         )
-
-if __name__ == '__main__':
-    app.debug = True
-    app.run()
