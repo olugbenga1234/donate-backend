@@ -9,25 +9,27 @@ from .extensions import db
 # register model
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), unique=True, nullable=False)
-    firstname = db.Column(db.String(50), unique=False, nullable=False)
-    lastname = db.Column(db.String(50), unique=False, nullable=False)
-    password = db.Column(db.String(200), primary_key=False, nullable=False)
-    email = db.Column(db.String(75), nullable=False, unique=True)
-    address = db.Column(db.String(75), unique=False, nullable=False)
-    state = db.Column(db.String(75), unique=False, nullable=False)
-    lga = db.Column(db.String(75), unique=False, nullable=False)
-    phone = db.Column(db.Numeric, unique=True, nullable=True)
-    bvn = db.Column(db.Numeric, nullable=True)
-    usertype = db.Column(db.String, nullable=False, unique=False)
-    donated_amount = db.relationship('Donated', 
-                                    foreign_keys='Donated.donated_by_email',
-                                     backref='donator', 
-                                     lazy=True)
+    username = db.Column(db.String(100), unique=True)
+    firstname = db.Column(db.String(100))
+    lastname = db.Column(db.String(100))
+    password = db.Column(db.String(200))
+    email = db.Column(db.String(100), unique=True)
+    address = db.Column(db.String(75))
+    state = db.Column(db.String(75))
+    lga = db.Column(db.String(75))
+    phone = db.Column(db.Integer, unique=True)
+    bvn = db.Column(db.Integer)
+    usertype = db.Column(db.String)
+
+    amount_donated = db.relationship(
+                                    'Donated', 
+                                    foreign_keys='Donated.donated_by_id',
+                                    backref='donater', 
+                                    lazy=True)
 
     @property
     def unhashed_password(self):
-        raise AttributeError('Cannot view password')
+        raise AttributeError('Cannot view unhashed password')
 
     @unhashed_password.setter
     def unhashed_password(self, unhashed_password):
@@ -37,8 +39,8 @@ class User(UserMixin, db.Model):
 #donate model
 class Donated(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    donate_amount = db.Column(db.Numeric)
-    donator_username = db.Column(db.String(50), unique=False, nullable=True)
-    donator_name = db.Column(db.String(100), unique=False, nullable=False)
-    donated_by_email = db.Column(db.String(75), db.ForeignKey('user.email'),nullable=False, unique=False)
+    d_amount = db.Column(db.Integer)
+    #donator_name = db.Column(db.String(100), unique=False, nullable=False)
+    donated_by_email = db.Column(db.String(75))
     donated_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    donator_note = db.Column(db.String)

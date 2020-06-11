@@ -1,0 +1,150 @@
+{% from "base.html" import render_scrolltotop, render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_register, render_formseed, render_navbar, render_css, render_donatemodal %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+
+    {% if title %}
+    <title>Profile - {{ title }}</title>
+    {% else %}
+    <title>Profile</title>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel='stylesheet' href="{{ url_for ('static', filename='css/profile.css')}}" type='text/css' media='all' />
+    <script>
+        $(document).ready(function(){
+            $(".hamburger").click(function(){
+                $(".wrapper").toggleClass("collapse");
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <section id="profile">
+        <div class="wrapper collapse">
+           <div class="top_navbar">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="top_menu">
+                {% block username %}
+                <div class="logo text-left">Welcome {{ username }} </div>
+                {% endblock %}
+                
+                <ul>
+                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li><a href="#"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>
+           </div>
+
+
+           <div class="sidebar">
+               <ul>
+                  
+
+                <li><a href="#" class="active">
+                    <span class="icon">
+                        <i class="fa fa-home"></i>
+                    </span>
+                    <span class="title">Home</span>
+                </a></li>
+
+                <li><a href="#" class="">
+                    <span class="icon">
+                        <img src="../static/icons/chart-line-solid.svg" alt="" title="Bootstrap"  width="19" height="32">                      
+                          
+                    </span>
+                    <span class="title">Statistics</span>
+                </a></li>
+
+                 <li><a href="#" >
+                       <span class="icon">
+                           <i class="fa fa-envelope"></i>
+                       </span>
+                       <span class="title">Messages</span>
+                   </a></li>
+
+                <li><a href="store.html">
+                    <span class="icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </span>
+                    <span class="title">Store</span>
+                </a></li>
+
+                <li><a href="#">
+                    <span class="icon">
+                        <i class="fa fa-question-circle"></i>
+                    </span>
+                    <span class="title">Help</span>
+                </a></li>   
+               </ul>
+           </div>
+
+           <div class="main-container">
+               <div class="header">
+                  <div class="container text-left">
+                      <h4>Dashboard</h4>
+                      <p>Welcome to your Donate a Seed&trade; dashboard</p>                    
+                  </div>
+               </div>
+
+               <div class="item col" id="bio">
+                   <div class="row">
+                    <div class="col-md">
+                        {% block bio %}
+                        <div class="card" style="width: 20rem;">
+                            <div class="card card-pic mt-3">
+                                <img src="../static/images/avatar.svg" class="avatar">
+                            </div>
+                            <div class="card-body text-center bio">
+                                <h5>{{ firstname }} {{ lastname }}</h5>
+                                <h6>{{ usertype }}</h6>
+                                <div class="dropdown-divider mb-3"></div>
+                                <div class="row text-left">
+                                    <div class="col">Email</div>
+                                    <div class="col">
+                                        <p>{{ email }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        {% endblock %}
+                    </div>
+                    <div class="col-md">
+                        {% block donated %}
+                        <div class="card">
+                            
+                        </div>
+                        {% endblock %}
+                    </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+
+
+    </section>
+<!--JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

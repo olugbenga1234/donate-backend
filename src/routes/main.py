@@ -19,28 +19,30 @@ def index():
 #donate
 @main.route('/donate')
 @main.route('/donate.html', methods=['POST','GET'])
+@login_required
 def donate():
-
+    
     return render_template('donate.html')
 
 #donated
 @main.route('/donated', methods=['POST' , 'GET'])
 def donated():
     if request.method == 'POST':
-        donate_amount = request.form['donate-amount']
-        donated_by_email = request.form['donator-email']
-        donator_name = request.form['donator-name']
+        d_amount = request.form.get('donate-amount')
+        donated_by_email = request.form.get('donator-email')
+        donator_name = request.form.get('donator-name')
+        donator_note = request.form.get('donator-note')
 
-        #new_donator = Donated (
-        #    donate_amount=donate_amount,
-        #    donated_by_email=donated_by_email,
-        #    donator_name=donator_name
-        #)
+        new_donator = Donated (
+            d_amount=d_amount,
+            donated_by_email=donated_by_email,
+            donated_by_id=current_user.id
+        )
                                 
-        #db.session.add(new_donator)
-        #db.session.commit()
+        db.session.add(new_donator)
+        db.session.commit()
 
-        return jsonify({'Thanks' : "Thank you" + donator_name + "for your Donation of " + donate_amount})
+        return jsonify({'Thanks' : "Thank you " + donator_name + " for your Donation of " + d_amount + " , It means a lot to us."})
 
         #flash('Thank you {} for your Donations. It means a lot to us'.format(donator_name), 'success')
 
@@ -61,10 +63,45 @@ def shop():
 @login_required
 def users():
     username = current_user.username
-    users = User.query.all()
+    #firstname = current_user.firstname 
+    #users = User.query.all()
+  
+    #context = {
+    #    'users' : users,
+    #}
+    
+    #return render_template('users.html', **context,  username=current_user.username, firstname=current_user.firstname, amount=current_user.d_amount)
+    donations = Donated.query.filter(Donated.d_amount != None).all()
 
     context = {
-        'users' : users
+        'donations' : donations
     }
     
-    return render_template('users.html', **context,  username=current_user.username)
+    return render_template('users.html', **context, username=current_user.username,)
+
+#profile
+@main.route('/profile')
+@login_required
+def profile():
+    username = current_user.username
+    firstname = current_user.firstname 
+    lastname = current_user.lastname
+    usertype = current_user.usertype
+    email = current_user.email
+    amount_donated = current_user.amount_donated
+    users = User.query.all()
+    donations = Donated.query.filter(Donated.d_amount != None).all()  
+
+    context = {
+        'users' : users,
+        'donations' : donations
+    }
+    
+
+    return render_template('profile.html', **context, \
+        username=current_user.username,\
+        firstname=current_user.firstname,\
+        lastname=current_user.lastname, \
+        usertype=current_user.usertype,\
+        donations = Donated.query.filter(Donated.d_amount != None).all()
+        )

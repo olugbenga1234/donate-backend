@@ -48,33 +48,19 @@
         <div class="col-lg-12">
             <div class="list-group">
                 {% block content %}
-                <h1>{{ username }} this is just a demo, below are current registered accounts</h1>
+                <h1>{{ firstname }} this is just a demo, below are current registered accounts</h1>
                 {% endblock %}
-                {% for user in users %}
-                <a href="#" class="list-group-item {% if user.farmer %}active{% endif %}">
+                {% for donated in donations %}
+                <a href="#" class="list-group-item">
                     <div class="col-md-3">
-                        <h4 class="list-group-item-heading">username: {{ user.username }}</h4>
-                    </div>
-
-                    <div class="col-md-3">
-                        <h4 class="list-group-item-heading">email: {{ user.email }}</h4>
-                    </div>
-
-                    <div class="col-md-3">
-                        <h4 class="list-group-item-heading">firstname: {{ user.firstname }}</h4>
-                    </div>
-
-                    <div class="col-md-3">
-                        <h4 class="list-group-item-heading">registered as: {{ user.usertype }}</h4>
-                    </div>
-
-                    <div class="col-md-3">
-                        <h4 class="list-group-item-heading">{{ user.profilepic }}</h4>
+                        <h4 class="list-group-item-heading">amount: {{ donated.d_amount }}</h4>
                     </div>
 
                    
-
-                   
+                    <div class="col-md-3">
+                        <h4 class="list-group-item-heading">BY : {{ donated.donater.firstname }}</h4>
+                    </div>
+                 
                 </a>
                 {% endfor %}
             </div>

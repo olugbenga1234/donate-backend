@@ -16,32 +16,32 @@ auth = Blueprint('auth', __name__)
 @auth.route('/register.html', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        firstname = request.form['firstname']
-        lastname = request.form['lastname']
-        username = request.form['username']
-        email = request.form['email']
-        address = request.form['address']
-        state = request.form['state']
-        lga = request.form['lga']
-        phone = request.form['phone']
-        bvn = request.form['bvn']
-        unhashed_password = request.form['password']
-        usertype = request.form['usertype']
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        username = request.form.get('username')
+        email = request.form.get('email')
+        address = request.form.get('address')
+        state = request.form.get('state')
+        lga = request.form.get('lga')
+        phone = request.form.get('phone')
+        bvn = request.form.get('bvn')
+        unhashed_password = request.form.get('password')
+        usertype = request.form.get('usertype')
 
         
 #check if username exists
         checkusername = User.query.filter_by(username=username).first()
 
         if checkusername:
-            flash(' Username already exists', 'error')
-            return redirect(url_for('auth.login'))
+            flash(Markup(' Username already exists. Already have an account?<a href="login.html" style="color: yellow; font-weight: 900;"> Login In</a>'), 'error')
+            return redirect(url_for('auth.register'))
 
 #check if email already exists
         checkuseremail = User.query.filter_by(email=email).first()
 
         if checkuseremail:
-            flash(' Email Address already exists', 'error')
-            return redirect(url_for('auth.login'))
+            flash(Markup(' Email already exists. Already have an account?<a href="login.html" style="color: yellow; font-weight: 500;"> Login In</a>'), 'error')
+            return redirect(url_for('auth.register'))
 
 
         new_user = User(lastname=lastname,
@@ -85,7 +85,7 @@ def register():
             smtp.login("donateaseedoffcial@gmail.com", "donateaseed1234")
             smtp.send_message(msg)
 
-        flash(' Registered successfully, please check your email.', 'success')
+        flash(' Registered successfully, please check your email ' + email, 'success')
 
         return redirect(url_for('auth.login'))
 
@@ -105,15 +105,15 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if not user or not check_password_hash(user.password, password):
-            flash(' Could not Login, Please check your login details and try again', 'error')
+            flash(Markup(' Could not Login, Please check your login details and try again! Or click <a href="register.html" style="color: yellow; font-weight: 900;"> HERE </a> to register.' ), 'error')
 
         else:
             login_user(user, remember=remember)
-            return redirect(url_for('main.users'))
+            return redirect(url_for('main.profile'))
 
     return render_template('login.html')
 
-
+#logout user
 @auth.route('/logout.html')
 def logout():
     logout_user()
