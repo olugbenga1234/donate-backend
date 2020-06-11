@@ -17,7 +17,7 @@ class User(UserMixin, db.Model):
     address = db.Column(db.String(75))
     state = db.Column(db.String(75))
     lga = db.Column(db.String(75))
-    phone = db.Column(db.Integer, unique=True)
+    phone = db.Column(db.Integer)
     bvn = db.Column(db.Integer)
     usertype = db.Column(db.String)
 
