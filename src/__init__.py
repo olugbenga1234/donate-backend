@@ -28,3 +28,7 @@ def create_app(config_file='settings.py'):
     app.cli.add_command(create_tables)
 
     return app
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
