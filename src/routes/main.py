@@ -90,11 +90,11 @@ def profile():
     email = current_user.email
     amount_donated = current_user.amount_donated
     users = User.query.all()
-    donations = Donated.query.filter(Donated.d_amount != None).all()  
+    #donations = Donated.query.filter(Donated.d_amount != None).all()  
 
     context = {
         'users' : users,
-        'donations' : donations
+        #'donations' : donations
     }
     
 
@@ -103,5 +103,5 @@ def profile():
         firstname=current_user.firstname,\
         lastname=current_user.lastname, \
         usertype=current_user.usertype,\
-        donations = Donated.query.filter(Donated.d_amount != None).all()
+        #donations = Donated.query.filter(Donated.d_amount != None).all()
         )
