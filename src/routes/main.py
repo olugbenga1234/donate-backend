@@ -66,28 +66,6 @@ def donated():
 def shop():
     return render_template('shop.html')
 
-#users
-@main.route('/users')
-@main.route('/users.html')
-@login_required
-def users():
-    username = current_user.username
-    #firstname = current_user.firstname 
-    #users = User.query.all()
-  
-    #context = {
-    #    'users' : users,
-    #}
-    
-    #return render_template('users.html', **context,  username=current_user.username, firstname=current_user.firstname, amount=current_user.d_amount)
-    donations = Donated.query.filter(Donated.d_amount != None).all(),
-    
-
-    context = {
-        'donations' : donations       
-    }
-    
-    return render_template('users.html', **context, username=current_user.username,)
 
 #profile
 @main.route('/profile')
