@@ -17,8 +17,8 @@ class User(UserMixin, db.Model):
     address = db.Column(db.String(75), nullable=True)
     state = db.Column(db.String(75), nullable=True)
     lga = db.Column(db.String(75), nullable=True)
-    phone = db.Column(db.Numeric, nullable=True)
-    bvn = db.Column(db.Numeric, nullable=True)
+    phone = db.Column(db.Integer, nullable=True)
+    bvn = db.Column(db.Integer, nullable=True)
     usertype = db.Column(db.String)
 
     amount_donated = db.relationship(
@@ -39,7 +39,7 @@ class User(UserMixin, db.Model):
 #donate model
 class Donated(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    d_amount = db.Column(db.Numeric)
+    d_amount = db.Column(db.Integer)
     #donator_name = db.Column(db.String(100), unique=False, nullable=False)
     donated_by_email = db.Column(db.String(75))
     donated_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))

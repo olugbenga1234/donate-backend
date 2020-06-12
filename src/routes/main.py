@@ -14,7 +14,15 @@ donate = Blueprint('donate', __name__)
 @main.route('/')
 @main.route('/index.html')
 def index():
-    return render_template('index.html')
+
+#show donations function
+    #username = current_user.username
+    donations = Donated.query.filter(Donated.d_amount != None).all()
+
+    context = {
+        'donations' : donations
+    }
+    return render_template('index.html', **context)
 
 #donate
 @main.route('/donate')
@@ -36,7 +44,8 @@ def donated():
         new_donator = Donated (
             d_amount=d_amount,
             donated_by_email=donated_by_email,
-            donated_by_id=current_user.id
+            donated_by_id=current_user.id,
+            donator_note=donator_note
         )
                                 
         db.session.add(new_donator)
@@ -71,10 +80,11 @@ def users():
     #}
     
     #return render_template('users.html', **context,  username=current_user.username, firstname=current_user.firstname, amount=current_user.d_amount)
-    donations = Donated.query.filter(Donated.d_amount != None).all()
+    donations = Donated.query.filter(Donated.d_amount != None).all(),
+    
 
     context = {
-        'donations' : donations
+        'donations' : donations       
     }
     
     return render_template('users.html', **context, username=current_user.username,)
@@ -106,3 +116,14 @@ def profile():
         email=current_user.email
         #donations = Donated.query.filter(Donated.d_amount != None).all()
         )
+
+
+@main.route('/test')
+def test():
+    donations = Donated.query.filter(Donated.d_amount != None).all()
+
+    context = {
+        'donations' : donations
+    }
+
+    return render_template('test.html', **context)

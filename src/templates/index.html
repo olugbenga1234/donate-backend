@@ -9,6 +9,10 @@
     <title>Donate A Seed</title>
 
     {{ render_css(render) }}
+
+    <link rel='stylesheet' href="{{ url_for ('static', filename='dcarousel/owl.carousel.min.css')}}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{{ url_for ('static', filename='dcarousel/owl.theme.default.min.css')}}" type='text/css' media='all' />
+   
 </head>
 
 <body data-rsssl=1 class="home page-template-default page page-id-5680 _masterslider _msp_version_3.2.7 woocommerce-no-js" style="background-image: url(../static/images/body.svg)">
@@ -298,6 +302,34 @@ background-position: center; ">
       
         {{ render_ourcauses(render) }}
 
+<!--Donations part-->
+<section id="donations">
+    <div class="wrapper container">
+        <div class="dd text-left col">
+            <h2 class="pt-5">Recent Donations</h2>
+        </div>
+        <div class="donation-carousel section-padding owl-carousel owl-theme pt-5">
+           
+ 
+            {% for donated in donations %}   
+            <div class="single-testi card col">
+                <div class="img-area">
+                    <img alt="image">
+                </div>
+                <div class="img-text">
+                    <h5>{{ donated.donater.firstname }} {{ donated.donater.lastname }}</h5>
+                    <div class="mb-2">
+                        <h8>{{ donated.d_amount }}</h8>
+                    </div>
+                    <p><i class="fa fa-quote-left"></i>  {{ donated.donator_note }}  <i class="fa fa-quote-right"></i></p>
+                </div>
+            </div>   
+            {% endfor %}    
+        </div>
+    </div>
+</section>
+<!--donations end-->
+
         {{ render_faq(render) }}
 
         {{ render_contactus(render) }}
@@ -314,7 +346,43 @@ background-position: center; ">
 
         {{ render_scrolltotop(render) }}
 
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src='../static/dcarousel/owl.carousel.min.js'></script>
+        
+        <script>
+        $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:20,
+        dots:true,
+        autoHeight: true,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            960:{
+                 items:3
+        },
+            
+        }
+    })
+    </script>
+
+    <script>
+        
+    </script>
+    
+
         {{ render_js(render) }}
+       
+
+       
 
 </body>
 

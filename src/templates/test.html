@@ -1,0 +1,62 @@
+{% from "base.html" import render_scrolltotop, render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_register, render_formseed, render_navbar, render_css, render_donatemodal %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel='stylesheet' href="{{ url_for ('static', filename='dcarousel/owl.carousel.min.css')}}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{{ url_for ('static', filename='dcarousel/owl.theme.default.min.css')}}" type='text/css' media='all' />
+
+
+</head>
+
+<body>
+    <section id="donations">
+        <div class="wrapper">
+            <div class="donation-carousel section-padding owl-carousel owl-theme">
+     
+                {% for donated in donations %}   
+                <div class="single-testi">
+                    <div class="img-area">
+                        <img alt="image">
+                    </div>
+                    <div class="img-text">
+                        <h2>{{ donated.donater.firstname }} {{ donated.donater.lastname }}</h2>
+                        <h3>{{ donated.d_amount }}</h3>
+                        <p>lets end this shit mann</p>
+                    </div>
+                </div>   
+                {% endfor %}    
+            </div>
+        </div>
+    </section>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src='../static/dcarousel/owl.carousel.min.js'></script>
+    
+    <script>
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:20,
+    dots:true,
+    autoplay:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    }
+})
+</script>
+
+</body>
+
+</html>
