@@ -1120,6 +1120,9 @@ text-decoration: none;
     margin-left: 1rem !important;
 }
 
+.profile_i {
+    border-radius: 50%;
+}
 
 
 #our-team {
@@ -1285,4 +1288,8 @@ text-decoration: none;
     color: #555;
     font-style: italic;
     line-height: 30px;
+}
+
+.donation-carousel {
+	padding-bottom: 10px;
 }

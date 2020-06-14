@@ -29,6 +29,3 @@ def create_app(config_file='settings.py'):
 
     return app
 
-if __name__ == '__main__':
-    app.debug = True
-    app.run()

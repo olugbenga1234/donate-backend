@@ -313,15 +313,18 @@ background-position: center; ">
  
             {% for donated in donations %}   
             <div class="single-testi card col">
+                
                 <div class="img-area">
-                    <img alt="image">
+                    <img src="../static/profile_pics/default.png" class="avatar">
                 </div>
+                
                 <div class="img-text">
                     <h5>{{ donated.donater.firstname }} {{ donated.donater.lastname }}</h5>
                     <div class="mb-2">
                         <h8>&#8358;{{ donated.d_amount }}</h8>
                     </div>
-                    <p><i class="fa fa-quote-left"></i>  {{ donated.donator_note }}  <i class="fa fa-quote-right"></i></p>
+                    <p><i class="fa fa-quote-left"></i>  {{ donated.donator_note }} <i class="fa fa-quote-right"></i></p>
+                    <p>Donated on: {{ donated.date_donated }}</p>
                 </div>
             </div>   
             {% endfor %}    
@@ -366,10 +369,7 @@ background-position: center; ">
             600:{
                 items:2
             },
-            960:{
-                 items:3
-        },
-            
+                  
         }
     })
     </script>

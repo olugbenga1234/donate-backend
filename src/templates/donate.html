@@ -175,6 +175,8 @@
         paymentForm.addEventListener("submit", payWithPaystack, false);
         
                 function payWithPaystack(){
+
+                    
                   var handler = PaystackPop.setup({
                     key: 'pk_test_e13e729eec9612428bbdaeb9c80f2e1fb03d0dcf',
                     email: document.getElementById('donator-email').value,
@@ -203,6 +205,7 @@
                     })
                     .done(function(data) {
                         $('#successAlert').text(data.Thanks).show();
+                        window.location.href = "/index.html";
                     });
                     },
 

@@ -1,10 +1,9 @@
-from flask_login import UserMixin
+from flask_login import UserMixin, login_required, login_manager
 from werkzeug.security import generate_password_hash
-from .extensions import db
+from .extensions import db, app
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from datetime import date
 
-
-
-# this is the model for the database
 
 # register model
 class User(UserMixin, db.Model):
@@ -14,18 +13,20 @@ class User(UserMixin, db.Model):
     lastname = db.Column(db.String(100))
     password = db.Column(db.String(200))
     email = db.Column(db.String(200), unique=True)
-    address = db.Column(db.String(75), nullable=True)
-    state = db.Column(db.String(75), nullable=True)
-    lga = db.Column(db.String(75), nullable=True)
-    phone = db.Column(db.Integer, nullable=True)
-    bvn = db.Column(db.Integer, nullable=True)
+    address = db.Column(db.String(75), nullable=True, default="none")
+    state = db.Column(db.String(75), nullable=True, default="none")
+    lga = db.Column(db.String(75), nullable=True, default="none")
+    phone = db.Column(db.Integer, nullable=True, default="000")
+    bvn = db.Column(db.Integer, nullable=True, default="000")
     usertype = db.Column(db.String)
+    image_file = db.Column(db.String(20), nullable=False, default='default.png')
 
     amount_donated = db.relationship(
                                     'Donated', 
                                     foreign_keys='Donated.donated_by_id',
                                     backref='donater', 
                                     lazy=True)
+
 
     @property
     def unhashed_password(self):
@@ -43,4 +44,5 @@ class Donated(db.Model):
     #donator_name = db.Column(db.String(100), unique=False, nullable=False)
     donated_by_email = db.Column(db.String(75))
     donated_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    donator_note = db.Column(db.String)
+    donator_note = db.Column(db.String, default="None")
+    date_donated = db.Column(db.DateTime, nullable=False, default=date.today())

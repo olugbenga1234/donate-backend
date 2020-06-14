@@ -210,6 +210,7 @@ body{
 
 .avatar {
     width: 100px;
+    border-radius: 50%;
 }
 
 .card-pic{

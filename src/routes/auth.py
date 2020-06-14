@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, Flask, flash, Markup
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 #from flask_admin import Admin
 from werkzeug.security import check_password_hash
 from flask_mail import Mail
@@ -8,8 +8,16 @@ from src.models import User
 import smtplib
 from email.message import EmailMessage
 from wtforms.validators import InputRequired
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, length, Email, EqualTo, ValidationError
+import email_validator
+from flask_wtf.file import FileField, FileAllowed
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 auth = Blueprint('auth', __name__)
+
+SECRET_KEY = '4b4474b4h47n474n474n47447n474n47'
 
 
 #function for register
@@ -71,6 +79,7 @@ def register():
         <br>
         <p style="color: #222; font-weight: 300;">Hi {}, Your email {} was used for applying on <b>Donate A Seed</b> as a <b>{}</b>.
         <br>
+        <p>your username is : {}</p>
         We will review your application and send your results to {} <br>
         Please ignore this email if you did not apply on our platform. </p>
 
@@ -78,7 +87,7 @@ def register():
         <br><br><br>
         Regards,<br>
         Donate A Seed
-        """.format(firstname,email,usertype,email), subtype='html')
+        """.format(firstname,email,usertype,username,email), subtype='html')
 
         #email sending function
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
@@ -93,11 +102,18 @@ def register():
 
 
 
+
+
 #function for login
 @auth.route('/login.html', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        username = request.form['username']
+    if current_user.is_authenticated:
+        flash(Markup(' Already Logged In, click<a href="logout.html" style="color: yellow; font-weight: 900;"> HERE </a> to Logout.' ), 'error')
+
+        return redirect(url_for('main.profile'))
+
+    elif request.method == 'POST':
+        username = request.form.get("username", False)
         password = request.form['password']
         remember = True if request.form.get('remember') else False
 
@@ -119,3 +135,30 @@ def logout():
     logout_user()
     flash('Logged Out successfully', 'success')
     return redirect(url_for('auth.login'))
+
+
+
+#update account form
+class UpdateAccountForm(FlaskForm):
+    username = StringField('Username',
+                            validators=[DataRequired(), length(min=5, max=20)])
+    
+    email = StringField('Email',
+                    validators=[DataRequired(), Email()])
+    
+    picture = FileField('update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+
+    submit = SubmitField('Update')
+
+    def validate_username(self, username):
+        if username.data != current_user.username:
+            user = User.query.filter_by(username=username.data).first()
+            if user:
+                raise ValidationError('That Username is taken')
+
+    def vaildate_email(self, email):
+        if email.data != current_user.email:
+            user = User.query.filter_by(email=email.data).first()
+            if user:
+                raise ValidationError('That email is taken')
+
