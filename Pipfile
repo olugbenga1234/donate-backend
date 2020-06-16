@@ -17,6 +17,9 @@ flask-admin = "*"
 flask-wtf = "*"
 email-validator = "*"
 pillow = "*"
+flask-uploads = "*"
+image = "*"
+werkzeug = "==0.16.1"
 
 [requires]
 python_version = "3.8"

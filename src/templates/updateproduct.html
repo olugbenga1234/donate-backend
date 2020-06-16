@@ -1,0 +1,119 @@
+{% from "storebase.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_css, render_donatemodal, render_scrolltotop %}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+
+    <title>Add Product</title>
+
+    {{ render_css(render) }}
+
+</head>
+
+<body>
+
+
+
+    <section id="addproduct">
+        <div class="contaddp p-5">
+
+            <div class="card">
+                <div class="card-body">
+                    <a href="del-product.html">
+                        <i  class="fa fa-arrow-left"></i>
+                    </a>
+                    <h1 class="title text-center mb-5 mt-3">Update Product</h1>
+
+                
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="col-md p-1" id="flash_message">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        {% if category == 'success' %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}!
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        {% if category == 'error' %}
+                        <div class="alert alert-danger" role="alert">
+                            Error: {{ message }}!
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    {{ form.hidden_tag() }}
+
+                    <!--product name-->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Product Name</label>
+                        {{ form.name(class="form-control product-form" , placeholder="Enter product name") }}
+                    </div>
+
+                    <!--price & discount-->
+                    <div class="row form-add">
+                        <div class="col-md">
+                            <label for="">Price</label>
+                            {{ form.price(class="form-control product-form" , placeholder="Enter price") }}
+                        </div>
+                        <div class="col-md">
+                            <label class="discount" for="">Discount</label>
+                            {{ form.discount(class="form-control product-form" , placeholder="Enter discount") }}
+                        </div>
+                    </div>
+
+                    <!--stock-->
+                    <div class="form-group">
+                        <label class="" for="">Stock</label>
+                        {{ form.stock(class="form-control product-form" , placeholder="Enter product stock") }}
+                    </div>
+
+                    <!--category-->
+                    <div class="form-group">
+                        <label for="category">Select a category</label>
+                        <select name="category" id="category" class="form-control" required>
+                            <option class="disabled" value="{{display.category_id}}">{{display.category.name}}</option>
+                            {% for category in categories %}
+                            <option value=" {{category.id}} "> {{category.name}} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+
+
+                    <!--description-->
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        {{ form.description(class="form-control product-form input-group" , placeholder="Enter product description", id="description", rows="3") }}
+                    </div>
+
+                    <!--submit-->
+                    <button class="btn mt-2" type="submit">Update</button>
+
+
+                </form>
+            </div>
+        </div>
+        </div>
+
+
+    </section>
+
+
+
+
+
+    {{ render_js(render) }}
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+{% from "storebase.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_cssadmin, render_donatemodal, render_scrolltotop %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Delete Products</title>
+	{{ render_cssadmin(render) }}
+
+</head>
+
+<body>
+	<section id="displayproducts">
+		<!--navbar-->
+
+		<!--flash messages-->
+		<div class="container col-md mr-6 ml-6">
+		<div class="text-center p-1" id="flash_message">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			{% for category, message in messages %}
+			{% if category == 'success' %}
+			<div class="alert alert-success" role="alert">
+				{{ message }}!
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+			{% if messages %}
+			{% for category, message in messages %}
+			{% if category == 'error' %}
+			<div class="alert alert-danger" role="alert">
+				Error: {{ message }}!
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+			{% endwith %}
+		</div>
+	</div>
+
+		<!--content-->
+		<div class="container mt-5 pb-5">
+			<div class="col">
+				<h1>Edit Products</h1>
+			</div>
+			<div class="conater mt-5">
+				<div class="table" style="overflow-x:auto;">
+				<div class="table-header">
+                    <h4 class="mr-auto"><a href="admin.html"><i class="fa fa-arrow-left"></i></a></h4>
+                    <div class="table-header-form">
+                      <form>
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search">
+                          <div class="input-group-btn">
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+				<div class="table-body">
+					<table class="table table-sm table-bordered table">
+						<thead>
+							<th>#</th>
+							<th>Product</th>
+							<th>Category</th>
+							<th>Image</th>
+							<th>Price</th>
+							<th>Discount</th>
+							<th></th>
+							<th></th>
+
+						</thead>
+
+						<tbody>
+							{% for display in displays %}
+							<tr class="col-md">
+								<td>{{loop.index}}</td>
+								<td>{{display.product_name}}</td>
+								<td>{{display.category.name}}</td>
+								<td><img src="" alt="product images" width="50" height="40"></td>
+								<td>{{display.product_price}}</td>
+								<td>{{display.product_discount}}%</td>
+
+
+								<td class="text-center"><a href="{{url_for('admin.updateproduct', id=display.id)}}">Edit</a></td>
+
+								<!-- Button trigger modal -->
+								<td class="text-center">
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+									data-target="#exampleModal-{{display.id}}">
+									Delete
+								</button>
+								</td>
+							</tr>
+
+							<!--Modal-->
+							<div class="modal" id="exampleModal-{{display.id}}" tabindex="-1" role="dialog" tabindex="-1">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">{{display.product_name}}</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<p>Are you sure you want to delete the product {{display.product_name}}.</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Cancel</button>
+											<form action="{{url_for('admin.deleteproducts', id=display.id)}}" method="POST">
+												<button type="submit" class="btn btn-danger">Delete</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+	{{ render_js(render) }}
+
+</body>
+
+</html>

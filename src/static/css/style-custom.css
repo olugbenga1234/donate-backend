@@ -252,9 +252,6 @@ h6 {
     background-color: #161616;
 }
 
-body {
-    background-color: #dddddd;
-}
 
 .body-wrapper,
 .greennature-single-lightbox-container {
@@ -296,11 +293,11 @@ h6,
 
 
 a {
-    color: #5dc269;
+    color: #32be8f;
 }
 
 a:hover {
-    color: #2c8e3b;
+    color: #32be8f;
 }
 
 

@@ -34,25 +34,38 @@ body {
     outline: 0 none;
 } 
 
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {   
-  border-color: rgba(126, 239, 104, 0.8);
-  box-shadow: 0 1px 1px #4b93550c inset, 0 0 8px #4b935573;
-  outline: 0 none;
+.admin11 a {
+	display: block;
+	text-align: center !important;
+	text-decoration: none;
+	color: #999;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+
+.admin11 textarea:focus,
+.admin11 input[type="text"]:focus,
+.admin11 input[type="password"]:focus,
+.admin11 input[type="datetime"]:focus,
+.admin11 input[type="datetime-local"]:focus,
+.admin11 input[type="date"]:focus,
+.admin11 input[type="month"]:focus,
+.admin11 input[type="time"]:focus,
+.admin11 input[type="week"]:focus,
+.admin11 input[type="number"]:focus,
+.admin11 input[type="email"]:focus,
+.admin11 input[type="url"]:focus,
+.admin11 input[type="search"]:focus,
+.admin11 input[type="tel"]:focus,
+.admin11 input[type="color"]:focus,
+.admin11 .uneditable-input:focus {   
+  border-color: rgba(126, 239, 104, 0.8) !important;
+  box-shadow: 0 1px 1px #4b93550c inset, 0 0 8px #4b935573 !important;
+  outline: 0 none !important;
+}
+
+#login, #register{
+    font-family: 'Poppins', sans-serif;
 }
 
 #login textarea:focus,
@@ -93,9 +106,10 @@ input[type="color"]:focus,
 	border: none;
 }
 
-.form-control::placeholder {
-	color: #393c3f;
-	opacity: 1;
+.form-control {
+    transition: .3s;
+    background-color: #fdfdff;
+    border-color: #e4e6fc;
 }
 
 
@@ -237,22 +251,23 @@ input[type="color"]:focus,
     width: 100px;
 }
 
-#register h1{
-    color: #222;
+#register h1, .hp{
+    color: #fff;
 }
 
 #register .breadcrumb {
-	background-color: #fff0 !important;
-	border: .1px solid #fff !important;
+    border: .1px solid #fff !important;
+    background-color: #fff !important;
 }
 
 #login .breadcrumb {
-	background-color: #fff0 !important;
+	background-color: #fff !important;
 	border: .1px solid #fff !important;
 }
 
 #register .btn{
     padding: 10px;
+    box-shadow: 0 2px 6px #32be8f;
 	display: block;
 	width: 100%;
 	height: 50px;
@@ -271,6 +286,27 @@ input[type="color"]:focus,
 #register .btn:hover{
 	background-position: right;
 }
+
+#register {
+    color: #222;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url('../images/leaf2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    background-position: center;
+    position: sticky;
+  }
+
+  #register:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to bottom right,#0000004b,#000000);
+    opacity: .6; 
+  }
 
 #register .custom-file-label {
 	/* position: absolute; */
@@ -320,8 +356,6 @@ input[type="color"]:focus,
 
 #login .container{
     width: 100vw;
-    height: 100vh;
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
    
@@ -368,7 +402,7 @@ input[type="color"]:focus,
 /**donateend**/
 
 #login .login-content{
-	display: flex;
+	display: block ruby;
 	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
@@ -500,6 +534,7 @@ input[type="color"]:focus,
 }
 
 #login .btn{
+    box-shadow: 0 2px 6px #32be8f;
 	display: block;
 	width: 100%;
 	height: 50px;
@@ -575,6 +610,10 @@ input[type="color"]:focus,
     /**like i said ealier i dont even know**/
     .register-body, .login-body, .donate-body{
         background-color: #fff;
+    }
+
+    #register p {
+        font-size: 14px;
     }
 
 	#login .img{
@@ -904,9 +943,7 @@ text-decoration: none;
         margin-top: 20px;
     }
 
-    #register {
-        background: #fff;
-    }
+    
 
     .humm {
         margin-left: 0 !important;
@@ -1292,4 +1329,62 @@ text-decoration: none;
 
 .donation-carousel {
 	padding-bottom: 10px;
+}
+
+#login {
+    color: #222;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url('../images/leaves.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    background-position: center;
+    position: sticky;
+  }
+
+  #login:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to bottom right,#0000004b,#000000);
+    opacity: .6; 
+  }
+
+
+#login .custom-radio .custom-control-input:checked ~ .custom-control-label::before, .custom-control-input:checked ~ .custom-control-label::before {
+	background-color: #32be8f !important;
+}
+
+#register .custom-radio .custom-control-input:checked ~ .custom-control-label::before, .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #32be8f !important;
+    border: 1px solid #32be8f;
+}
+
+
+.admin11 .form-control {
+    transition: .3s;
+    background-color: #fdfdff;
+    border-color: #e4e6fc;
+}
+
+.admin11 .form-control::placeholder {
+	color: #393c3f;
+	opacity: 1;
+	font-size: 13px;
+}
+
+.admin1 {
+	color: #222;
+	font-family: 'Poppins', sans-serif;
+	background: rgba(0, 0, 0, 0.5);
+	background-image: url('../images/dark-leaf.jpg') !important;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	min-height: 100vh;
+	background-position: center;
+	position: sticky;
 }

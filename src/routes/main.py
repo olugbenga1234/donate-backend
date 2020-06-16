@@ -18,6 +18,8 @@ main = Blueprint('main', __name__)
 
 donate = Blueprint('donate', __name__)
 
+shop = Blueprint('shop', __name__)
+
 
 #home
 @main.route('/')
@@ -41,6 +43,7 @@ def index():
 @main.route('/donate')
 @main.route('/donate.html', methods=['POST','GET'])
 @login_required
+
 def donate():
     
     return render_template('donate.html')
@@ -73,11 +76,7 @@ def donated():
     return render_template('donated.html')
 
 
-#shop
-@main.route('/shop')
-@main.route('/shop.html')
-def shop():
-    return render_template('shop.html')
+
 
 
 #Function for upload picture#

@@ -2,10 +2,10 @@ from flask_login import UserMixin, login_required, login_manager
 from werkzeug.security import generate_password_hash
 from .extensions import db, app
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from datetime import date
+from datetime import date, datetime
 
 
-# register model
+# User Account Model
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
@@ -13,11 +13,11 @@ class User(UserMixin, db.Model):
     lastname = db.Column(db.String(100))
     password = db.Column(db.String(200))
     email = db.Column(db.String(200), unique=True)
-    address = db.Column(db.String(75), nullable=False, server_default='None', default='None')
-    state = db.Column(db.String(75), nullable=False, server_default='None', default='None')
-    lga = db.Column(db.String(75), nullable=False, server_default='None', default='None')
-    phone = db.Column(db.Integer, default='000')
-    bvn = db.Column(db.Integer, default='000')
+    address = db.Column(db.String(75), nullable=True)
+    state = db.Column(db.String(75), nullable=True)
+    lga = db.Column(db.String(75), nullable=True)
+    phone = db.Column(db.Integer, nullable=True)
+    bvn = db.Column(db.Integer, nullable=True)
     usertype = db.Column(db.String)
     image_file = db.Column(db.String(20), nullable=False, default='default.png')
 
@@ -36,6 +36,7 @@ class User(UserMixin, db.Model):
     def unhashed_password(self, unhashed_password):
         self.password = generate_password_hash(unhashed_password, method='sha256')
 
+    
 
 #donate model
 class Donated(db.Model):
@@ -44,5 +45,34 @@ class Donated(db.Model):
     #donator_name = db.Column(db.String(100), unique=False, nullable=False)
     donated_by_email = db.Column(db.String(75))
     donated_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    donator_note = db.Column(db.String, nullable=False, default='comment', server_default='comment')
+    donator_note = db.Column(db.String, nullable=True)
     date_donated = db.Column(db.DateTime, nullable=False, default=date.today())
+
+
+#shopping database
+class Products(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    product_name = db.Column(db.String(30), nullable=False, unique=True)
+    product_price = db.Column(db.Numeric(10,2), nullable=False)
+    product_discount = db.Column(db.Integer, default=0)
+    product_description = db.Column(db.String(300), nullable=False)
+    product_stock = db.Column(db.Integer, nullable=False)
+    product_date = db.Column(db.DateTime, nullable=False, default=date.today())
+
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
+    category = db.relationship(
+                                'Category',
+                                backref='category', 
+                                lazy=True)
+
+    image_1 = db.Column(db.String(150), nullable=False, default='image.jpg')
+    image_2 = db.Column(db.String(150), nullable=False, default='image.jpg')
+    image_3 = db.Column(db.String(150), nullable=False, default='image.jpg')
+    image_4 = db.Column(db.String(150), nullable=False, default='image.jpg')
+
+
+    
+
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False, unique=True)

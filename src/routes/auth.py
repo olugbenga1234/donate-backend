@@ -21,6 +21,7 @@ SECRET_KEY = '4b4474b4h47n474n474n47447n474n47'
 
 
 #function for register
+@auth.route('/register', methods=['GET', 'POST'])
 @auth.route('/register.html', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -105,6 +106,7 @@ def register():
 
 
 #function for login
+@auth.route('/login', methods=['GET', 'POST'])
 @auth.route('/login.html', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -130,6 +132,7 @@ def login():
     return render_template('login.html')
 
 #logout user
+@auth.route('/logout')
 @auth.route('/logout.html')
 def logout():
     logout_user()

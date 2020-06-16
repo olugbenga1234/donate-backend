@@ -1,0 +1,190 @@
+#addproduct {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-control {
+  transition: .3s !important;
+  background-color: #fdfdff !important;
+  border-color: #e4e6fc !important;
+}
+
+
+#addproduct textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  
+  box-shadow: 0 1px 1px #1494250c inset, 0 0 8px #38d39f;
+  outline: 0 none;
+}
+
+#addproduct .form-control {
+  text-transform: capitalize;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #f1f1f1;
+  background-clip: padding-box;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px; 
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#addproduct label {
+	display: inline-block;
+	margin-bottom: 0;
+  color: #222;
+  font-size: 13px;
+}
+#addproduct .form-group, #addproduct .form-add {
+	margin-bottom: 1.5rem;
+}
+
+#addproduct .form-control::placeholder {
+	color: #777;
+	opacity: 1;
+	font-size: 10px;
+	text-transform: lowercase;
+}
+
+#addproduct .btn{
+    background: none;
+    border: 1px solid #38d39f;
+    border-radius: 3px;
+    transition: ease-in .3s;
+    color: #38d39f;
+}
+
+#addproduct .btn:hover{
+    background: #38d39f;
+    border: 1px solid #38d39f;
+    border-radius: 3px;
+    color: #fff;
+}
+
+#addproduct .card{
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+}
+
+#addproduct {
+    color: #222;
+    background-color: #02020238;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(../images/fruits.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    background-position: center;
+    position: sticky;
+  }
+
+  #addproduct:before {
+    content: '';
+    position: absolute;
+    background-color: #02020238;
+    height: 100%;
+    width: 100%;
+    opacity: .6; 
+  }
+
+  #addproduct a {
+    color: #38d39f;
+    font-size: 20px;
+    transition: ease-in-out .3s;
+  }
+
+  #addproduct a:hover {
+    color: #044731;
+  }
+
+  #addproduct .title{
+    text-transform: uppercase;
+  }
+
+  #displayproducts .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  #displayproducts .conater{
+    border-radius: 20px;
+    width: 100%;
+    -webkit-box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 77px -32px rgba(0,0,0,0.75);
+  }
+
+
+  #displayproducts .table .table-header {
+    background-color: transparent;
+    border-bottom-color: #f9f9f9;
+    line-height: 30px;
+    -ms-grid-row-align: center;
+    align-self: center;
+    width: 100%;
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+  }
+
+  #displayproducts .input-group-text, select.form-control:not([size]):not([multiple]), .form-control:not(.form-control-sm):not(.form-control-lg) {
+    font-size: 14px;
+    padding: 10px 15px;
+    height: 35px;
+  }
+
+  #displayproducts a {
+    color: #38d39f !important;
+    font-weight: 500;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+  }
+
+  #displayproducts .btn-primary {
+    box-shadow: 0 2px 6px #38d39f;
+    background-color: #38d39f;
+    border-color: #38d39f;
+  }
+
+  #displayproducts .btn-primary:hover{
+    box-shadow: 0 2px 6px #044731 !important;
+    background-color: #044731 !important;
+    border-color: #044731 !important;
+  }
+
+  @media only screen and (max-width: 700px) {
+    #addproduct .discount {
+      margin-top: 30px;
+    }
+    #addproduct .contaddp {
+      padding-left: .5rem !important;
+      padding-right: .5rem !important;
+    }
+  }

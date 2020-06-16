@@ -1,0 +1,57 @@
+{% from "storebase.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_css, render_donatemodal, render_scrolltotop %}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+
+    <title>Add Product</title>
+
+    {{ render_css(render) }}
+
+</head>
+
+<body>
+
+  
+
+    <section id="shop">
+       <div class="container">
+           
+      <div class="card">
+          <div class="card-body">
+            <h2 class="title">Add Product</h2>
+            <form action="" method="POST" enctype="multipart/form-data">
+                
+
+
+
+                <!--category-->
+                <div class="form-group">
+                    <label for="category">add a category</label>
+                    <input type="text" id="category" name="category" class="form-control">
+                </div>
+
+
+
+                <!--submit-->
+                <button class="btn btn-primary" type="submit">Add Product</button>
+                
+                
+            </form>
+          </div>
+      </div>
+    </div>
+
+
+    </section>
+
+
+
+    
+
+    {{ render_js(render) }}
+</body>
+
+</html>
