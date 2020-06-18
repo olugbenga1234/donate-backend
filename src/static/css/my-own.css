@@ -5,6 +5,14 @@ body {
     background-position: center;
 }
 
+.sub {
+	/* background-image: url('../static/upload/newsletter-bg.jpg'); */
+	/* padding-top: 145px; */
+	/* padding-bottom: 60px; */
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 .alert-danger {
 	color: #fff !important;
 	background-color: #ff0017 !important;
@@ -27,6 +35,12 @@ body {
     box-shadow: 0 1px 1px #4b93550c inset, 0 0 8px #4b935573;
     outline: 0 none;
 } 
+
+.form-control {
+    transition: .3s !important;
+    background-color: #fdfdff !important;
+    border-color: #e4fce8 !important;
+  }
 
 #login .form-control:focus {
     border-color: rgba(0, 0, 0, 0);
@@ -626,8 +640,7 @@ body {
 		justify-content: center;
     }
     
-    
-    
+  
     #login .card {
         -webkit-box-shadow: none !important;
         -moz-box-shadow: none !important;
@@ -921,8 +934,14 @@ text-decoration: none;
     }
 
     .our-team {
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
+        background-attachment: scroll;
+    }
+
+    #content-section-3 .greennature-color-wrapper, .greennature-parallax-wrapper {
+        /* overflow: hidden; */
+        /* background-position: center 0px; */
+        /* position: relative; */
+        background-attachment: scroll;
     }
 
     #form-group-fix{
@@ -1425,4 +1444,9 @@ text-decoration: none;
 	font-family: 'Poppins', sans-serif;
 	position: relative;
     background-image: linear-gradient(to bottom right,#bebaba4a,#e8e3e3);
+}
+
+#donate .breadcrumb {
+	background-color: #fff;
+
 }
