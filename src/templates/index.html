@@ -80,6 +80,7 @@
                             <a href="index.html">
                                 <img src="{{ url_for('static', filename='icons/logo.png')}}" alt="logo" /> </a>
                         </div>
+                        <!--mobile menu-->
                         <div class="greennature-responsive-navigation dl-menuwrapper"
                             id="greennature-responsive-navigation">
                             <button class="dl-trigger">Open Menu</button>
@@ -132,12 +133,14 @@
                         </div>
                     </div>
 
-                    <!-- navigation -->
+                    <!-- web navigation -->
                     <div class="greennature-navigation-wrapper">
                         <nav class="greennature-navigation" id="greennature-main-navigation">
                             <ul id="menu-main-menu-1" class="sf-menu greennature-main-menu">
-                                <li class="menu-item menu-item-home current-menu-item greennature-normal-menu"><a
-                                        href="index.html">Home</a></li>
+                                <li class="active menu-item menu-item-home  greennature-normal-menu">
+                                    <a class=""
+                                        href="#content-section-1">Home
+                                    </a></li>
 
                                 <li class="menu-item menu-item-home  greennature-normal-menu"><a href="#about-us">About
                                         Us</a></li>
@@ -454,6 +457,9 @@ color: #ecb338;" class="ms-layer ms-btn ms-btn-round ms-btn-n msp-preset-btn-159
         {{ render_scrolltotop(render) }}
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    
+
         <script type="text/javascript" src='../static/dcarousel/owl.carousel.min.js'></script>
 
         <script>

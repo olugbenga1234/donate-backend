@@ -5,6 +5,11 @@ body {
     background-position: center;
 }
 
+
+html {
+    scroll-behavior: smooth !important;
+  }
+
 .sub {
 	/* background-image: url('../static/upload/newsletter-bg.jpg'); */
 	/* padding-top: 145px; */
@@ -896,6 +901,7 @@ text-decoration: none;
 }
 
 #btnScrollToTop{
+    display: none;
     align-content: center;
     position: fixed;
     right: 10px;
