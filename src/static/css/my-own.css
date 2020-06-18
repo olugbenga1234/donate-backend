@@ -1378,7 +1378,7 @@ text-decoration: none;
 .admin11 .form-control {
     transition: .3s;
     background-color: #fdfdff;
-    border-color: #e4e6fc;
+    border-color: #e4fcec;
 }
 
 .admin11 .form-control::placeholder {
@@ -1405,4 +1405,24 @@ text-decoration: none;
 	will-change: transform;
 	width: 100%;
 	height: 100%;
+}
+
+#donate::before {
+	background-color: rgba(0, 0, 0, 0.5);
+	background: url('../images/sexy-w.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	z-index: -3;
+	content: '';
+	will-change: transform;
+	width: 100%;
+	height: 100%;
+}
+
+#donate {
+	color: #222;
+	font-family: 'Poppins', sans-serif;
+	position: relative;
+    background-image: linear-gradient(to bottom right,#bebaba4a,#e8e3e3);
 }
