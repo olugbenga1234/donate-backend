@@ -1,7 +1,4 @@
 
-
-
-
 //Get the button:
 const btnScrollToTop = document.querySelector("#btnScrollToTop");
 
@@ -49,7 +46,7 @@ $(document).ready(function(){
         // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
         $('html, body').animate({
           scrollTop: $(hash).offset().top
-        }, 800, function(){
+        }, 100, function(){
 
             // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
@@ -58,15 +55,3 @@ $(document).ready(function(){
 });
 });
 
-
-
-//one page nav
-$('#menu-main-menu-1').onePageNav({
-	currentClass: 'active',
-	changeHash: false,
-	scrollSpeed: 750,
-	scrollThreshold: 0.5,
-	filter: '',
-	easing: 'swing'
-	
-});
