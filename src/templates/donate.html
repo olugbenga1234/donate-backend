@@ -141,7 +141,7 @@
 
                         <div class="col-md mt-3">
                             <div class="col">
-                                <button class="btn" type="submit" onclick="payWithPaystack()"> Donate Now </button>                             </div>  
+                                <button class="btn" type="button" onclick="payWithPaystack()"> Donate Now </button>                             </div>  
                         </div>
 
                         <div id="secured" class="col text-center mt-5">
@@ -161,18 +161,18 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js">
     </script>
 
-    <script>
+  <!--- <script>
         const element = document.querySelector('form');
         element.addEventListener('submit', event => {
         event.preventDefault();
         // actual logic, e.g. validate the form
         console.log('Form submission cancelled.');
         });
-    </script>
+    </script>-->
 
     <script>
         var paymentForm = document.getElementById('paymentForm');
-        paymentForm.addEventListener("submit", payWithPaystack, false);
+        paymentForm.addEventListener("button", payWithPaystack, false);
         
                 function payWithPaystack(){
 
