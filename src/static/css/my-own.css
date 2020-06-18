@@ -243,9 +243,6 @@ body {
         margin-bottom: 3px;
     }
 
-#register {
-    background: #f1f1f1;
-}
 
 .avatar {
     width: 100px;
@@ -288,25 +285,25 @@ body {
 }
 
 #register {
-    color: #222;
-    background: rgba(0, 0, 0, 0.5);
-    background-image: url('../images/leaf2.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    min-height: 100vh;
-    background-position: center;
-    position: sticky;
-  }
+	color: #222;
+	font-family: 'Poppins', sans-serif;
+	position: relative;
+	background-image: linear-gradient(to bottom right,#0000004b,#000000);
+}
 
-  #register:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(to bottom right,#0000004b,#000000);
-    opacity: .6; 
-  }
+
+  #register::before {
+	background-color: rgba(0, 0, 0, 0.5);
+	background-image: url('../images/leaf2.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	z-index: -3;
+	content: '';
+	will-change: transform;
+	width: 100%;
+	height: 100%;
+}
 
 #register .custom-file-label {
 	/* position: absolute; */
@@ -607,15 +604,7 @@ body {
 		grid-template-columns: 1fr;
     }
     
-    /**like i said ealier i dont even know**/
-    .register-body, .login-body, .donate-body{
-        background-color: #fff;
-    }
-
-    #register {
-        background-attachment: scroll;
-  
-    }
+    
 
     #register p {
         font-size: 14px;
@@ -929,6 +918,11 @@ text-decoration: none;
         margin-left: 5px;
         margin-right: 5px;
         padding-bottom: 10px;
+    }
+
+    .our-team {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
     }
 
     #form-group-fix{
@@ -1396,12 +1390,19 @@ text-decoration: none;
 .admin1 {
 	color: #222;
 	font-family: 'Poppins', sans-serif;
-	background: rgba(0, 0, 0, 0.5);
+	position: relative;
+	background-image: linear-gradient(to bottom right,#0000004b,#000000);
+}
+
+.admin1::before {
+	background-color: rgba(0, 0, 0, 0.5);
 	background-image: url('../images/dark-leaf.jpg') !important;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
 	background-size: cover;
-	min-height: 100vh;
-	background-position: center;
-	position: sticky;
+	position: fixed;
+	z-index: -3;
+	content: '';
+	will-change: transform;
+	width: 100%;
+	height: 100%;
 }
