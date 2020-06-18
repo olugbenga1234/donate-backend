@@ -1022,9 +1022,7 @@ text-decoration: none;
         padding: 1rem !important;
     }
 
-    #our-team{
-        padding: 5px !important;
-    }
+    
 
     .greennature-personnel-item.plain-style .personnel-author-image {
         margin-top: 10px !important;
@@ -1165,27 +1163,38 @@ text-decoration: none;
 }
 
 
-#our-team {
-    color: #222;
-    font-family: "PT Sans", sans-serif;
-    background: rgba(0, 0, 0, 0.5);
-    background-image: url('../images/leaves.jpg');
+.our-team {
+	font-family: "PT Sans", sans-serif;
+	min-height: 100%;
+	position: relative;
+	/* background-attachment: fixed; */
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+    background: url('../images/leaves.jpg');
+    background-attachment: fixed !important;
+    
+}
+
+.meet{
+	z-index: 10;
+	position: inherit;
+}
+
+
+.our-team::before {
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-image: linear-gradient(to bottom right,#0000004b,#000000);
     background-size: cover;
-    min-height: 100vh;
-    background-position: center;
-    position: sticky;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    will-change: transform;
+    
   }
 
-  #our-team:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(to bottom right,#0000004b,#000000);
-    opacity: .6; 
-  }
+
 
 
   .team-tag{
@@ -1226,32 +1235,39 @@ text-decoration: none;
     color: #fff;
 }
   
-#our-team h1 {
-    color: rgb(61, 61, 61);
+#our-team h1, #our-team .lead {
+    color: #fff;
 }
 
 /**donations display**/
 
 
 #donations {
-    width: 100%;
-    height: 100%;
-    background: url(../images/happy.jpg) center center no-repeat;
-    background-size: cover;
-    position: sticky;
-    background-attachment: fixed;
+	font-family: "PT Sans", sans-serif;
+	min-height: 100%;
+	position: relative;
+	background-attachment: fixed !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+    background: url(../images/happy.jpg) !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
   
-  }
-
 #donations:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
+    background-repeat: no-repeat;
     background-image: linear-gradient(to bottom right,#0000004b,#000000);
-    opacity: .6; 
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    will-change: transform;
   }
 
+   
 #donations .dd h2{
     color: #fff;
 }
@@ -1341,12 +1357,9 @@ text-decoration: none;
     background-image: linear-gradient(to bottom right,#0000004b,#000000);
 }
 
-#login:before {
-   
-    
+#login:before {   
     background-color: rgba(0, 0, 0, 0.5);
-    background: url('../images/leaves.jpg');
-    
+    background: url('../images/leaves.jpg');   
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -1355,9 +1368,7 @@ text-decoration: none;
     will-change: transform;
     width: 100%;
     height: 100%;
-
   }
-
 
 
 #login .custom-radio .custom-control-input:checked ~ .custom-control-label::before, .custom-control-input:checked ~ .custom-control-label::before {
