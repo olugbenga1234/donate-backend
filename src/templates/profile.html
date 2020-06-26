@@ -94,6 +94,29 @@
            </div>
 
            <div class="main-container">
+            <div class="col-md p-1" id="flash_message">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    {% if category == 'success' %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}!
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+                {% if messages %}
+                    {% for category, message in messages %}
+                    {% if category == 'error' %}
+                    <div class="alert alert-danger" role="alert">
+                        Error:  {{ message }}!
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
                <div class="header">
                   <div class="container text-left">
                       <h4>Dashboard</h4>
@@ -135,6 +158,7 @@
                </div>
 
                <div class="content-section">
+                
                    <form action="" method="POST" enctype="multipart/form-data">
                        {{ form.hidden_tag() }}
                        <fieldset class="form-group">
