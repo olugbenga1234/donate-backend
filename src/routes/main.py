@@ -42,7 +42,7 @@ def index():
 #donate
 @main.route('/donate')
 @main.route('/donate.html', methods=['POST','GET'])
-@login_required
+#@login_required
 
 def donate():
     
