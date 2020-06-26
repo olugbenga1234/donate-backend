@@ -950,9 +950,9 @@ text-decoration: none;
         background-attachment: scroll;
     }
 
-    #form-group-fix{
+    /**#form-group-fix{
         margin-top: 1rem;
-    }
+    }**/
 
     #register .login-container {
         background-color: #fff;
