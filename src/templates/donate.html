@@ -16,7 +16,7 @@
     {{ render_css(render) }}
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://js.paystack.co/v2/inline.js"></script>
+    <!--script src="https://js.paystack.co/v2/inline.js"></script-->
    
 </head>
 
@@ -157,8 +157,8 @@
 
     </section>
     <!--end donate form-->
-    <script src="https://js.paystack.co/v2/inline.js"></script>
-    
+    <!--script src="https://js.paystack.co/v2/inline.js"></script-->
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js">
     </script>
 
@@ -179,8 +179,8 @@
         
                 function payWithPaystack(){
 
-                    
-                  var handler = PaystackPop.setup({
+                
+                  var config = {
                     key: 'pk_test_e13e729eec9612428bbdaeb9c80f2e1fb03d0dcf',
                     email: document.getElementById('donator-email').value,
                     amount: document.getElementById('donate-amount').value * 100,
@@ -216,8 +216,10 @@
                     onClose: function(){
                         alert('Payment Cancelled');
                     }
-                  });
-                  handler.openIframe();
+                  };
+
+                  var paystackPopup = new popup(config);
+                  paystackPopup.open();
                 }
     </script>
 </body>
