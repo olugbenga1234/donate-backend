@@ -38,8 +38,9 @@ donate = Blueprint('donate', __name__)
 @store.route('/shop', methods=['GET', 'POST'])
 @store.route('/shop.html', methods=['GET', 'POST'])
 def shop():
+    products = Products.query.filter(Products.product_stock > 0)
 
-    return render_template('shop.html')
+    return render_template('shop.html', products = products)
 
 
 
