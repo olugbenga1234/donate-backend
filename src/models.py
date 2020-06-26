@@ -16,7 +16,7 @@ class User(UserMixin, db.Model):
     address = db.Column(db.String(75), nullable=True)
     state = db.Column(db.String(75), nullable=True)
     lga = db.Column(db.String(75), nullable=True)
-    phone = db.Column(db.Integer, nullable=True)
+    phone = db.Column(db.String(100), nullable=True)
     bvn = db.Column(db.Integer, nullable=True)
     usertype = db.Column(db.String)
     image_file = db.Column(db.String(20), nullable=False, default='default.png')
