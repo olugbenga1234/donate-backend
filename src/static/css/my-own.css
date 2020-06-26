@@ -1374,7 +1374,7 @@ text-decoration: none;
     font-family: 'Poppins', sans-serif;
     position: relative;
     background-image: linear-gradient(to bottom right,#0000004b,#000000);
-    height: 100%;
+    height: 1000px;
 }
 
 #login:before {   
