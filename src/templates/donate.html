@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0;url=https://paystack.com/pay/donateaseed" />
 
     {% if title %}
     <title>Register - {{ title }}</title>
@@ -15,7 +16,7 @@
 
     {{ render_css(render) }}
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!--script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script-->
     <!--script src="https://js.paystack.co/v2/inline.js"></script-->
    
 </head>
@@ -24,7 +25,7 @@
 
 <body class="donate-body">
     <!--Donation Form-->
-    <section id="donate">
+    <!--section id="donate">
       
         <div class="container">
             <div class="container h-100 p-5">
@@ -141,7 +142,9 @@
 
                         <div class="col-md mt-3">
                             <div class="col">
-                                <button class="btn" type="button" onclick="payWithPaystack()"> Donate Now </button>                             </div>  
+                                <button class="btn" type="button" onclick="payWithPaystack()"> Donate Now </button>    
+                                <a href="https://paystack.com/pay/donateaseed">Donate</a>                       
+                            </div>  
                         </div>
 
                         <div id="secured" class="col text-center mt-5">
@@ -155,12 +158,12 @@
                </div>        
         </div>
 
-    </section>
+    </section-->
     <!--end donate form-->
     <!--script src="https://js.paystack.co/v2/inline.js"></script-->
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js">
-    </script>
+    <!--script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js">
+    </script-->
 
 
 
@@ -173,7 +176,7 @@
         });
     </script>-->
 
-    <script>
+    <!--script>
         var paymentForm = document.getElementById('paymentForm');
         paymentForm.addEventListener("button", payWithPaystack, false);
         
@@ -221,7 +224,7 @@
                   var paystackPopup = new popup(config);
                   paystackPopup.open();
                 }
-    </script>
+    </script-->
 </body>
 
 </html>

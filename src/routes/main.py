@@ -28,16 +28,16 @@ def index():
 
 #show donations function
     #username = current_user.username
-    donations = Donated.query.filter(Donated.d_amount != None).all()
+    #donations = Donated.query.filter(Donated.d_amount != None).all()
     #donator_image = User.query.filter(User.image_file != None).all()
     #image_file = url_for('static', filename='profile_pics/' + current_user.image_file)    
 
-    context = {
-        'donations' : donations
+   # context = {
+        #'donations' : donations
         #'donator_image' : donator_image
         
-    }
-    return render_template('index.html', **context)
+    #}
+    return render_template('index.html')
 
 #donate
 @main.route('/donate')
@@ -49,31 +49,31 @@ def donate():
     return render_template('donate.html')
 
 #donated
-@main.route('/donated', methods=['POST' , 'GET'])
-def donated():
-    if request.method == 'POST':
-        d_amount = request.form.get('donate-amount')
-        donated_by_email = request.form.get('donator-email')
-        donator_name = request.form.get('donator-name')
-        donator_note = request.form.get('donator-note')
+#@main.route('/donated', methods=['POST' , 'GET'])
+#def donated():
+   # if request.method == 'POST':
+       # d_amount = request.form.get('donate-amount')
+       # donated_by_email = request.form.get('donator-email')
+       # donator_name = request.form.get('donator-name')
+       # donator_note = request.form.get('donator-note')
 
-        new_donator = Donated (
-            d_amount=d_amount,
-            donated_by_email=donated_by_email,
-            donated_by_id=current_user.id,
-            donator_note=donator_note
-        )
+       # new_donator = Donated (
+       #     d_amount=d_amount,
+       #     donated_by_email=donated_by_email,
+       #     donated_by_id=current_user.id,
+       #     donator_note=donator_note
+       # )
                                 
-        db.session.add(new_donator)
-        db.session.commit()
+        #db.session.add(new_donator)
+       # db.session.commit()
 
-        return jsonify({'Thanks' : "Thank you " + donator_name + " for your Donation of " + d_amount + " , It means a lot to us."})
+        #return jsonify({'Thanks' : "Thank you " + donator_name + " for your Donation of " + d_amount + " , It means a lot to us."})
 
         #flash('Thank you {} for your Donations. It means a lot to us'.format(donator_name), 'success')
 
         #return redirect(url_for('main.index'))
 
-    return render_template('donated.html')
+    #return render_template('donated.html')
 
 
 
