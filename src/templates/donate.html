@@ -16,7 +16,7 @@
     {{ render_css(render) }}
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
+    <script src="https://js.paystack.co/v2/inline.js"></script>
    
 </head>
 
@@ -67,7 +67,7 @@
                    <div class="col-md">
                     <div class="card p-5 mb-5">
                         <form id="paymentForm" method="POST" action="{{ url_for('main.donate') }}" role="form">
-                            <script type="" src="https://js.paystack.co/v1/inline.js"></script>
+                            <script type="" src="https://js.paystack.co/v2/inline.js"></script>
                             <div class="col-md pb-4 text-center">
                              <h5 style="color: #32be8f;">DONATION</h5>
                              <h6>Your donations means a lot to us!</h6>
@@ -157,9 +157,12 @@
 
     </section>
     <!--end donate form-->
-      
+    <script src="https://js.paystack.co/v2/inline.js"></script>
+    
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js">
     </script>
+
+
 
   <!--- <script>
         const element = document.querySelector('form');
