@@ -200,7 +200,7 @@ input[type="color"]:focus,
   }
 
   #store .top-nav {
-    background: #f4f4f4;
+    background: #f4f4f4 !important;
     padding: 0px;
     height: 40px;
     align-content: center;
@@ -233,8 +233,8 @@ input[type="color"]:focus,
   #store .bottom-nav button {
     height: 35px;
     border-radius: 0px;
-    background: #96c76c;
-    border: 1px solid #96c76c !important;
+    background: #38d39f;
+    border: 1px solid #38d39f !important;
     color: #fff;
     align-content: center;
     display: grid;
@@ -253,18 +253,17 @@ input[type="color"]:focus,
   }
 
   #store .nav-right i{
-    color: #96c76c;
+    color: #38d39f;
     font-size: 1.6rem;
     text-decoration: none;
     transition: .3s;
   }
 
   #store .nav-right i:hover{
-    color: #58b805 !important;
-    font-size: 1.7rem;
+    color: #1c966d !important;
+    
 
   }
-
 
   #store .top-nav a{
     color: gray;
@@ -281,11 +280,67 @@ input[type="color"]:focus,
     margin-left: 40px;
   }
 
-  /**featured products**/
+  /**featured products
   [data-tab-content] {
     display: none;
   }
 
   .active[data-tab-content] {
-    display: block;
+    display: flex;
+  }**/
+
+  .tabs p{
+  
+      text-align: center;
+      font-weight: 600;
+      font-size: 3rem;
+      text-transform: uppercase;
+    
   }
+
+.last-nav .drop-btn{
+  background: #38d39f;
+	border-radius: 0px;
+	border: 1px solid #38d39f;
+	color: #fff !important;
+  width: 20rem;
+  height: 3rem;
+  margin-left: 20px;
+  transition: ease-in-out;
+}
+
+.last-nav .drop-btn:hover{
+  background: #2cad82;
+	border-radius: 0px;
+	border: 1px solid #2cad82;
+	color: #fff !important;
+  width: 20rem;
+  height: 3rem;
+  margin-left: 20px;
+}
+
+.last-nav .dropdown-menu{
+  margin-left: 20px !important;
+  border-radius: 0px;
+  margin: 0px;
+  width: 20rem !important;
+}
+
+.last-nav .dropdown-menu li {
+  text-align: center !important;
+  text-decoration: none !important;
+
+}
+.last-nav .dropdown-menu li a {
+  color: #222 !important;
+}
+
+#store .card-product{
+  height: 250%;
+  border-radius: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#store .pagi{
+  margin-top: 350px;
+}

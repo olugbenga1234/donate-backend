@@ -1,226 +1,332 @@
-{% from "/storebase.html" import render_aboutus, render_ourcauses, render_faq, render_contactus, render_ourteam, render_sponsors, render_subscribenews, render_takeaction, render_footer, render_js, render_css, render_donatemodal, render_scrolltotop %}
+{% from "/storebase.html" import render_aboutus, render_ourcauses, render_faq,
+render_contactus, render_ourteam, render_sponsors, render_subscribenews,
+render_takeaction, render_footer, render_js, render_css, render_donatemodal,
+render_scrolltotop %}
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1.0" />
 
     <title>Shop</title>
 
-    <link rel='stylesheet' href="{{ url_for ('static', filename='dcarousel/owl.carousel.min.css')}}" type='text/css'
-        media='all' />
-    <link rel='stylesheet' href="{{ url_for ('static', filename='dcarousel/owl.theme.default.min.css')}}"
-        type='text/css' media='all' />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='dcarousel/owl.carousel.min.css')}}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='dcarousel/owl.theme.default.min.css')}}"
+      type="text/css"
+      media="all"
+    />
 
-    <script src="../static/js/featured.js" defer></script>
+    <!--script src="../static/js/featured.js" defer></script-->
 
     {{ render_css(render) }}
-</head>
+  </head>
 
-<body>
+  <body>
     <section id="store">
-        <!--top navbar-->
-        <section class="top-nav">
-            <nav class="navbar">
-                <ul class="nav ">
-                    <i class="fa fa-facebook-f"></i>
-                    <i class="fa fa-facebook-f"></i>
-                    <i class="fa fa-facebook-f"></i>
+      <!--top navbar-->
+      <section class="top-nav">
+        <nav class="navbar">
+          <ul class="nav">
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-facebook-f"></i>
+            <i class="fa fa-facebook-f"></i>
+          </ul>
 
+          <ul class="nav mr-sm-2 auth">
+            <li class="nav-item">
+              <a class="nav-link" href="/donate">Donate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign In / Sign Up</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
 
-                </ul>
+      <!--second nav bar-->
+      <section class="bottom-nav">
+        <nav class="navbar">
+          <a href="/shop.html" class="navbar-brand">
+            Logo
+          </a>
 
-                <ul class="nav mr-sm-2 auth">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Donate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sign In / Sign Up</a>
-                    </li>
+          <form class="form-inline">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Search product"
+              aria-label="Search product"
+            />
+            <button class="btn-primary" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
 
-
-                </ul>
-            </nav>
-        </section>
-
-        <!--second nav bar-->
-        <section class="bottom-nav">
-            <nav class="navbar">
-                <a class="navbar-brand">Logo</a>
-
-                <form class="form-inline">
-                    
-                        <input class="form-control" type="search" placeholder="Search product" aria-label="Search product">
-                        <button class=btn-primary type="submit"><i class="fa fa-search"></i></button>
-                    
-                   
-                   
-                </form>
-
-                <ul class="mr-sm-2 navbar-nav nav-right">
-                    <div class="account">
-                        <a href="profile.html" title="My account">
-                            <div class="icon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <p>Account</p>
-                        </a>
-                    </div>
-
-                    <div class="wishlist">
-                        <a href="wishlist.html" title="Wishlist">
-                            <div class="icon">
-                                <i class="fa fa-heart"></i>
-                                <!--span class="wishlist-count badge">3</span-->
-                            </div>
-                            <p>Wishlist</p>
-                        </a>
-                    </div>
-
-                    <div class="cart">
-                        <a href="cart.html" title="Cart">
-                            <div class="icon">
-                                <i class="fa fa-shopping-cart"></i>
-                                <!--span class="wishlist-count badge">3</span-->
-                            </div>
-                            <p>Cart</p>
-                        </a>
-                    </div>
-
-                   
-
-                </ul>
-            </nav>
-        </section>
-        <div class="dropdown-divider dd"></div>
-
-        <!--last nav bar-->
-        <section class="last-nav">
-            <nav class="navbar">
-                <ul class="nav ">
-                    <i class="fa fa-facebook-f"></i>
-                    <i class="fa fa-facebook-f"></i>
-                    <i class="fa fa-facebook-f"></i>
-
-
-                </ul>
-
-                <ul class="nav mr-sm-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Donate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sign In / Sign Up</a>
-                    </li>
-
-
-                </ul>
-            </nav>
-        </section>
-
-        <!--product carousel-->
-        <section id="carousel">
-            <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <h4>1</h4>
+          <ul class="mr-sm-2 navbar-nav nav-right">
+            <div class="account">
+              <a href="profile.html" title="My account">
+                <div class="icon">
+                  <i class="fa fa-user"></i>
                 </div>
-                <div class="item">
-                    <h4>2</h4>
-                </div>
-                <div class="item">
-                    <h4>3</h4>
-                </div>
-                <div class="item">
-                    <h4>4</h4>
-                </div>
-                <div class="item">
-                    <h4>5</h4>
-                </div>
-                <div class="item">
-                    <h4>6</h4>
-                </div>   
+                <p>Account</p>
+              </a>
             </div>
 
-        </section>
+            <div class="wishlist">
+              <a href="wishlist.html" title="Wishlist">
+                <div class="icon">
+                  <i class="fa fa-heart"></i>
+                  <!--span class="wishlist-count badge">3</span-->
+                </div>
+                <p>Wishlist</p>
+              </a>
+            </div>
 
-        <!--featured onsale top products products-->
-        <section id="featured">
-          
-            <ul class="tabs">
-                <li data-tab-target="#featured" class="active tab">Featured</li>
-                <li data-tab-target="#onsale">On Sale</li>
-                <li data-tab-target="#toprated">Top Rated</li>
+            <div class="cart">
+              <a href="cart.html" title="Cart">
+                <div class="icon">
+                  <i class="fa fa-shopping-cart"></i>
+                  <!--span class="wishlist-count badge">3</span-->
+                </div>
+                <p>Cart</p>
+              </a>
+            </div>
+          </ul>
+        </nav>
+      </section>
+      <div class="dropdown-divider dd"></div>
+
+      <!--last nav bar-->
+      <section class="last-nav">
+        <nav class="navbar">
+          <!--hover drop-->
+          <div class="dropdown text-center">
+            <button
+              class="drop-btn"
+              type="button"
+              data-toggle="dropdown"
+              data-hover="dropdown"
+            >
+              <i class="fa fa-bars"></i>
+              Categories
+            </button>
+            <ul class="dropdown-menu">
+              {% for category in categories %}
+              <li>
+                <a href="{{url_for('store.get_category', id=category.id)}}"
+                  >{{category.name}}</a
+                >
+              </li>
+              {% endfor %}
             </ul>
+          </div>
+          <!--hover drop end-->
 
-            <div class="tab-content">
-                <div id="featured" data-tab-content class="active">
-                    {% for product in products %}
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="" alt="">
-                            <div class="card-body">                              
-                                <h5 class="text-center">{{product.product_name}}</h5>
-                                {% if product.product_discount > 0 %}
-                                <p>discount: {{product.product_discount}}%</p>
-                                {% endif %}
-                                <p>price: {{product.product_price}}</p>
-                            </div>
-                            <div class="card-foot">
-                                <a href="#" class="float-left btn btn-sm btn-primary">details</a>
-                                <a href="#" class="float-right btn btn-sm btn-warning">add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+          <ul class="nav mr-sm-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign In / Sign Up</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
 
-                <div id="onsale" data-tab-content>
-                    <h1>onsale</h1>
-                    <p>hhhhh</p>
-                </div>
+      <!--product carousel-->
+      <section id="carousel">
+        <div class="owl-carousel owl-theme">
+          <div class="item">
+            <h4>1</h4>
+          </div>
+          <div class="item">
+            <h4>2</h4>
+          </div>
+          <div class="item">
+            <h4>3</h4>
+          </div>
+          <div class="item">
+            <h4>4</h4>
+          </div>
+          <div class="item">
+            <h4>5</h4>
+          </div>
+          <div class="item">
+            <h4>6</h4>
+          </div>
+        </div>
+      </section>
 
-                <div id="toprated" data-tab-content>
-                    <h1>toprated</h1>
-                    <p>hhhhh</p>
+      {% if get_cat_prod %}
+      <!--categories products-->
+      <section id="featured">
+        <ul class="tabs">
+          <p data-tab-target="#featured" class="active tab">Featured</p>
+        </ul>
+
+        <div class="tab-content">
+          <div id="featured" data-tab-content class="active">
+           <div class="row">
+            {% for get_cat in get_cat_prod.items %}
+            <div class="col-md ml-2 mr-2">
+              <div class="card card-product">
+                <img src="" alt="product image" />
+                <div class="card-body">
+                  <h5 class="text-center">{{get_cat.product_name}}</h5>
+                  {% if get_cat.product_discount > 0 %}
+                  <p>discount: {{get_cat.product_discount}}%</p>
+                  {% endif %}
+                  <p>price: &#8358; &#x20A6;{{get_cat.product_price}}</p>
                 </div>
+                <div class="card-foot">
+                  <a href="#" class="float-left btn btn-sm btn-primary"
+                    >details</a
+                  >
+                  <a href="#" class="float-right btn btn-sm btn-warning"
+                    >add to cart</a
+                  >
+                </div>
+              </div>
             </div>
-        </section>
+            {% endfor %}
+           </div>
+          </div>
+        </div>
+         <!--pagination-->
+         <div class="row">
+           
+          <div class="col text-center">
+            {% if get_cat_prod.has_prev %}
+            <a
+              href="{{url_for('store.get_category', id=get_cat.id, page=get_cat_prod.prev_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >Previous</a
+            >
+            {% endif %} 
+            
+            {% for page_num in get_cat_prod.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %} {% if
+            page_num %} {% if get_cat_prod.page == page_num %}
+            <a
+              href="{{url_for('store.get_category', id=get_cat.id, page=page_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >{{page_num}}</a
+            >
+            {% else %}
+            <a
+              href="{{url_for('store.get_category', id=get_cat.id, page=page_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >{{page_num}}</a
+            >
+            {% endif %} 
+            {% else %} 
+            ... 
+            {% endif %}
+             {% endfor %}
+             
+              {% if
+            get_cat_prod.has_next %}
+            <a
+              href="{{url_for('store.get_category', id=get_cat.id, page=get_cat_prod.next_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >Next</a
+            >
+            {% endif %}
+          </div>
+        </div>
+        <!--end-->
+      </section>
 
+      {% else %}
+      <!--featured onsale top products products-->
+      <section id="featured">
+        <ul class="tabs">
+          <p data-tab-target="#featured" class="active tab">Featured</p>
+        </ul>
 
-
-
+        <div class="tab-content">
+          <div id="featured" data-tab-content class="active">
+            <div class="row">
+              {% for product in products.items %}
+              <div class="col-md ml-2 mr-2">
+                <div class="card card-product">
+                  <img src="" alt="product image" />
+                  <div class="card-body">
+                    <h5 class="text-center">{{product.product_name}}</h5>
+                    {% if product.product_discount > 0 %}
+                    <p>discount: {{product.product_discount}}%</p>
+                    {% endif %}
+                    <p>price: {{product.product_price}}</p>
+                  </div>
+                  <div class="card-foot">
+                    <a href="{{url_for('store.single_page', id=product.id)}}" class="float-left btn btn-sm btn-primary"
+                      >details</a
+                    >
+                    <a href="#" class="float-right btn btn-sm btn-warning"
+                      >add to cart</a
+                    >
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <!--pagination-->
+        <div class="row">
+          <div class="col text-center">
+            {% if products.has_prev %}
+            <a
+              href="{{url_for('store.shop', page=products.prev_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >Previous</a
+            >
+            {% endif %} {% for page_num in products.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %} {% if
+            page_num %} {% if products.page == page_num %}
+            <a
+              href="{{url_for('store.shop', page=page_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >{{page_num}}</a
+            >
+            {% else %}
+            <a
+              href="{{url_for('store.shop', page=page_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >{{page_num}}</a
+            >
+            {% endif %} {% else %} ... {% endif %} {% endfor %} {% if
+            products.has_next %}
+            <a
+              href="{{url_for('store.shop', page=products.next_num)}}"
+              class="pagi btn btn-outline-info btn-sm"
+              >Next</a
+            >
+            {% endif %}
+          </div>
+        </div>
+        <!--end-->
+      </section>
+      {% endif %}
     </section>
 
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
 
-
-
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
-    <script type="text/javascript" src='../static/dcarousel/owl.carousel.min.js'></script>
+    <script
+      type="text/javascript"
+      src="../static/dcarousel/owl.carousel.min.js"
+    ></script>
 
     <script>
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            dots: true,
-            autoHeight: true,
-            autoplay: true,
-            autoplayTimeout: 8000,
-            autoplayHoverPause: true,
-
-            responsive: {
-                0: {
-                    items: 1
-                },
-
-            }
-        })
-    </script>
-
-<script>
-    $('.owl-carousel1').owlCarousel({
+      $(".owl-carousel").owlCarousel({
         loop: true,
         dots: true,
         autoHeight: true,
@@ -229,15 +335,30 @@
         autoplayHoverPause: true,
 
         responsive: {
-            0: {
-                items: 1
-            },
+          0: {
+            items: 1,
+          },
+        },
+      });
+    </script>
 
-        }
-    })
-</script>
+    <script>
+      $(".owl-carousel1").owlCarousel({
+        loop: true,
+        dots: true,
+        autoHeight: true,
+        autoplay: true,
+        autoplayTimeout: 8000,
+        autoplayHoverPause: true,
+
+        responsive: {
+          0: {
+            items: 1,
+          },
+        },
+      });
+    </script>
 
     {{ render_js(render) }}
-</body>
-
+  </body>
 </html>

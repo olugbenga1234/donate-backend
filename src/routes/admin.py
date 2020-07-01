@@ -202,6 +202,6 @@ def deleteproducts(id):
         db.session.commit()
         flash(f'Product {display.product_name} has been deleted','success')
         return redirect(url_for('admin.del_products'))
-    flash(f'cant delete the product ', 'error')
+    flash('can not delete the product ', 'error')
     return redirect(url_for('admin.del_products'))
     

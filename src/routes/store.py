@@ -19,6 +19,7 @@ from .productform import addProducts
 import secrets
 from PIL import Image
 from werkzeug.utils import secure_filename
+from werkzeug.datastructures import FileStorage
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
 
@@ -33,18 +34,37 @@ auth = Blueprint('auth', __name__)
 donate = Blueprint('donate', __name__)
 
 
-
-#shop
+# shop
 @store.route('/shop', methods=['GET', 'POST'])
 @store.route('/shop.html', methods=['GET', 'POST'])
 def shop():
-    products = Products.query.filter(Products.product_stock > 0)
+    page = request.args.get('page',1, type=int)
+    #get_cat_prod = Products.query.filter_by(category_id=id)
+    products = Products.query.filter(Products.product_stock > 0).paginate(page=page, per_page=4)
+    categories = Category.query.join(
+        Products, (Category.id == Products.category_id)).all()
 
-    return render_template('shop.html', products = products)
+    return render_template('shop.html', products=products, categories=categories)
 
 
+# display categories
+@store.route('/categories/<int:id>')
+def get_category(id):
+    page = request.args.get('page',1, type=int)
+    get_cat = Category.query.filter_by(id=id).first_or_404()
+    get_cat_prod = Products.query.filter_by(category=get_cat).paginate(page=page, per_page=4)
+    categories = Category.query.join(
+        Products, (Category.id == Products.category_id)).all()
+
+    return render_template('shop.html', get_cat_prod=get_cat_prod, categories=categories, get_cat=get_cat)
 
 
+#product details
+@store.route('/product/<int:id>')
+def single_page(id):
+    product = Products.query.get_or_404(id)
+
+    return render_template('single_page.html', product=product)
 
 # Add product
 @store.route('/addproduct', methods=['GET', 'POST'])
@@ -60,7 +80,6 @@ def addproduct():
         product_stock = form.stock.data
         category = request.form.get('category')
 
-                      
         addpro = Products(
             product_name=product_name,
             product_price=product_price,
@@ -68,24 +87,18 @@ def addproduct():
             product_description=product_description,
             product_stock=product_stock,
             category_id=category,
-           # image_1=image_1,
-            #image_2=image_2,
-            #image_3=image_3,
-            #image_4=image_4
+            # image_1=image_1,
+            # image_2=image_2,
+            # image_3=image_3,
+            # image_4=image_4
 
         )
 
-        
         db.session.add(addpro)
         db.session.commit()
 
         flash(f'The product {product_name} has been added', 'success')
 
-        #return redirect(url_for('auth.login'))
+        # return redirect(url_for('auth.login'))
 
     return render_template('addproduct.html', title="Add Product", form=form, categories=categories)
-
-
-
-
-
