@@ -53,7 +53,7 @@ class Donated(db.Model):
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String(30), nullable=False, unique=True)
-    product_price = db.Column(db.Numeric(10,2), nullable=False)
+    product_price = db.Column(db.Numeric(50,0), nullable=False)
     product_discount = db.Column(db.Integer, default=0)
     product_description = db.Column(db.String(300), nullable=False)
     product_stock = db.Column(db.Integer, nullable=False)

@@ -44,3 +44,115 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 {% endmacro %}
+
+{% macro render_navbar(render) %}
+ <!--top navbar-->
+ <section class="top-nav">
+    <nav class="navbar">
+      <ul class="nav">
+        <i class="fa fa-facebook-f"></i>
+        <i class="fa fa-facebook-f"></i>
+        <i class="fa fa-facebook-f"></i>
+      </ul>
+
+      <ul class="nav mr-sm-2 auth">
+        <li class="nav-item">
+          <a class="nav-link" href="/donate">Donate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign In / Sign Up</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <!--second nav bar-->
+  <section class="bottom-nav">
+    <nav class="navbar">
+      <a href="/shop.html" class="navbar-brand">
+        Logo
+      </a>
+
+      <form class="form-inline">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search product"
+          aria-label="Search product"
+        />
+        <button class="btn-primary" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+
+      <ul class="mr-sm-2 navbar-nav nav-right">
+        <div class="account">
+          <a href="profile.html" title="My account">
+            <div class="icon">
+              <i class="fa fa-user"></i>
+            </div>
+            <p>Account</p>
+          </a>
+        </div>
+
+        <div class="wishlist">
+          <a href="wishlist.html" title="Wishlist">
+            <div class="icon">
+              <i class="fa fa-heart"></i>
+              <!--span class="wishlist-count badge">3</span-->
+            </div>
+            <p>Wishlist</p>
+          </a>
+        </div>
+
+        <div class="cart">
+          <a href="{{url_for('store.getCart')}}" title="Cart">
+            <div class="icon">
+              <i class="fa fa-shopping-cart"></i>
+              <!--span class="wishlist-count badge">3</span-->
+            </div>
+            <p>Cart ({{session['ShoppingCart']|length}})</p>
+          </a>
+        </div>
+      </ul>
+    </nav>
+  </section>
+  <div class="dropdown-divider dd"></div>
+
+  <!--last nav bar-->
+  <section class="last-nav">
+    <nav class="navbar">
+      <!--hover drop-->
+      <div class="dropdown text-center">
+        <button
+          class="drop-btn"
+          type="button"
+          data-toggle="dropdown"
+          data-hover="dropdown"
+        >
+          <i class="fa fa-bars"></i>
+          Categories
+        </button>
+        <ul class="dropdown-menu">
+          {% for category in categories %}
+          <li>
+            <a href="{{url_for('store.get_category', id=category.id)}}"
+              >{{category.name}}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!--hover drop end-->
+
+      <ul class="nav mr-sm-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Donate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign In / Sign Up</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+{% endmacro %}
