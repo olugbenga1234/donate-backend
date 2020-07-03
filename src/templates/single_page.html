@@ -137,33 +137,22 @@ render_scrolltotop %}
               <a class="nav-link" href="#">Sign In / Sign Up</a>
             </li>
           </ul-->
-          <div class="col-md-4 p-1 text-center" id="flash_message">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-            {% if category == 'success' %}
-            <div class="alert alert-success" role="alert">
-                {{ message }}!
-            </div>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-    
-            {% if messages %}
-            {% for category, message in messages %}
-            {% if category == 'error' %}
-            <div class="alert alert-danger" role="alert">
-                Error: {{ message }}!
-            </div>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
-        </div>
         </nav>
       </section>
-
-      
+      <div class="container col-md-4 p-1 text-center" id="flash_message">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %} {% if category ==
+        'success' %}
+        <div class="alert alert-success" role="alert">
+          {{ message }}!
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% if messages %} {% for category,
+        message in messages %} {% if category == 'error' %}
+        <div class="alert alert-danger" role="alert">
+          Error: {{ message }}!
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+      </div>
 
       <section id="prod_details">
         <div class="container mt-5">
@@ -193,7 +182,14 @@ render_scrolltotop %}
                   ADD TO CART
                 </button>
                 <label for="quantity">Quantity</label>
-                <input type="number" name="quantity" id="quantity" value="1" min="1" max="{{product.product_stock}}">
+                <input
+                  type="number"
+                  name="quantity"
+                  id="quantity"
+                  value="1"
+                  min="1"
+                  max="{{product.product_stock}}"
+                />
               </form>
             </div>
           </div>

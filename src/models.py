@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash
 from .extensions import db, app
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import date, datetime
-
+import json
 
 # User Account Model
 class User(UserMixin, db.Model):
@@ -19,7 +19,8 @@ class User(UserMixin, db.Model):
     phone = db.Column(db.String(100), nullable=True)
     bvn = db.Column(db.String(100), nullable=True)
     usertype = db.Column(db.String)
-    image_file = db.Column(db.String(20), nullable=False, default='default.png')
+    image_file = db.Column(db.String(200), nullable=False, default='default.png')
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     amount_donated = db.relationship(
                                     'Donated', 
@@ -36,7 +37,10 @@ class User(UserMixin, db.Model):
     def unhashed_password(self, unhashed_password):
         self.password = generate_password_hash(unhashed_password, method='sha256')
 
-    
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+
 
 #donate model
 class Donated(db.Model):
@@ -76,3 +80,30 @@ class Products(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False, unique=True)
+
+#josn function
+class JsonEncodedDict(db.TypeDecorator):
+    impl = db.Text
+
+    def process_bind_param(self, value, dialect):
+        if value is None:
+            return '{}'
+        else: 
+            return json.dumps(value)
+    def process_result_param(self, value, dialect):
+        if value is None:
+            return {}
+        else:
+            return json.loads(value)
+
+#user orders
+class CustomerOrder(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    invoice = db.Column(db.String(20), unique=True, nullable=False)
+    status = db.Column(db.String(20), default='Pending', nullable=False)
+    customer_id = db.Column(db.Integer, unique=True, nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    orders = db.Column(JsonEncodedDict)
+
+    def __repr__(self):
+        return '<CustomerOrder %r>' % self.invoice

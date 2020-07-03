@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, current_user
 from werkzeug.security import check_password_hash
 from flask_mail import Mail
 from src.extensions import db
-from src.models import User
+from src.models import User, Donated, Products, Category, JsonEncodedDict, CustomerOrder
 import smtplib
 from email.message import EmailMessage
 from wtforms.validators import InputRequired

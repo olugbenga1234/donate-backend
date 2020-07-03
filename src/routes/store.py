@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for, Flask, flash, Markup, session, current_app
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 #from flask_admin import Admin
 from werkzeug.security import check_password_hash
 from flask_mail import Mail
 from src.extensions import db
-from src.models import User, Products, Category
+from src.models import User, Donated, Products, Category, JsonEncodedDict, CustomerOrder
 import smtplib
 import os
 from email.message import EmailMessage
@@ -128,6 +128,10 @@ def AddCart():
 
             if 'ShoppingCart' in session:
                 if product_id in session['ShoppingCart']:
+                   # for key, item in session['ShoppingCart'].items():
+                       # if int(key) == int(product_id):
+                           # session.modified = True
+                            #item['quantity'] += 1
                     flash("This product is already in your cart", "error")
                     return redirect(request.referrer)
                 else:
@@ -147,8 +151,8 @@ def AddCart():
 #display cart
 @store.route('/carts')
 def getCart():
-    if 'ShoppingCart' not in session:
-        return redirect(request.referrer)
+    if 'ShoppingCart' not in session or len(session['ShoppingCart']) <= 0:
+        return redirect(url_for('store.shop'))
     subtotal = 0
     grandtotal = 0
     for key, product in session['ShoppingCart'].items():
@@ -159,3 +163,69 @@ def getCart():
         grandtotal = float("%.2f" % (1.06 * subtotal))
 
     return render_template('carts.html', tax=tax, grandtotal=grandtotal)
+
+#empty cart
+@store.route('/clearcart')
+def clearcart():
+    try:
+        #session.clear()
+        session.pop('ShoppingCart', None)
+        return redirect(url_for('store.shop'))
+    except Exception as e:
+        print(e)
+
+
+#update cart
+@store.route('/updatecart/<int:code>', methods=['POST'])
+def updatecart(code):
+    if 'ShoppingCart' not in session and len(session['ShoppingCart']) <= 0:
+        return redirect(url_for('store.shop'))
+    if request.method == "POST":
+        quantity = request.form.get('quantity')
+        try:
+            session.modified = True
+            for key , item in session['ShoppingCart'].items():
+                if int(key) == code:
+                    item['quantity'] = quantity
+                    flash('Item(s) updated', 'success')
+                    return redirect(url_for('store.getCart'))
+        except Exception as e:
+            print(e)
+            return redirect(url_for('store.getCart'))
+
+
+#delete cart items
+@store.route('/delete/<int:id>')
+def deleteitem(id):
+    if 'ShoppingCart' not in session or len(session['ShoppingCart']) <= 0:
+        return redirect(url_for('store.shop'))
+    try:
+        session.modified = True
+        for key , item in session['ShoppingCart'].items():
+            if int(key) == id:
+                session['ShoppingCart'].pop(key, None)
+                return redirect(url_for('store.getCart'))
+    except Exception as e:
+        print(e)
+        return redirect(url_for('store.getCart'))
+
+#get order
+@store.route('/getorder')
+@login_required
+def get_order():
+    if current_user.is_authenticated:
+        customer_id = current_user.id
+        invoice = secrets.token_hex(5)
+        try:
+            order = CustomerOrder(invoice=invoice,customer_id=customer_id,orders=session
+            ['ShoppingCart'])
+            db.session.add(order)
+            db.session.commit()
+            session.pop('ShoppingCart')
+            flash('Order placed','success')
+            return redirect(url_for('store.shop'))
+
+        except Exception as e:
+            print(e)
+            flash('something went wrong with the order','error')
+            return redirect(url_for('store.getCart'))

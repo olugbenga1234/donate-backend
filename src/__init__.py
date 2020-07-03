@@ -1,5 +1,5 @@
 from flask import Flask
-
+#from flask_migrate import Migrate
 from .commands import create_tables
 from .extensions import db, login_manager
 from .models import User, Donated, Products, Category
@@ -33,6 +33,8 @@ def create_app(config_file='settings.py'):
     app.register_blueprint(admin)
 
     app.cli.add_command(create_tables)
+
+    #migrate = Migrate(app, db)
 
     return app
 
