@@ -77,6 +77,68 @@
                             {% endif %}
                             {% endwith %}
                         </div>
+                        <div class="form-row pb-3">
+                            <div class="form-group col-md-6" id="form-group-fix">
+                                <label class="my-1 mr-2" for="usertype">
+                                    <p>Register as:</p>
+                                </label>
+                                <select class="custom-select form-control" name="usertype" id="usertype" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="Farmer" data-toggle="tooltip"
+                                        title="Register as a Farmer, you receive new and improved seeds and aids to help improve your productions."
+                                        required>A Farmer</option>
+                                    <option value="Seeder" data-toggle="tooltip"
+                                        title="Register as a Seed deliverer, you deliver seeds to farmers and get commissions for it."
+                                        required>A Seed Deliverer</option>
+                                    <option value="Regular" data-toggle="tooltip"
+                                        title="Register as a regular user, for Donators or regular users." required>
+                                        Regular User</option>
+
+                                </select>
+                            </div>
+
+                            <div id="popperr" pb-4 class="form-row mt-4 col-md-6 text-center">
+                                <div class="col-md">
+                                    <div class="popper-button">
+                                        <div class="btn-group-toggle" data-toggle="buttons">
+                                            <label class="popper-box">
+
+                                                <ha type="" checked
+                                                    data-tippy-content="When you register as a Farmer, you receive new improved seeds and aids to help improve your farming, note that You must have a current farm which you produce crops from to be eligible!">
+                                                    <i class="fa fa-info-circle"></i> Farmer?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md">
+                                    <div class="popper-button">
+                                        <div class="btn-group-toggle" data-toggle="buttons">
+                                            <label class="popper-box">
+                                                <ha type="" checked
+                                                    data-tippy-content="When you register as Seed Deliverer, your task is to deliver seeds or products to farmers in need, you get a compensation after successful delivery.">
+                                                    <i class="fa fa-info-circle"></i> Seed deliverer?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md">
+                                    <div class="popper-button">
+                                        <div class="btn-group-toggle" data-toggle="buttons">
+                                            <label class="popper-box">
+                                                <ha type="" checked
+                                                    data-tippy-content="Register as a regular user if you just want to donate.">
+                                                    <i class="fa fa-info-circle"></i> Regular?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="firstname">
@@ -216,67 +278,7 @@
 
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6" id="form-group-fix">
-                                <label class="my-1 mr-2" for="usertype">
-                                    <p>Register as:</p>
-                                </label>
-                                <select class="custom-select form-control" name="usertype" id="usertype" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option value="Farmer" data-toggle="tooltip"
-                                        title="Register as a Farmer, you receive new and improved seeds and aids to help improve your productions."
-                                        required>A Farmer</option>
-                                    <option value="Seeder" data-toggle="tooltip"
-                                        title="Register as a Seed deliverer, you deliver seeds to farmers and get commissions for it."
-                                        required>A Seed Deliverer</option>
-                                    <option value="Regular" data-toggle="tooltip"
-                                        title="Register as a regular user, for Donators or regular users." required>
-                                        Regular User</option>
-
-                                </select>
-                            </div>
-
-                            <div id="popperr" pb-4 class="form-row mt-4 col-md-6 text-center">
-                                <div class="col-md">
-                                    <div class="popper-button">
-                                        <div class="btn-group-toggle" data-toggle="buttons">
-                                            <label class="popper-box">
-
-                                                <ha type="" checked
-                                                    data-tippy-content="When you register as a Farmer, you receive new improved seeds and aids to help improve your farming, note that You must have a current farm which you produce crops from to be eligible!">
-                                                    <i class="fa fa-info-circle"></i> Farmer?
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md">
-                                    <div class="popper-button">
-                                        <div class="btn-group-toggle" data-toggle="buttons">
-                                            <label class="popper-box">
-                                                <ha type="" checked
-                                                    data-tippy-content="When you register as Seed Deliverer, your task is to deliver seeds or products to farmers in need, you get a compensation after successful delivery.">
-                                                    <i class="fa fa-info-circle"></i> Seed deliverer?
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md">
-                                    <div class="popper-button">
-                                        <div class="btn-group-toggle" data-toggle="buttons">
-                                            <label class="popper-box">
-                                                <ha type="" checked
-                                                    data-tippy-content="Register as a regular user if you just want to donate.">
-                                                    <i class="fa fa-info-circle"></i> Regular?
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
+                       
 
 
                         <div class="form-group col-md mt-4 text-center">

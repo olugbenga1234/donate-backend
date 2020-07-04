@@ -418,10 +418,10 @@ html {
 /**donateend**/
 
 #login .login-content{
-	display: block ruby;
+	display: block ruby !important;
 	justify-content: flex-start;
-	align-items: center;
-	text-align: center;
+	align-items: center !important;
+	text-align: center !important;
 }
 
 #login .img img{
