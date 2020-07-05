@@ -247,7 +247,7 @@ input[type="color"]:focus,
   #displayproducts .input-group-text, select.form-control:not([size]):not([multiple]), .form-control:not(.form-control-sm):not(.form-control-lg) {
     font-size: 14px;
     padding: 10px 15px;
-    height: 35px;
+ 
   }
 
   #displayproducts a {

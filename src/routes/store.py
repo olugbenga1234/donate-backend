@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, Flask, flash, Markup, session, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, Flask, flash, Markup, session, current_app, make_response
 from flask_login import login_user, logout_user, current_user, login_required
 #from flask_admin import Admin
 from werkzeug.security import check_password_hash
@@ -20,6 +20,7 @@ import secrets
 from PIL import Image
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
+import pdfkit
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
 #manage dicts
@@ -86,7 +87,8 @@ def addproduct():
     categories = Category.query.all()
     if request.method == 'POST':
         product_name = form.name.data
-        product_price = form.price.data
+        #product_price = form.price.data
+        product_price = request.form.get('price')
         product_discount = form.discount.data
         product_description = form.description.data
         product_stock = form.stock.data
@@ -124,7 +126,7 @@ def AddCart():
         product = Products.query.filter_by(id=product_id).first()
         if product_id and quantity and request.method == "POST":
             DictItems = {product_id:{'name': product.product_name, 'discount': product.product_discount, 'quantity': quantity,
-                                'image': product.image_1, 'price': 600}}
+                                'image': product.image_1, 'price': product.product_price, 'stock': product.product_stock}}
 
             if 'ShoppingCart' in session:
                 if product_id in session['ShoppingCart']:
@@ -223,9 +225,32 @@ def get_order():
             db.session.commit()
             session.pop('ShoppingCart')
             flash('Order placed','success')
-            return redirect(url_for('store.shop'))
+            return redirect(url_for('store.orders', invoice=invoice))
 
         except Exception as e:
             print(e)
             flash('something went wrong with the order','error')
             return redirect(url_for('store.getCart'))
+
+#display customer order
+@store.route('/orders/<invoice>')
+@login_required
+def orders(invoice):
+    if current_user.is_authenticated:
+        grandTotal = 0
+        subTotal = 0
+        customer_id = current_user.id
+        customer = User.query.filter_by(id=customer_id).first()
+        orders = CustomerOrder.query.filter_by(customer_id=customer_id).order_by(CustomerOrder.id.desc()).first()
+        for _key, product in orders.orders.items():
+            discount = (product['discount']/100) * float(product['price'])
+            subTotal += float(product['price']) * int(product['quantity'])
+            subTotal -= discount
+            tax = ("%.2f" % (.06 * float(subTotal)))
+            grandTotal = float("%.2f" % (1.06 * subTotal))
+
+    else:
+        return redirect(url_for('auth.login'))
+    return render_template('order.html', invoice=invoice, tax=tax, subTotal=subTotal, grandTotal=grandTotal, customer=customer, orders=orders)
+
+

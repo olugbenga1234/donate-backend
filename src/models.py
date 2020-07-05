@@ -27,7 +27,8 @@ class User(UserMixin, db.Model):
                                     foreign_keys='Donated.donated_by_id',
                                     backref='donater', 
                                     lazy=True)
-
+                                    
+    
 
     @property
     def unhashed_password(self):
@@ -57,7 +58,7 @@ class Donated(db.Model):
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String(30), nullable=False, unique=True)
-    product_price = db.Column(db.Numeric(50,0), nullable=False)
+    product_price = db.Column(db.Integer, nullable=False)
     product_discount = db.Column(db.Integer, default=0)
     product_description = db.Column(db.String(300), nullable=False)
     product_stock = db.Column(db.Integer, nullable=False)
@@ -90,7 +91,7 @@ class JsonEncodedDict(db.TypeDecorator):
             return '{}'
         else: 
             return json.dumps(value)
-    def process_result_param(self, value, dialect):
+    def process_result_value(self, value, dialect):
         if value is None:
             return {}
         else:
@@ -101,9 +102,13 @@ class CustomerOrder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     invoice = db.Column(db.String(20), unique=True, nullable=False)
     status = db.Column(db.String(20), default='Pending', nullable=False)
-    customer_id = db.Column(db.Integer, unique=True, nullable=False)
+    customer_id = db.Column(db.Integer, unique=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     orders = db.Column(JsonEncodedDict)
 
+    
+
     def __repr__(self):
         return '<CustomerOrder %r>' % self.invoice
+
+        

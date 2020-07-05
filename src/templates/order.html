@@ -129,51 +129,42 @@ render_scrolltotop %}
 
       <section id="cart">
         <div class="container text-center">
-          <h1>CART</h1>
+          <h1 class="p-4">ORDER</h1>
+        </div>
+        <div class="container pb-0 mb-0">
+          <p>Invoice: {{orders.invoice}}</p>
+              <p>Status: {{orders.status}}</p>
+              <p>Fullname: {{customer.firstname}} {{customer.lastname}}</p>
+              <p>Username: {{customer.username}}</p>
+              <p>Email: {{customer.email}}</p>
+              <p>Phone Number: +234 {{customer.phone}}</p>
         </div>
         <div class="container p-5">
           <div class="col-md conater mt-5 p-2 ">
+              
             <table class="table table-sm col-md table-bordered">
               <h3 class="text-center m-2">Products</h3>
               <thead>
-                <th>#</th>
-                <th>Image</th>
+                <th>#</th>               
                 <th>Name</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Discount</th>
-
                 <th>Subtotal</th>
-                <th></th>
-                <th></th>
               </thead>
               <tbody>
-                {% for key, product in session['ShoppingCart'].items() %} {% set
+                {% for key, product in orders.orders.items() %} {% set
                 discount = "%0.2f" |format((product.discount/100) *
                 product.price|float) %}
 
                 <tr>
                   <td>{{loop.index}}</td>
-                  <td>
-                    <img
-                      src="{{url_for('static', filename='images/+ product.image')}}"
-                      alt="{{product.name}}"
-                      width="50"
-                      height="45"
-                    />
-                  </td>
                   <td>{{product.name}}</td>
                   <!--edit-->
-                  <form action="{{url_for('store.updatecart', code=key)}}" method="POST">
+                  
                     <td>&#x20A6;{{product.price}}</td>
                     <td>
-                      <input
-                        type="number"
-                        name="quantity"
-                        min="1"
-                        max="{{product.product_stock}}"
-                        value="{{product.quantity}}"
-                      />
+                      {{product.quantity}}
                     </td>
                     {% if product.discount > 0 %}
                     <td>{{product.discount}}%</td>
@@ -188,87 +179,31 @@ render_scrolltotop %}
                       discount|float)}}
                     </td>
                     <!--edit-->
-                    <td class="text-center"><button class="btn btn-sm btn-primary" type="submit">Update</button></td>
-                  </form>
+                    
                   
-                  <td class="text-center">
-                    <a
-                    href="{{url_for('store.deleteitem', id=key)}}"
-                      class="btn btn-danger btn-sm"  style="color: #fff;"
-                    >
-                      Remove
-                  </a>
-                  </td>
+                  
+                 
                 </tr>
                 {% endfor %}
                 <tr class="text-center">
                   <td>
-                    <a href="shop.html" class="btn btn-primary btn-sm">
+                    <a href="/shop.html" class="btn btn-primary btn-sm">
                       Continue Shopping
                     </a>
                   </td>
                   <td colspan="3"><h4>Tax: &#x20A6;{{tax}}</h4></td>
-                  <td colspan="4"><h4>Total: &#x20A6;{{grandtotal}}</h4></td>
-                  <td>
-                    <a href="{{url_for('store.clearcart')}}" class="btn btn-danger btn-sm float-right">
-                      Clear cart
-                    </a>
-                  </td>
+                  <td colspan="4"><h4>Total: &#x20A6;{{grandTotal}}</h4></td>
+                 
 
                  
                 </tr>
               </tbody>
             </table>
-            <a href="{{url_for('store.get_order')}}">checkout</a>
           </div>
           <div class="col-md"></div>
         </div>
       </section>
     </section>
-
-    <script
-      type="text/javascript"
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-    ></script>
-
-    <script
-      type="text/javascript"
-      src="../static/dcarousel/owl.carousel.min.js"
-    ></script>
-
-    <script>
-      $(".owl-carousel").owlCarousel({
-        loop: true,
-        dots: true,
-        autoHeight: true,
-        autoplay: true,
-        autoplayTimeout: 8000,
-        autoplayHoverPause: true,
-
-        responsive: {
-          0: {
-            items: 1,
-          },
-        },
-      });
-    </script>
-
-    <script>
-      $(".owl-carousel1").owlCarousel({
-        loop: true,
-        dots: true,
-        autoHeight: true,
-        autoplay: true,
-        autoplayTimeout: 8000,
-        autoplayHoverPause: true,
-
-        responsive: {
-          0: {
-            items: 1,
-          },
-        },
-      });
-    </script>
 
     {{ render_js(render) }}
   </body>
