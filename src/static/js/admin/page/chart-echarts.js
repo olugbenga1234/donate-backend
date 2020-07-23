@@ -426,7 +426,7 @@ $(function (e) {
                 text: "Sales",
                 max: 6e3
             }, {
-                text: "Administration",
+                text: "admin_1istration",
                 max: 16e3
             }, {
                 text: "Information Techology",

@@ -53,7 +53,7 @@ html {
     outline: 0 none;
 } 
 
-.admin11 a {
+.admin_111 a {
 	display: block;
 	text-align: center !important;
 	text-decoration: none;
@@ -62,22 +62,22 @@ html {
 	transition: .3s;
 }
 
-.admin11 textarea:focus,
-.admin11 input[type="text"]:focus,
-.admin11 input[type="password"]:focus,
-.admin11 input[type="datetime"]:focus,
-.admin11 input[type="datetime-local"]:focus,
-.admin11 input[type="date"]:focus,
-.admin11 input[type="month"]:focus,
-.admin11 input[type="time"]:focus,
-.admin11 input[type="week"]:focus,
-.admin11 input[type="number"]:focus,
-.admin11 input[type="email"]:focus,
-.admin11 input[type="url"]:focus,
-.admin11 input[type="search"]:focus,
-.admin11 input[type="tel"]:focus,
-.admin11 input[type="color"]:focus,
-.admin11 .uneditable-input:focus {   
+.admin_111 textarea:focus,
+.admin_111 input[type="text"]:focus,
+.admin_111 input[type="password"]:focus,
+.admin_111 input[type="datetime"]:focus,
+.admin_111 input[type="datetime-local"]:focus,
+.admin_111 input[type="date"]:focus,
+.admin_111 input[type="month"]:focus,
+.admin_111 input[type="time"]:focus,
+.admin_111 input[type="week"]:focus,
+.admin_111 input[type="number"]:focus,
+.admin_111 input[type="email"]:focus,
+.admin_111 input[type="url"]:focus,
+.admin_111 input[type="search"]:focus,
+.admin_111 input[type="tel"]:focus,
+.admin_111 input[type="color"]:focus,
+.admin_111 .uneditable-input:focus {   
   border-color: rgba(126, 239, 104, 0.8) !important;
   box-shadow: 0 1px 1px #4b93550c inset, 0 0 8px #4b935573 !important;
   outline: 0 none !important;
@@ -1401,26 +1401,26 @@ text-decoration: none;
 }
 
 
-.admin11 .form-control {
+.admin_111 .form-control {
     transition: .3s;
     background-color: #fdfdff;
     border-color: #e4fcec;
 }
 
-.admin11 .form-control::placeholder {
+.admin_111 .form-control::placeholder {
 	color: #393c3f;
 	opacity: 1;
 	font-size: 13px;
 }
 
-.admin1 {
+.admin_11 {
 	color: #222;
 	font-family: 'Poppins', sans-serif;
 	position: relative;
 	background-image: linear-gradient(to bottom right,#0000004b,#000000);
 }
 
-.admin1::before {
+.admin_11::before {
 	background-color: rgba(0, 0, 0, 0.5);
 	background-image: url('../images/dark-leaf.jpg') !important;
 	background-repeat: no-repeat;

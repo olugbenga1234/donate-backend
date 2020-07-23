@@ -70,7 +70,7 @@
             "index": "pypi",
             "version": "==1.1.2"
         },
-        "flask-admin": {
+        "flask-admin_1": {
             "hashes": [
                 "sha256:68c761d8582d59b1f7702013e944a7ad11d7659a72f3006b89b68b0bd8df61b8"
             ],

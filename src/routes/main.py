@@ -108,7 +108,7 @@ def profile():
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('Your account updated', 'success')
+        flash('Your account has been updated', 'success')
         return redirect(url_for('main.profile'))
 
     elif request.method == 'GET':
@@ -142,14 +142,3 @@ def profile():
                            #donations = Donated.query.filter(Donated.d_amount != None).all()
                            )
 
-
-@main.route('/test')
-def test():
-
-    donations = Donated.query.filter(Donated.d_amount != None).all()
-
-    context = {
-        'donations': donations
-    }
-
-    return render_template('test.html', **context)

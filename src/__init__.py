@@ -2,11 +2,13 @@ from flask import Flask
 #from flask_migrate import Migrate
 from .commands import create_tables
 from .extensions import db, login_manager
-from .models import User, Donated, Products, Category
+from .models import User, Donated, Products, Category, CustomerOrder
 from .routes.main import main
 from .routes.auth import auth
-from .routes.admin import admin
+from .routes.admin_1 import admin_1
 from .routes.store import store
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 import os
 
 
@@ -30,7 +32,16 @@ def create_app(config_file='settings.py'):
     app.register_blueprint(main)
     app.register_blueprint(auth)
     app.register_blueprint(store)
-    app.register_blueprint(admin)
+    app.register_blueprint(admin_1)
+
+    admin = Admin(app, name='Admin Dashboard')
+
+
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Donated, db.session))
+    admin.add_view(ModelView(Products, db.session))
+    admin.add_view(ModelView(Category, db.session))
+    admin.add_view(ModelView(CustomerOrder, db.session))
 
     app.cli.add_command(create_tables)
 
