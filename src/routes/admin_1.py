@@ -176,7 +176,7 @@ def registeradmin():
 #         display.product_price = form.price.data
 #         display.product_discount = form.discount.data
 #         display.product_stock = form.stock.data
-#         display.product_description = form.description.data
+#         display.product_description = form.descriptikon.data
 #         display.category_id = category
 #         db.session.commit()
 #         flash('Product Updated', 'success')
