@@ -20,7 +20,6 @@ import secrets
 from PIL import Image
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
-import pdfkit
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
 #manage dicts
