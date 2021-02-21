@@ -90,12 +90,12 @@ def register():
         Donate A Seed
         """.format(firstname,email,usertype,username,email), subtype='html')
 
-        #email sending function
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login("donateaseedoffcial@gmail.com", "donateaseed1234")
-            smtp.send_message(msg)
+        #email sending function ("it sends an email to registered email address")
+        #with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        #    smtp.login("email", "password")
+        #    smtp.send_message(msg)
 
-        flash(' Registered successfully, please check your email ' + email, 'success')
+        #flash(' Registered successfully, please check your email ' + email, 'success')
 
         return redirect(url_for('auth.login'))
 
