@@ -49,8 +49,7 @@ def shop():
     page = request.args.get('page',1, type=int)
     #get_cat_prod = Products.query.filter_by(category_id=id)
     products = Products.query.filter(Products.product_stock > 0).paginate(page=page, per_page=4)
-    categories = Category.query.join(
-        Products, (Category.id == Products.category_id)).all()
+    categories = Category.query.join(Products, (Category.id == Products.category_id)).all()
 
     return render_template('shop.html', products=products, categories=categories)
 

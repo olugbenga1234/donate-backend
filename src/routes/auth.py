@@ -20,7 +20,7 @@ auth = Blueprint('auth', __name__)
 SECRET_KEY = '4b4474b4h47n474n474n47447n474n47'
 
 
-#function for register
+# function for register
 @auth.route('/register', methods=['GET', 'POST'])
 @auth.route('/register.html', methods=['GET', 'POST'])
 def register():
@@ -37,39 +37,38 @@ def register():
         unhashed_password = request.form.get('password')
         usertype = request.form.get('usertype')
 
-        
-#check if username exists
+
+# check if username exists
         checkusername = User.query.filter_by(username=username).first()
 
         if checkusername:
             flash(Markup(' Username already exists. Already have an account?<a href="login.html" style="color: yellow; font-weight: 900;"> Login In</a>'), 'error')
             return redirect(url_for('auth.register'))
 
-#check if email already exists
+# check if email already exists
         checkuseremail = User.query.filter_by(email=email).first()
 
         if checkuseremail:
             flash(Markup(' Email already exists. Already have an account?<a href="login.html" style="color: yellow; font-weight: 500;"> Login In</a>'), 'error')
             return redirect(url_for('auth.register'))
 
-
         new_user = User(lastname=lastname,
-                    firstname=firstname,
-                    username=username,
-                    unhashed_password=unhashed_password,
-                    email=email,
-                    address=address,
-                    state=state,
-                    lga=lga,
-                    phone=phone,
-                    bvn=bvn,
-                    usertype=usertype
-                    )
-                    
+                        firstname=firstname,
+                        username=username,
+                        unhashed_password=unhashed_password,
+                        email=email,
+                        address=address,
+                        state=state,
+                        lga=lga,
+                        phone=phone,
+                        bvn=bvn,
+                        usertype=usertype
+                        )
+
         db.session.add(new_user)
         db.session.commit()
 
-        #email message
+        # email message
         msg = EmailMessage()
         msg['Subject'] = 'Donate A Seed - Confirmation Email'
         msg['From'] = "donateaseedoffcial@gmail.com"
@@ -88,29 +87,26 @@ def register():
         <br><br><br>
         Regards,<br>
         Donate A Seed
-        """.format(firstname,email,usertype,username,email), subtype='html')
+        """.format(firstname, email, usertype, username, email), subtype='html')
 
-        #email sending function ("it sends an email to registered email address")
-        #with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        # email sending function ("it sends an email to registered email address")
+        # with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         #    smtp.login("email", "password")
         #    smtp.send_message(msg)
 
         #flash(' Registered successfully, please check your email ' + email, 'success')
 
-        return redirect(url_for('auth.login'))
+        #return redirect(url_for('auth.login'))
 
     return render_template('register.html')
 
 
-
-
-
-#function for login
+# function for login
 @auth.route('/login', methods=['GET', 'POST'])
 @auth.route('/login.html', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        flash(Markup(' Already Logged In, click<a href="logout.html" style="color: yellow; font-weight: 900;"> HERE </a> to Logout.' ), 'error')
+        flash(Markup(' Already Logged In, click<a href="logout.html" style="color: yellow; font-weight: 900;"> HERE </a> to Logout.'), 'error')
 
         return redirect(url_for('main.profile'))
 
@@ -119,11 +115,11 @@ def login():
         password = request.form['password']
         remember = True if request.form.get('remember') else False
 
-#validate details
+# validate details
         user = User.query.filter_by(username=username).first()
 
         if not user or not check_password_hash(user.password, password):
-            flash(Markup(' Could not Login, Please check your login details and try again! Or click <a href="register.html" style="color: yellow; font-weight: 900;"> HERE </a> to register.' ), 'error')
+            flash(Markup(' Could not Login, Please check your login details and try again! Or click <a href="register.html" style="color: yellow; font-weight: 900;"> HERE </a> to register.'), 'error')
 
         else:
             login_user(user, remember=remember)
@@ -131,7 +127,9 @@ def login():
 
     return render_template('login.html')
 
-#logout user
+# logout user
+
+
 @auth.route('/logout')
 @auth.route('/logout.html')
 def logout():
@@ -140,16 +138,16 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
-
-#update account form
+# update account form
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username',
-                            validators=[DataRequired(), length(min=5, max=20)])
-    
+                           validators=[DataRequired(), length(min=5, max=20)])
+
     email = StringField('Email',
-                    validators=[DataRequired(), Email()])
-    
-    picture = FileField('update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+                        validators=[DataRequired(), Email()])
+
+    picture = FileField('update Profile Picture', validators=[
+                        FileAllowed(['jpg', 'png'])])
 
     submit = SubmitField('Update')
 
@@ -164,4 +162,3 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('That email is taken')
-
